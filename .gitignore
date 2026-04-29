@@ -1,0 +1,7 @@
+# Server ignores
+server/node_modules/
+server/.env
+
+# Client ignores
+client/build/
+client/.dart_tool/
