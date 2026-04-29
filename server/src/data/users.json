@@ -6,9 +6,19 @@
     "country": "Turkey",
     "verified": true,
     "routingRules": {
-      "smallPayments": { "enabled": true, "threshold": 500, "targetId": "acc_1" },
-      "largePayments": { "enabled": true, "threshold": 5000, "targetId": "acc_2" },
-      "localTransfers": { "enabled": true }
+      "smallPayments": {
+        "enabled": true,
+        "threshold": 500,
+        "targetId": "acc_1"
+      },
+      "largePayments": {
+        "enabled": true,
+        "threshold": 5000,
+        "targetId": "acc_2"
+      },
+      "localTransfers": {
+        "enabled": true
+      }
     },
     "linkedAccounts": [
       {
@@ -34,7 +44,9 @@
     "country": "Saudi Arabia",
     "verified": true,
     "routingRules": {
-      "localTransfers": { "enabled": true }
+      "localTransfers": {
+        "enabled": true
+      }
     },
     "linkedAccounts": [
       {
@@ -45,5 +57,18 @@
         "isPreferred": true
       }
     ]
+  },
+  {
+    "uuid": "usr_dcf1f947",
+    "alias": "faisal@arabpay",
+    "displayName": "Faisal",
+    "country": "Unknown",
+    "verified": true,
+    "routingRules": {
+      "localTransfers": {
+        "enabled": true
+      }
+    },
+    "linkedAccounts": []
   }
 ]

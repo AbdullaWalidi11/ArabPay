@@ -49,24 +49,35 @@ class AppProvider with ChangeNotifier {
 
   Future<bool> claimIdentity(String requestedId) async {
     isLoading = true;
+    error = null;
     notifyListeners();
 
-    bool isUnique = await _backendService.validateId(requestedId);
+    // 1. Hit the real Node.js Express backend!
+    final responseData = await _backendService.createAlias(requestedId);
     
-    if (isUnique && currentUser != null) {
+    if (responseData != null && currentUser != null) {
+      // 2. Extract the real generated data from the Node.js response
+      final backendUser = responseData['user'];
+      
+      // 3. Update the Flutter state with the REAL backend data
       currentUser = User(
-        id: currentUser!.id,
-        arabPayId: requestedId.contains('@arabpay') ? requestedId : '$requestedId@arabpay',
-        name: '', // Removing name as requested
-        balance: currentUser!.balance,
+        id: backendUser['uuid'],              // The real generated UUID!
+        arabPayId: backendUser['alias'],      // formatted 'ali@arabpay'
+        name: backendUser['displayName'],     // The auto-capitalized name!
+        balance: currentUser!.balance,        // Keep mock balance for now
         currency: currentUser!.currency,
         isVerified: currentUser!.isVerified,
       );
+      
+      isLoading = false;
+      notifyListeners();
+      return true; // Success! Flutter will navigate to the Success screen.
     }
     
     isLoading = false;
+    error = 'Alias is already taken or server is offline';
     notifyListeners();
-    return isUnique;
+    return false;
   }
   
   void updateBalance(double newBalance) {
