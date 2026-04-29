@@ -1,0 +1,49 @@
+[
+  {
+    "uuid": "usr_9b1deb4d",
+    "alias": "ali@arabpay",
+    "displayName": "Ali A.",
+    "country": "Turkey",
+    "verified": true,
+    "routingRules": {
+      "smallPayments": { "enabled": true, "threshold": 500, "targetId": "acc_1" },
+      "largePayments": { "enabled": true, "threshold": 5000, "targetId": "acc_2" },
+      "localTransfers": { "enabled": true }
+    },
+    "linkedAccounts": [
+      {
+        "id": "acc_1",
+        "type": "wallet",
+        "provider": "STC Pay",
+        "currency": "SAR",
+        "isPreferred": false
+      },
+      {
+        "id": "acc_2",
+        "type": "bank",
+        "provider": "Ziraat Bank",
+        "currency": "TRY",
+        "isPreferred": true
+      }
+    ]
+  },
+  {
+    "uuid": "usr_1a2b3c4d",
+    "alias": "hassan@arabpay",
+    "displayName": "Hassan S.",
+    "country": "Saudi Arabia",
+    "verified": true,
+    "routingRules": {
+      "localTransfers": { "enabled": true }
+    },
+    "linkedAccounts": [
+      {
+        "id": "acc_3",
+        "type": "bank",
+        "provider": "Al Rajhi Bank",
+        "currency": "SAR",
+        "isPreferred": true
+      }
+    ]
+  }
+]
