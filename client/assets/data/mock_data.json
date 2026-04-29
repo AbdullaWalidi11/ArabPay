@@ -1,0 +1,66 @@
+{
+  "user": {
+    "id": "ahmed123",
+    "arabpay_id": "ahmed@arabpay",
+    "name": "Ahmed Al-Farsi",
+    "balance": 14500.00,
+    "currency": "SAR",
+    "is_verified": true
+  },
+  "linked_methods": [
+    {
+      "id": "bank_1",
+      "type": "bank",
+      "provider": "Al Rajhi Bank",
+      "account_ending": "4321",
+      "country": "SA",
+      "currency": "SAR",
+      "is_active": true
+    },
+    {
+      "id": "wallet_1",
+      "type": "wallet",
+      "provider": "STC Pay",
+      "account_ending": "0987",
+      "country": "SA",
+      "currency": "SAR",
+      "is_active": true
+    },
+    {
+      "id": "bank_2",
+      "type": "bank",
+      "provider": "Ziraat Bank",
+      "account_ending": "1122",
+      "country": "TR",
+      "currency": "TRY",
+      "is_active": true
+    }
+  ],
+  "routing_rules": {
+    "small_payments_threshold": 1000.0,
+    "preferred_small_route": "wallet_1",
+    "preferred_large_route": "bank_1"
+  },
+  "recent_transactions": [
+    {
+      "id": "tx_101",
+      "date": "2026-04-28T14:32:00Z",
+      "amount": -250.0,
+      "currency": "SAR",
+      "recipient_id": "sara@arabpay",
+      "recipient_name": "Sara Khalid",
+      "status": "completed",
+      "route_used": "wallet"
+    },
+    {
+      "id": "tx_102",
+      "date": "2026-04-25T09:15:00Z",
+      "amount": 5000.0,
+      "currency": "SAR",
+      "recipient_id": "company@arabpay",
+      "recipient_name": "Tech Corp",
+      "status": "completed",
+      "route_used": "bank"
+    }
+  ]
+}
