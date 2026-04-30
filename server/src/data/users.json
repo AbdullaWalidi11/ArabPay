@@ -265,5 +265,31 @@
       }
     },
     "linkedAccounts": []
+  },
+  {
+    "uuid": "usr_fe21906b",
+    "alias": "whatever@arabpay",
+    "displayName": "Whatever",
+    "country": "Unknown",
+    "verified": true,
+    "routingRules": {
+      "localTransfers": {
+        "enabled": true
+      }
+    },
+    "linkedAccounts": []
+  },
+  {
+    "uuid": "usr_6eba777f",
+    "alias": "whatever2@arabpay",
+    "displayName": "Whatever2",
+    "country": "Unknown",
+    "verified": true,
+    "routingRules": {
+      "localTransfers": {
+        "enabled": true
+      }
+    },
+    "linkedAccounts": []
   }
 ]
