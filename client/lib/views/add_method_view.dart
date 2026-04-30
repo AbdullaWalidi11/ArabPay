@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 import '../providers/app_provider.dart';
 import '../models/linked_method.dart';
-import '../theme/app_colors.dart';
 
 class AddMethodView extends StatefulWidget {
   const AddMethodView({super.key});

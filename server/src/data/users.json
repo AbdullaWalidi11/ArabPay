@@ -6,36 +6,39 @@
     "country": "Turkey",
     "verified": true,
     "routingRules": {
-      "smallPayments": {
-        "enabled": true,
-        "threshold": 500,
-        "targetId": "acc_1"
-      },
-      "largePayments": {
-        "enabled": true,
-        "threshold": 5000,
-        "targetId": "acc_2"
-      },
-      "localTransfers": {
-        "enabled": true
-      }
+      "localTransfers": { "enabled": true }
     },
+    "contacts": [],
     "linkedAccounts": [
       {
         "id": "acc_1",
         "type": "wallet",
         "provider": "STC Pay",
+        "country": "Saudi Arabia",
         "currency": "SAR",
+        "balance": 5000,
         "isPreferred": false
       },
       {
         "id": "acc_2",
         "type": "bank",
         "provider": "Ziraat Bank",
+        "country": "Turkey",
         "currency": "TRY",
+        "balance": 15000,
         "isPreferred": true
+      },
+      {
+        "id": "acc_b1b45525",
+        "type": "bank",
+        "provider": "Alinma Bank",
+        "country": "Saudi Arabia",
+        "currency": "SAR",
+        "balance": 2000,
+        "isPreferred": false
       }
-    ]
+    ],
+    "transactions": []
   },
   {
     "uuid": "usr_1a2b3c4d",
@@ -44,19 +47,21 @@
     "country": "Saudi Arabia",
     "verified": true,
     "routingRules": {
-      "localTransfers": {
-        "enabled": true
-      }
+      "localTransfers": { "enabled": true }
     },
+    "contacts": [],
     "linkedAccounts": [
       {
         "id": "acc_3",
         "type": "bank",
         "provider": "Al Rajhi Bank",
+        "country": "Saudi Arabia",
         "currency": "SAR",
+        "balance": 10000,
         "isPreferred": true
       }
-    ]
+    ],
+    "transactions": []
   },
   {
     "uuid": "usr_dcf1f947",
@@ -65,10 +70,20 @@
     "country": "Unknown",
     "verified": true,
     "routingRules": {
-      "localTransfers": {
-        "enabled": true
-      }
+      "localTransfers": { "enabled": true }
     },
-    "linkedAccounts": []
+    "contacts": [],
+    "linkedAccounts": [
+      {
+        "id": "acc_3271fbb0",
+        "type": "wallet",
+        "provider": "STC Pay",
+        "country": "Saudi Arabia",
+        "currency": "SAR",
+        "balance": 1500,
+        "isPreferred": true
+      }
+    ],
+    "transactions": []
   }
 ]

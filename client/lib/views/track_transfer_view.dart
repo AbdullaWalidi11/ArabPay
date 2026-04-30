@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../theme/app_colors.dart';
-import '../widgets/custom_card.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 
 class TrackTransferView extends StatelessWidget {
