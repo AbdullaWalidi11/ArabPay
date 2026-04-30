@@ -26,6 +26,9 @@ class _AddMethodViewState extends State<AddMethodView> {
   // Step 2
   final _accountNameController = TextEditingController();
   final _accountDetailsController = TextEditingController();
+  final _idNumberController = TextEditingController();
+  final _swiftController = TextEditingController();
+  final _emailController = TextEditingController();
 
   // Step 3
   String _loadingStatus = '';
@@ -75,7 +78,8 @@ class _AddMethodViewState extends State<AddMethodView> {
           _selectedInstitution != null;
     } else if (_currentStep == 1) {
       return _accountNameController.text.trim().isNotEmpty &&
-          _accountDetailsController.text.trim().isNotEmpty;
+          _accountDetailsController.text.trim().isNotEmpty &&
+          _idNumberController.text.trim().isNotEmpty;
     }
     return false;
   }
@@ -84,27 +88,45 @@ class _AddMethodViewState extends State<AddMethodView> {
     final instName = _selectedInstitution ?? 'Provider';
     
     setState(() {
-      _loadingStatus = 'Sending request to $instName...';
+      _loadingStatus = 'Establishing connection with $instName...';
     });
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(milliseconds: 800));
     if (!mounted) return;
     
     setState(() {
-      _loadingStatus = 'Verifying user details...';
+      _loadingStatus = 'Exchanging security certificates...';
     });
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(milliseconds: 800));
     if (!mounted) return;
 
     setState(() {
-      _loadingStatus = 'Establishing secure link...';
+      _loadingStatus = 'Verifying identity with $instName...';
     });
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(milliseconds: 800));
+    if (!mounted) return;
+
+    setState(() {
+      _loadingStatus = 'Validating account details...';
+    });
+    await Future.delayed(const Duration(milliseconds: 800));
+    if (!mounted) return;
+
+    setState(() {
+      _loadingStatus = 'Registering payment mandate...';
+    });
+    await Future.delayed(const Duration(milliseconds: 800));
+    if (!mounted) return;
+
+    setState(() {
+      _loadingStatus = 'Finalizing secure link...';
+    });
+    await Future.delayed(const Duration(milliseconds: 800));
     if (!mounted) return;
 
     setState(() {
       _loadingStatus = 'Successfully linked!';
     });
-    await Future.delayed(const Duration(seconds: 1));
+    await Future.delayed(const Duration(milliseconds: 500));
     if (!mounted) return;
 
     final provider = context.read<AppProvider>();
@@ -644,7 +666,28 @@ class _AddMethodViewState extends State<AddMethodView> {
               isBank ? 'e.g. SA00 0000 0000 0000' : 'e.g. +966 50 000 0000',
               isBank ? LucideIcons.hash : LucideIcons.phone,
               _accountDetailsController),
-          const SizedBox(height: 32),
+          const SizedBox(height: 24),
+          
+          _buildLabel('National ID / Passport Number'),
+          const SizedBox(height: 12),
+          _buildTextField(
+              'e.g. 10xxxxxxxx', LucideIcons.creditCard, _idNumberController),
+          const SizedBox(height: 24),
+
+          if (isBank) ...[
+            _buildLabel('SWIFT / BIC Code (Optional)'),
+            const SizedBox(height: 12),
+            _buildTextField(
+                'e.g. RJHISARI', LucideIcons.building, _swiftController),
+            const SizedBox(height: 24),
+          ] else ...[
+            _buildLabel('Email Address (Optional)'),
+            const SizedBox(height: 12),
+            _buildTextField(
+                'e.g. name@example.com', LucideIcons.mail, _emailController),
+            const SizedBox(height: 24),
+          ],
+          const SizedBox(height: 8),
           Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
