@@ -1,0 +1,357 @@
+{
+  "countries": [
+    {
+      "country_name": "Saudi Arabia",
+      "country_code": "SA",
+      "institutions": [
+        {
+          "name": "Al Rajhi Bank",
+          "type": "bank",
+          "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/4/4e/Al_Rajhi_Bank_Logo.svg/1200px-Al_Rajhi_Bank_Logo.svg.png",
+          "swift_code": "RJHISARI",
+          "website": "https://www.alrajhibank.com.sa",
+          "supported_currencies": [
+            "SAR",
+            "USD"
+          ],
+          "is_active": true
+        },
+        {
+          "name": "SNB (Saudi National Bank)",
+          "type": "bank",
+          "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/6/6c/Saudi_National_Bank_logo.svg/1200px-Saudi_National_Bank_logo.svg.png",
+          "swift_code": "NCBKSARI",
+          "website": "https://www.alahli.com",
+          "supported_currencies": [
+            "SAR",
+            "USD",
+            "EUR"
+          ],
+          "is_active": true
+        },
+        {
+          "name": "Riyad Bank",
+          "type": "bank",
+          "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Riyad_Bank_Logo.svg/1200px-Riyad_Bank_Logo.svg.png",
+          "swift_code": "RYADSARI",
+          "website": "https://www.riyadbank.com",
+          "supported_currencies": [
+            "SAR"
+          ],
+          "is_active": true
+        },
+        {
+          "name": "Alinma Bank",
+          "type": "bank",
+          "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/6/6d/Alinma_Bank_Logo.svg/1200px-Alinma_Bank_Logo.svg.png",
+          "swift_code": "ALINBSARI",
+          "website": "https://www.alinma.com",
+          "supported_currencies": [
+            "SAR"
+          ],
+          "is_active": true
+        },
+        {
+          "name": "STC Pay",
+          "type": "wallet",
+          "logo_url": "https://stcpay.com.sa/wp-content/uploads/2021/04/stc-pay-logo.png",
+          "swift_code": null,
+          "website": "https://stcpay.com.sa",
+          "supported_currencies": [
+            "SAR"
+          ],
+          "is_active": true
+        },
+        {
+          "name": "urpay",
+          "type": "wallet",
+          "logo_url": "https://urpay.com.sa/assets/images/logo.png",
+          "swift_code": null,
+          "website": "https://urpay.com.sa",
+          "supported_currencies": [
+            "SAR"
+          ],
+          "is_active": true
+        },
+        {
+          "name": "Mobily Pay",
+          "type": "wallet",
+          "logo_url": "https://mobilypay.com.sa/assets/img/logo.png",
+          "swift_code": null,
+          "website": "https://mobilypay.com.sa",
+          "supported_currencies": [
+            "SAR"
+          ],
+          "is_active": true
+        },
+        {
+          "name": "Tiqmo",
+          "type": "wallet",
+          "logo_url": "https://tiqmo.com/assets/images/logo.png",
+          "swift_code": null,
+          "website": "https://tiqmo.com",
+          "supported_currencies": [
+            "SAR"
+          ],
+          "is_active": true
+        }
+      ]
+    },
+    {
+      "country_name": "United Arab Emirates",
+      "country_code": "AE",
+      "institutions": [
+        {
+          "name": "First Abu Dhabi Bank (FAB)",
+          "type": "bank",
+          "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/4/4b/First_Abu_Dhabi_Bank_logo.svg/1200px-First_Abu_Dhabi_Bank_logo.svg.png",
+          "swift_code": "NBADAEAD",
+          "website": "https://www.bankfab.com",
+          "supported_currencies": [
+            "AED",
+            "USD"
+          ],
+          "is_active": true
+        },
+        {
+          "name": "Emirates NBD",
+          "type": "bank",
+          "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/6/6f/Emirates_NBD_logo.svg/1200px-Emirates_NBD_logo.svg.png",
+          "swift_code": "EBILAEAD",
+          "website": "https://www.emiratesnbd.com",
+          "supported_currencies": [
+            "AED",
+            "USD"
+          ],
+          "is_active": true
+        },
+        {
+          "name": "Abu Dhabi Commercial Bank (ADCB)",
+          "type": "bank",
+          "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/d/d4/ADCB_logo.svg/1200px-ADCB_logo.svg.png",
+          "swift_code": "ADCB AE AD",
+          "website": "https://www.adcb.com",
+          "supported_currencies": [
+            "AED"
+          ],
+          "is_active": true
+        },
+        {
+          "name": "e& money",
+          "type": "wallet",
+          "logo_url": "https://www.etisalat.ae/en/images/e-money-logo.png",
+          "swift_code": null,
+          "website": "https://www.eandmoney.com",
+          "supported_currencies": [
+            "AED"
+          ],
+          "is_active": true
+        },
+        {
+          "name": "Careem Pay",
+          "type": "wallet",
+          "logo_url": "https://www.careem.com/static/careem-pay-logo.png",
+          "swift_code": null,
+          "website": "https://www.careem.com/pay",
+          "supported_currencies": [
+            "AED"
+          ],
+          "is_active": true
+        },
+        {
+          "name": "Botim Pay",
+          "type": "wallet",
+          "logo_url": "https://botim.me/wp-content/uploads/2023/01/botim-logo.png",
+          "swift_code": null,
+          "website": "https://botim.me",
+          "supported_currencies": [
+            "AED"
+          ],
+          "is_active": true
+        }
+      ]
+    },
+    {
+      "country_name": "Egypt",
+      "country_code": "EG",
+      "institutions": [
+        {
+          "name": "National Bank of Egypt",
+          "type": "bank",
+          "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/National_Bank_of_Egypt_logo.svg/1200px-National_Bank_of_Egypt_logo.svg.png",
+          "swift_code": "NBEGEGCX",
+          "website": "https://www.nbe.com.eg",
+          "supported_currencies": [
+            "EGP",
+            "USD"
+          ],
+          "is_active": true
+        },
+        {
+          "name": "Banque Misr",
+          "type": "bank",
+          "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Banque_Misr_logo.svg/1200px-Banque_Misr_logo.svg.png",
+          "swift_code": "BMISEGCX",
+          "website": "https://www.banquemisr.com",
+          "supported_currencies": [
+            "EGP"
+          ],
+          "is_active": true
+        },
+        {
+          "name": "CIB (Commercial International Bank)",
+          "type": "bank",
+          "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Commercial_International_Bank_logo.svg/1200px-Commercial_International_Bank_logo.svg.png",
+          "swift_code": "CIBEEGCX",
+          "website": "https://www.cibeg.com",
+          "supported_currencies": [
+            "EGP"
+          ],
+          "is_active": true
+        },
+        {
+          "name": "Vodafone Cash",
+          "type": "wallet",
+          "logo_url": "https://web.vodafone.com.eg/static/images/vodafone-logo.png",
+          "swift_code": null,
+          "website": "https://web.vodafone.com.eg",
+          "supported_currencies": [
+            "EGP"
+          ],
+          "is_active": true
+        },
+        {
+          "name": "Etisalat Cash",
+          "type": "wallet",
+          "logo_url": "https://www.etisalat.eg/static/images/etisalat-logo.png",
+          "swift_code": null,
+          "website": "https://www.etisalat.eg",
+          "supported_currencies": [
+            "EGP"
+          ],
+          "is_active": true
+        },
+        {
+          "name": "InstaPay",
+          "type": "wallet",
+          "logo_url": "https://instapay.eg/assets/images/logo.png",
+          "swift_code": null,
+          "website": "https://instapay.eg",
+          "supported_currencies": [
+            "EGP"
+          ],
+          "is_active": true
+        }
+      ]
+    },
+    {
+      "country_name": "Jordan",
+      "country_code": "JO",
+      "institutions": [
+        {
+          "name": "Arab Bank",
+          "type": "bank",
+          "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/0/05/Arab_Bank_logo.svg/1200px-Arab_Bank_logo.svg.png",
+          "swift_code": "ARABJOAX",
+          "website": "https://www.arabbank.com",
+          "supported_currencies": [
+            "JOD",
+            "USD"
+          ],
+          "is_active": true
+        },
+        {
+          "name": "Housing Bank",
+          "type": "bank",
+          "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/b/b2/Housing_Bank_for_Trade_and_Finance_logo.svg/1200px-Housing_Bank_for_Trade_and_Finance_logo.svg.png",
+          "swift_code": "HBTFJOAX",
+          "website": "https://www.hbtf.com",
+          "supported_currencies": [
+            "JOD"
+          ],
+          "is_active": true
+        },
+        {
+          "name": "Zain Cash Jordan",
+          "type": "wallet",
+          "logo_url": "https://www.jo.zain.com/english/ZainCash/Documents/zain-cash-logo.png",
+          "swift_code": null,
+          "website": "https://www.zaincash.jo",
+          "supported_currencies": [
+            "JOD"
+          ],
+          "is_active": true
+        },
+        {
+          "name": "Orange Money",
+          "type": "wallet",
+          "logo_url": "https://www.orange.jo/en/PublishingImages/orange-money-logo.png",
+          "swift_code": null,
+          "website": "https://www.orangemoney.jo",
+          "supported_currencies": [
+            "JOD"
+          ],
+          "is_active": true
+        }
+      ]
+    },
+    {
+      "country_name": "Kuwait",
+      "country_code": "KW",
+      "institutions": [
+        {
+          "name": "National Bank of Kuwait (NBK)",
+          "type": "bank",
+          "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/3/3a/National_Bank_of_Kuwait_logo.svg/1200px-National_Bank_of_Kuwait_logo.svg.png",
+          "swift_code": "NBOKKWKW",
+          "website": "https://www.nbk.com",
+          "supported_currencies": [
+            "KWD",
+            "USD"
+          ],
+          "is_active": true
+        },
+        {
+          "name": "Kuwait Finance House (KFH)",
+          "type": "bank",
+          "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/2/2c/Kuwait_Finance_House_logo.svg/1200px-Kuwait_Finance_House_logo.svg.png",
+          "swift_code": "KFHUKWKW",
+          "website": "https://www.kfh.com",
+          "supported_currencies": [
+            "KWD"
+          ],
+          "is_active": true
+        }
+      ]
+    },
+    {
+      "country_name": "Morocco",
+      "country_code": "MA",
+      "institutions": [
+        {
+          "name": "Attijariwafa Bank",
+          "type": "bank",
+          "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Attijariwafa_Bank_logo.svg/1200px-Attijariwafa_Bank_logo.svg.png",
+          "swift_code": "BCMAMAMC",
+          "website": "https://www.attijariwafabank.com",
+          "supported_currencies": [
+            "MAD",
+            "EUR"
+          ],
+          "is_active": true
+        },
+        {
+          "name": "BMCE Bank (Bank of Africa)",
+          "type": "bank",
+          "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Bank_of_Africa_logo.svg/1200px-Bank_of_Africa_logo.svg.png",
+          "swift_code": "BMCE MAMC",
+          "website": "https://www.bankofafrica.ma",
+          "supported_currencies": [
+            "MAD"
+          ],
+          "is_active": true
+        }
+      ]
+    }
+  ]
+}

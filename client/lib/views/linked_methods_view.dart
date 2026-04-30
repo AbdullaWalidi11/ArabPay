@@ -26,7 +26,8 @@ class LinkedMethodsView extends StatelessWidget {
                   const CircleAvatar(
                     radius: 20,
                     backgroundColor: Color(0xFFFFD1C1),
-                    child: Icon(LucideIcons.user, color: Colors.brown, size: 20),
+                    child:
+                        Icon(LucideIcons.user, color: Colors.brown, size: 20),
                   ),
                   const SizedBox(width: 12),
                   const Text(
@@ -39,7 +40,8 @@ class LinkedMethodsView extends StatelessWidget {
                   ),
                   const Spacer(),
                   IconButton(
-                    icon: const Icon(LucideIcons.bell, color: Color(0xFF0F172A)),
+                    icon:
+                        const Icon(LucideIcons.bell, color: Color(0xFF0F172A)),
                     onPressed: () {},
                   ),
                 ],
@@ -52,41 +54,32 @@ class LinkedMethodsView extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(height: 12),
-                    const Text(
-                      'Linked Accounts',
-                      style: TextStyle(
-                        fontSize: 28,
-                        fontWeight: FontWeight.w800,
-                        color: Color(0xFF0F172A),
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    const Text(
-                      'Manage your receiving methods and default\npayment gateways across multiple\njurisdictions.',
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: Color(0xFF64748B),
-                        height: 1.4,
-                      ),
-                    ),
                     const SizedBox(height: 24),
 
                     // Dynamic Methods List from Provider
-                    ...methods.map((method) => Padding(
-                      padding: const EdgeInsets.only(bottom: 16),
-                      child: _buildAccountCard(
-                        icon: method.type == 'wallet' ? LucideIcons.wallet : LucideIcons.landmark,
-                        name: method.provider,
-                        country: method.country,
-                        currency: method.currency,
-                        date: 'Apr 2024', // Simplified for demo
-                        status: method.isActive ? 'Active' : 'Pending',
-                        statusColor: method.isActive ? const Color(0xFF1D4ED8) : const Color(0xFF94A3B8),
-                        statusBg: method.isActive ? const Color(0xFFEFF6FF) : const Color(0xFFF1F5F9),
-                        isPreferred: method.provider == 'Ziraat Bank', // Keep one as preferred for demo
-                      ),
-                    )).toList(),
+                    ...methods
+                        .map((method) => Padding(
+                              padding: const EdgeInsets.only(bottom: 16),
+                              child: _buildAccountCard(
+                                icon: method.type == 'wallet'
+                                    ? LucideIcons.wallet
+                                    : LucideIcons.landmark,
+                                name: method.provider,
+                                country: method.country,
+                                currency: method.currency,
+                                date: 'Apr 2024', // Simplified for demo
+                                status: method.isActive ? 'Active' : 'Pending',
+                                statusColor: method.isActive
+                                    ? const Color(0xFF1D4ED8)
+                                    : const Color(0xFF94A3B8),
+                                statusBg: method.isActive
+                                    ? const Color(0xFFEFF6FF)
+                                    : const Color(0xFFF1F5F9),
+                                isPreferred: method.provider ==
+                                    'Ziraat Bank', // Keep one as preferred for demo
+                              ),
+                            ))
+                        .toList(),
                     const SizedBox(height: 100), // Space for FAB
                   ],
                 ),
@@ -110,17 +103,27 @@ class LinkedMethodsView extends StatelessWidget {
         elevation: 20,
         onTap: (index) {
           switch (index) {
-            case 0: context.go('/dashboard'); break;
-            case 1: context.push('/send-money'); break;
-            case 2: context.push('/receive-money'); break;
-            case 3: context.push('/profile'); break;
+            case 0:
+              context.go('/dashboard');
+              break;
+            case 1:
+              context.push('/send-money');
+              break;
+            case 2:
+              context.push('/receive-money');
+              break;
+            case 3:
+              context.push('/profile');
+              break;
           }
         },
         items: const [
           BottomNavigationBarItem(icon: Icon(LucideIcons.home), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(LucideIcons.send), label: 'Send'),
-          BottomNavigationBarItem(icon: Icon(LucideIcons.qrCode), label: 'Receive'),
-          BottomNavigationBarItem(icon: Icon(LucideIcons.userCircle), label: 'Profile'),
+          BottomNavigationBarItem(
+              icon: Icon(LucideIcons.qrCode), label: 'Receive'),
+          BottomNavigationBarItem(
+              icon: Icon(LucideIcons.userCircle), label: 'Profile'),
         ],
       ),
     );
@@ -162,21 +165,29 @@ class LinkedMethodsView extends StatelessWidget {
                         borderRadius: BorderRadius.circular(12),
                         border: Border.all(color: const Color(0xFFF1F5F9)),
                       ),
-                      child: Icon(icon, color: const Color(0xFFEF4444), size: 24), // Branded red icon
+                      child: Icon(icon,
+                          color: const Color(0xFFEF4444),
+                          size: 24), // Branded red icon
                     ),
                     Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 12, vertical: 6),
                       decoration: BoxDecoration(
                         color: statusBg,
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Row(
                         children: [
-                          if (status == 'Verified') Icon(LucideIcons.checkCircle2, size: 12, color: statusColor),
+                          if (status == 'Verified')
+                            Icon(LucideIcons.checkCircle2,
+                                size: 12, color: statusColor),
                           if (status == 'Verified') const SizedBox(width: 4),
                           Text(
                             status,
-                            style: TextStyle(color: statusColor, fontSize: 10, fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                                color: statusColor,
+                                fontSize: 10,
+                                fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),
@@ -186,17 +197,22 @@ class LinkedMethodsView extends StatelessWidget {
                 const SizedBox(height: 16),
                 Text(
                   name,
-                  style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Color(0xFF0F172A)),
+                  style: const TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF0F172A)),
                 ),
                 Text(
                   country,
-                  style: const TextStyle(fontSize: 14, color: Color(0xFF64748B)),
+                  style:
+                      const TextStyle(fontSize: 14, color: Color(0xFF64748B)),
                 ),
                 const SizedBox(height: 16),
                 Row(
                   children: [
                     Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 6),
                       decoration: BoxDecoration(
                         color: const Color(0xFFEFF6FF),
                         borderRadius: BorderRadius.circular(8),
@@ -204,11 +220,15 @@ class LinkedMethodsView extends StatelessWidget {
                       ),
                       child: Row(
                         children: [
-                          const Icon(LucideIcons.globe, size: 14, color: Color(0xFF1D4ED8)),
+                          const Icon(LucideIcons.globe,
+                              size: 14, color: Color(0xFF1D4ED8)),
                           const SizedBox(width: 8),
                           Text(
                             currency,
-                            style: const TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF1D4ED8), fontSize: 12),
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xFF1D4ED8),
+                                fontSize: 12),
                           ),
                         ],
                       ),
@@ -217,7 +237,10 @@ class LinkedMethodsView extends StatelessWidget {
                       const SizedBox(width: 12),
                       const Text(
                         'Preferred Method',
-                        style: TextStyle(color: Color(0xFF166534), fontSize: 13, fontWeight: FontWeight.w500),
+                        style: TextStyle(
+                            color: Color(0xFF166534),
+                            fontSize: 13,
+                            fontWeight: FontWeight.w500),
                       ),
                     ],
                   ],
@@ -233,9 +256,11 @@ class LinkedMethodsView extends StatelessWidget {
               children: [
                 Text(
                   'Linked on $date',
-                  style: const TextStyle(color: Color(0xFF94A3B8), fontSize: 13),
+                  style:
+                      const TextStyle(color: Color(0xFF94A3B8), fontSize: 13),
                 ),
-                const Icon(LucideIcons.moreVertical, color: Color(0xFF0F172A), size: 20),
+                const Icon(LucideIcons.moreVertical,
+                    color: Color(0xFF0F172A), size: 20),
               ],
             ),
           ),

@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:go_router/go_router.dart';
@@ -14,12 +15,23 @@ class ClaimIdentityView extends StatefulWidget {
 
 class _ClaimIdentityViewState extends State<ClaimIdentityView> {
   final _controller = TextEditingController();
-  bool _isAvailable = true; // For UI demo purposes
+  Timer? _debounce;
 
   @override
   void initState() {
     super.initState();
     _controller.text = "";
+    // Reset availability state when entering the screen
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<AppProvider>().resetAvailability();
+    });
+  }
+
+  @override
+  void dispose() {
+    _debounce?.cancel();
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -165,6 +177,30 @@ class _ClaimIdentityViewState extends State<ClaimIdentityView> {
                               Expanded(
                                 child: TextField(
                                   controller: _controller,
+                                  onChanged: (val) {
+                                    if (provider.error != null) {
+                                      provider.clearError();
+                                    }
+
+                                    if (_debounce?.isActive ?? false)
+                                      _debounce?.cancel();
+                                    _debounce = Timer(
+                                        const Duration(milliseconds: 500), () {
+                                      // Simulation: "ahmed", "ali", "sara", "ayman" are taken
+                                      final normalized = val
+                                          .toLowerCase()
+                                          .trim()
+                                          .replaceFirst('@arabpay', '');
+                                      if (normalized == 'ahmed' ||
+                                          normalized == 'ali' ||
+                                          normalized == 'sara' ||
+                                          normalized == 'ayman') {
+                                        provider.setAvailability(false);
+                                      } else {
+                                        provider.checkAvailability(val);
+                                      }
+                                    });
+                                  },
                                   style: const TextStyle(
                                     fontSize: 20,
                                     fontWeight: FontWeight.w600,
@@ -192,18 +228,65 @@ class _ClaimIdentityViewState extends State<ClaimIdentityView> {
                         // Availability Status
                         Row(
                           children: [
-                            const Icon(LucideIcons.checkCircle2,
-                                color: Colors.green, size: 18),
+                            if (provider.isCheckingAvailability)
+                              const SizedBox(
+                                width: 18,
+                                height: 18,
+                                child: CircularProgressIndicator(
+                                    strokeWidth: 2, color: Color(0xFF0B132B)),
+                              )
+                            else if (provider.error != null &&
+                                provider.error!.contains('taken'))
+                              const Icon(LucideIcons.xCircle,
+                                  color: Colors.red, size: 18)
+                            else if (provider.isAliasAvailable == true)
+                              const Icon(LucideIcons.checkCircle2,
+                                  color: Colors.green, size: 18)
+                            else if (provider.isAliasAvailable == false)
+                              const Icon(LucideIcons.xCircle,
+                                  color: Colors.red, size: 18)
+                            else
+                              const Icon(LucideIcons.circle,
+                                  color: Color(0xFF94A3B8), size: 18),
                             const SizedBox(width: 8),
-                            const Text(
-                              'Available',
+                            Text(
+                              provider.isCheckingAvailability
+                                  ? 'Checking...'
+                                  : (provider.error != null &&
+                                          provider.error!.contains('taken')
+                                      ? 'Not Available'
+                                      : (provider.isAliasAvailable == true
+                                          ? 'Available'
+                                          : (provider.isAliasAvailable == false
+                                              ? 'Not Available'
+                                              : 'Enter an alias'))),
                               style: TextStyle(
-                                color: Colors.green,
+                                color: provider.isCheckingAvailability
+                                    ? const Color(0xFF64748B)
+                                    : (provider.error != null &&
+                                            provider.error!.contains('taken')
+                                        ? Colors.red
+                                        : (provider.isAliasAvailable == true
+                                            ? Colors.green
+                                            : (provider.isAliasAvailable ==
+                                                    false
+                                                ? Colors.red
+                                                : const Color(0xFF94A3B8)))),
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                           ],
                         ),
+                        if (provider.error != null &&
+                            provider.error!.contains('taken'))
+                          Padding(
+                            padding: const EdgeInsets.only(top: 8),
+                            child: Text(
+                              provider.error!,
+                              style: const TextStyle(
+                                  color: Colors.red, fontSize: 12),
+                            ),
+                          ),
                         const SizedBox(height: 32),
                         // Action Button
                         SizedBox(
@@ -244,28 +327,7 @@ class _ClaimIdentityViewState extends State<ClaimIdentityView> {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 24),
-                  const Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      'Suggested for you',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Color(0xFF64748B),
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  Row(
-                    children: [
-                      _buildSuggestionChip('ali.pay'),
-                      const SizedBox(width: 8),
-                      _buildSuggestionChip('ali123'),
-                      const SizedBox(width: 8),
-                      _buildSuggestionChip('the.ali'),
-                    ],
-                  ),
+
                   const SizedBox(height: 12),
 
                   // Security Section
