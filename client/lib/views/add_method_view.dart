@@ -17,9 +17,18 @@ class AddMethodView extends StatefulWidget {
 
 class _AddMethodViewState extends State<AddMethodView> {
   int _currentStep = 0; // Start at Step 1 (index 0)
+
+  // Step 1
   String? _selectedCountry;
   String? _selectedMethod;
   String? _selectedInstitution;
+
+  // Step 2
+  final _accountNameController = TextEditingController();
+  final _accountDetailsController = TextEditingController();
+
+  // Step 3
+  String _loadingStatus = '';
 
   List<Map<String, dynamic>> _countries = [];
   Map<String, List<Map<String, dynamic>>> _countryInstitutions = {};
@@ -59,12 +68,58 @@ class _AddMethodViewState extends State<AddMethodView> {
     }
   }
 
-
-
-  void _nextStep() {
-    if (_currentStep < 2) {
-      setState(() => _currentStep++);
+  bool _canProceedToNextStep() {
+    if (_currentStep == 0) {
+      return _selectedCountry != null &&
+          _selectedMethod != null &&
+          _selectedInstitution != null;
+    } else if (_currentStep == 1) {
+      return _accountNameController.text.trim().isNotEmpty &&
+          _accountDetailsController.text.trim().isNotEmpty;
     }
+    return false;
+  }
+
+  void _startLinkingProcess() async {
+    final instName = _selectedInstitution ?? 'Provider';
+    
+    setState(() {
+      _loadingStatus = 'Sending request to $instName...';
+    });
+    await Future.delayed(const Duration(seconds: 2));
+    if (!mounted) return;
+    
+    setState(() {
+      _loadingStatus = 'Verifying user details...';
+    });
+    await Future.delayed(const Duration(seconds: 2));
+    if (!mounted) return;
+
+    setState(() {
+      _loadingStatus = 'Establishing secure link...';
+    });
+    await Future.delayed(const Duration(seconds: 2));
+    if (!mounted) return;
+
+    setState(() {
+      _loadingStatus = 'Successfully linked!';
+    });
+    await Future.delayed(const Duration(seconds: 1));
+    if (!mounted) return;
+
+    final provider = context.read<AppProvider>();
+    provider.addLinkedMethod(LinkedMethod(
+      id: 'new_${DateTime.now().millisecondsSinceEpoch}',
+      type: _selectedMethod!.toLowerCase().contains('wallet') ? 'wallet' : 'bank',
+      provider: _selectedInstitution!,
+      accountEnding: _accountDetailsController.text.length > 4 
+          ? _accountDetailsController.text.substring(_accountDetailsController.text.length - 4)
+          : '9988',
+      country: _selectedCountry!,
+      currency: _countries.firstWhere((c) => c['country_name'] == _selectedCountry)['currency_code'] ?? 'SAR',
+      isActive: true,
+    ));
+    context.pop();
   }
 
   @override
@@ -82,7 +137,13 @@ class _AddMethodViewState extends State<AddMethodView> {
                   IconButton(
                     icon: const Icon(LucideIcons.arrowLeft,
                         color: Color(0xFF0F172A)),
-                    onPressed: () => context.pop(),
+                    onPressed: () {
+                      if (_currentStep > 0 && _currentStep < 2) {
+                        setState(() => _currentStep--);
+                      } else {
+                        context.pop();
+                      }
+                    },
                   ),
                   const SizedBox(width: 8),
                   const Text(
@@ -121,169 +182,49 @@ class _AddMethodViewState extends State<AddMethodView> {
                     const SizedBox(height: 24),
 
                     // Main Form Card
-                    Container(
-                      padding: const EdgeInsets.all(24),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(24),
-                        border: Border.all(color: const Color(0xFFE2E8F0)),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              Container(
-                                padding: const EdgeInsets.all(12),
-                                decoration: BoxDecoration(
-                                  color: const Color(0xFFEFF6FF),
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: const Icon(LucideIcons.wallet,
-                                    color: Color(0xFF1D4ED8), size: 24),
-                              ),
-                              const SizedBox(width: 16),
-                              const Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Receiving Account',
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        color: Color(0xFF0F172A)),
-                                  ),
-                                  Text(
-                                    'Configure how you\'d like to receive\nfunds.',
-                                    style: TextStyle(
-                                        fontSize: 13, color: Color(0xFF64748B)),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                          const SizedBox(height: 32),
-
-                          // STEP 1: Country
-                          _buildLabel('Destination Country'),
-                          const SizedBox(height: 12),
-                          _buildCountryPicker(),
-                          const SizedBox(height: 24),
-
-                          // STEP 2: Method Type (Visible if country selected)
-                          if (_selectedCountry != null) ...[
-                            _buildLabel('Method Type'),
-                            const SizedBox(height: 12),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: _buildMethodOption(
-                                      LucideIcons.landmark,
-                                      'Bank Account',
-                                      _selectedMethod == 'Bank Account'),
-                                ),
-                                const SizedBox(width: 12),
-                                Expanded(
-                                  child: _buildMethodOption(
-                                      LucideIcons.smartphone,
-                                      'Mobile Wallet',
-                                      _selectedMethod == 'Mobile Wallet'),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 24),
-                          ],
-
-                          // STEP 3: Details (Visible if method selected)
-                          if (_selectedMethod != null) ...[
-                            _buildLabel('Select Provider'),
-                            const SizedBox(height: 12),
-                            _buildInstitutionPicker(),
-                            const SizedBox(height: 32),
-
-                            // Security Note
-                            Container(
-                              padding: const EdgeInsets.all(16),
-                              decoration: BoxDecoration(
-                                color: const Color(0xFFF0FDF4),
-                                borderRadius: BorderRadius.circular(12),
-                                border:
-                                    Border.all(color: const Color(0xFFDCFCE7)),
-                              ),
-                              child: const Row(
-                                children: [
-                                  Icon(LucideIcons.shieldCheck,
-                                      color: Color(0xFF166534), size: 20),
-                                  const SizedBox(width: 12),
-                                  Expanded(
-                                    child: Text(
-                                      'Your data is encrypted using 256-bit institutional grade security.',
-                                      style: TextStyle(
-                                          color: Color(0xFF166534),
-                                          fontSize: 12,
-                                          height: 1.4),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ],
-                      ),
-                    ),
+                    if (_currentStep == 0) _buildStep1(),
+                    if (_currentStep == 1) _buildStep2(),
+                    if (_currentStep == 2) _buildStep3(),
                     const SizedBox(height: 32),
 
                     // Main Action Button (Enabled only when all steps finished)
-                    SizedBox(
-                      width: double.infinity,
-                      height: 56,
-                      child: ElevatedButton(
-                        onPressed: (_selectedCountry != null &&
-                                _selectedMethod != null &&
-                                _selectedInstitution != null)
-                            ? () {
-                                final provider = context.read<AppProvider>();
-                                provider.addLinkedMethod(LinkedMethod(
-                                  id: 'new_${DateTime.now().millisecondsSinceEpoch}',
-                                  type: _selectedMethod!
-                                          .toLowerCase()
-                                          .contains('wallet')
-                                      ? 'wallet'
-                                      : 'bank',
-                                  provider: _selectedInstitution!,
-                                  accountEnding: '9988',
-                                  country: _selectedCountry!,
-                                  currency: _countries.firstWhere((c) =>
-                                          c['country_name'] ==
-                                          _selectedCountry)['currency_code'] ??
-                                      'SAR',
-                                  isActive: true,
-                                ));
-                                context.pop();
-                              }
-                            : null,
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xFF0B132B),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12)),
-                          disabledBackgroundColor:
-                              const Color(0xFF0B132B).withOpacity(0.5),
-                        ),
-                        child: const Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text('Link Method',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold)),
-                            SizedBox(width: 12),
-                            Icon(LucideIcons.arrowRight,
-                                color: Colors.white, size: 20),
-                          ],
+                    if (_currentStep < 2)
+                      SizedBox(
+                        width: double.infinity,
+                        height: 56,
+                        child: ElevatedButton(
+                          onPressed: _canProceedToNextStep()
+                              ? () {
+                                  if (_currentStep == 0) {
+                                    setState(() => _currentStep = 1);
+                                  } else if (_currentStep == 1) {
+                                    setState(() => _currentStep = 2);
+                                    _startLinkingProcess();
+                                  }
+                                }
+                              : null,
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: const Color(0xFF0B132B),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12)),
+                            disabledBackgroundColor:
+                                const Color(0xFF0B132B).withOpacity(0.5),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(_currentStep == 0 ? 'Next Step' : 'Link Method',
+                                  style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold)),
+                              const SizedBox(width: 12),
+                              const Icon(LucideIcons.arrowRight,
+                                  color: Colors.white, size: 20),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
                     const SizedBox(height: 40),
                   ],
                 ),
@@ -328,8 +269,8 @@ class _AddMethodViewState extends State<AddMethodView> {
   }
 
   Widget _buildStepper() {
-    bool step1Done = _selectedCountry != null;
-    bool step2Done = _selectedMethod != null;
+    bool step1Done = _currentStep > 0;
+    bool step2Done = _currentStep > 1;
 
     return Row(
       children: [
@@ -445,7 +386,6 @@ class _AddMethodViewState extends State<AddMethodView> {
               _selectedCountry = value;
               _selectedMethod = null; // Reset method
               _selectedInstitution = null; // Reset institution
-              if (_currentStep == 0) _currentStep = 1;
             });
             _filterInstitutions();
           },
@@ -459,7 +399,7 @@ class _AddMethodViewState extends State<AddMethodView> {
       onTap: () {
         setState(() {
           _selectedMethod = label;
-          if (_currentStep == 1) _currentStep = 2;
+          _selectedInstitution = null;
         });
         _filterInstitutions();
       },
@@ -560,5 +500,233 @@ class _AddMethodViewState extends State<AddMethodView> {
     );
   }
 
+  Widget _buildStep1() {
+    return Container(
+      padding: const EdgeInsets.all(24),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(color: const Color(0xFFE2E8F0)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: const Color(0xFFEFF6FF),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: const Icon(LucideIcons.wallet,
+                    color: Color(0xFF1D4ED8), size: 24),
+              ),
+              const SizedBox(width: 16),
+              const Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Receiving Account',
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF0F172A)),
+                  ),
+                  Text(
+                    'Configure how you\'d like to receive\nfunds.',
+                    style: TextStyle(
+                        fontSize: 13, color: Color(0xFF64748B)),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          const SizedBox(height: 32),
 
+          // STEP 1: Country
+          _buildLabel('Destination Country'),
+          const SizedBox(height: 12),
+          _buildCountryPicker(),
+          const SizedBox(height: 24),
+
+          // STEP 2: Method Type (Visible if country selected)
+          if (_selectedCountry != null) ...[
+            _buildLabel('Method Type'),
+            const SizedBox(height: 12),
+            Row(
+              children: [
+                Expanded(
+                  child: _buildMethodOption(
+                      LucideIcons.landmark,
+                      'Bank Account',
+                      _selectedMethod == 'Bank Account'),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: _buildMethodOption(
+                      LucideIcons.smartphone,
+                      'Mobile Wallet',
+                      _selectedMethod == 'Mobile Wallet'),
+                ),
+              ],
+            ),
+            const SizedBox(height: 24),
+          ],
+
+          // STEP 3: Details (Visible if method selected)
+          if (_selectedMethod != null) ...[
+            _buildLabel('Select Provider'),
+            const SizedBox(height: 12),
+            _buildInstitutionPicker(),
+          ],
+        ],
+      ),
+    );
+  }
+
+  Widget _buildStep2() {
+    final bool isBank = _selectedMethod == 'Bank Account';
+    return Container(
+      padding: const EdgeInsets.all(24),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(color: const Color(0xFFE2E8F0)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: const Color(0xFFEFF6FF),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Icon(
+                    isBank ? LucideIcons.landmark : LucideIcons.smartphone,
+                    color: const Color(0xFF1D4ED8),
+                    size: 24),
+              ),
+              const SizedBox(width: 16),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'Account Details',
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF0F172A)),
+                    ),
+                    Text(
+                      'Enter your $_selectedInstitution details.',
+                      style: const TextStyle(
+                          fontSize: 13, color: Color(0xFF64748B)),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 32),
+          _buildLabel('Full Name as on Account'),
+          const SizedBox(height: 12),
+          _buildTextField(
+              'e.g. John Doe', LucideIcons.user, _accountNameController),
+          const SizedBox(height: 24),
+          _buildLabel(isBank ? 'IBAN / Account Number' : 'Mobile Number'),
+          const SizedBox(height: 12),
+          _buildTextField(
+              isBank ? 'e.g. SA00 0000 0000 0000' : 'e.g. +966 50 000 0000',
+              isBank ? LucideIcons.hash : LucideIcons.phone,
+              _accountDetailsController),
+          const SizedBox(height: 32),
+          Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: const Color(0xFFF0FDF4),
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: const Color(0xFFDCFCE7)),
+            ),
+            child: const Row(
+              children: [
+                Icon(LucideIcons.shieldCheck,
+                    color: Color(0xFF166534), size: 20),
+                SizedBox(width: 12),
+                Expanded(
+                  child: Text(
+                    'Your data is encrypted using 256-bit institutional grade security.',
+                    style: TextStyle(
+                        color: Color(0xFF166534), fontSize: 12, height: 1.4),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildStep3() {
+    return Container(
+      padding: const EdgeInsets.all(40),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(color: const Color(0xFFE2E8F0)),
+      ),
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF1D4ED8)),
+            ),
+            const SizedBox(height: 32),
+            const Text(
+              'Linking Account',
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF0F172A)),
+            ),
+            const SizedBox(height: 12),
+            Text(
+              _loadingStatus,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                  fontSize: 15, color: Color(0xFF64748B), height: 1.5),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTextField(
+      String hint, IconData icon, TextEditingController controller) {
+    return TextField(
+      controller: controller,
+      onChanged: (_) => setState(() {}),
+      decoration: InputDecoration(
+        hintText: hint,
+        hintStyle: const TextStyle(color: Color(0xFF94A3B8)),
+        prefixIcon: Icon(icon, size: 20, color: const Color(0xFF64748B)),
+        border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: const BorderSide(color: Color(0xFFE2E8F0))),
+        enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: const BorderSide(color: Color(0xFFE2E8F0))),
+        focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: const BorderSide(color: Color(0xFF1D4ED8), width: 2)),
+      ),
+    );
+  }
 }
