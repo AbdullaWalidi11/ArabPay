@@ -17,6 +17,8 @@ class AppProvider with ChangeNotifier {
   RoutingRules? routingRules;
 
   bool isLoading = false;
+  bool isCheckingAvailability = false;
+  bool? isAliasAvailable;
   String? error;
 
   Future<void> loadInitialData() async {
@@ -100,7 +102,109 @@ class AppProvider with ChangeNotifier {
   }
 
   // Use BackendService for encryption simulation
-  Future<String> encryptInstruction(String payload) {
-    return _backendService.encryptInstruction(payload);
+  Future<String> encryptInstruction(String payload) async {
+    isLoading = true;
+    notifyListeners();
+    try {
+      return await _backendService.encryptInstruction(payload);
+    } finally {
+      isLoading = false;
+      notifyListeners();
+    }
+  }
+
+  Future<Map<String, String>?> verifyReceiver(String id) {
+    return _backendService.getReceiverInfo(id);
+  }
+
+  void clearError() {
+    error = null;
+    notifyListeners();
+  }
+
+  Future<void> checkAvailability(String id) async {
+    if (id.isEmpty) {
+      isAliasAvailable = null;
+      notifyListeners();
+      return;
+    }
+
+    isCheckingAvailability = true;
+    error = null;
+    notifyListeners();
+
+    // Mock real-time check
+    isAliasAvailable = await _backendService.validateId(id);
+    
+    isCheckingAvailability = false;
+    notifyListeners();
+  }
+
+  void resetAvailability() {
+    isAliasAvailable = null;
+    isCheckingAvailability = false;
+    notifyListeners();
+  }
+
+  void setAvailability(bool available) {
+    isAliasAvailable = available;
+    notifyListeners();
+  }
+
+  Future<bool> processTransaction({
+    required double amount,
+    required double fee,
+    required LinkedMethod sourceMethod,
+    required String receiverId,
+    required String receiverName,
+  }) async {
+    isLoading = true;
+    error = null;
+    notifyListeners();
+    
+    // Simulate high-security processing
+    await Future.delayed(const Duration(seconds: 2));
+
+    final totalDeduction = amount + fee;
+
+    bool success = false;
+    if (sourceMethod.type == 'wallet' && currentUser != null) {
+      if (currentUser!.balance >= totalDeduction) {
+        updateBalance(currentUser!.balance - totalDeduction);
+        success = true;
+      } else {
+        error = "Insufficient Wallet Balance";
+      }
+    } else {
+      final methodIndex = linkedMethods.indexWhere((m) => m.id == sourceMethod.id);
+      if (methodIndex != -1) {
+        if (linkedMethods[methodIndex].balance >= totalDeduction) {
+          linkedMethods[methodIndex].balance -= totalDeduction;
+          success = true;
+        } else {
+          error = "Insufficient funds in ${sourceMethod.provider}";
+        }
+      }
+    }
+
+    if (success) {
+      // Create a real transaction record
+      final newTx = AppTransaction(
+        id: 'TXN-${DateTime.now().millisecondsSinceEpoch.toString().substring(7)}',
+        date: DateTime.now(),
+        amount: -amount, // Negative for outgoing
+        currency: 'SAR',
+        recipientId: receiverId,
+        recipientName: receiverName,
+        status: 'Completed',
+        routeUsed: sourceMethod.provider,
+      );
+      
+      recentTransactions.insert(0, newTx);
+    }
+
+    isLoading = false;
+    notifyListeners();
+    return success;
   }
 }

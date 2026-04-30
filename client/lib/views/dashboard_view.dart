@@ -61,22 +61,14 @@ class DashboardView extends StatelessWidget {
 
                     // Greetings
                     Text(
-                      'Welcome, ${user?.arabPayId.split('@')[0].split('').first.toUpperCase()}${user?.arabPayId.split('@')[0].substring(1) ?? 'User'}!',
+                      'Welcome, ${user?.arabPayId.split('@')[0].split('').first.toUpperCase()}${user?.arabPayId.split('@')[0].substring(1) ?? 'User'}',
                       style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w500,
                         color: Color(0xFF0F172A),
                       ),
                     ),
-                    const SizedBox(height: 4),
-                    const Text(
-                      'Welcome back to your secure banking\ndashboard.',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Color(0xFF64748B),
-                        height: 1.4,
-                      ),
-                    ),
+
                     const SizedBox(height: 24),
 
                     // ArabPay ID Card
@@ -183,84 +175,11 @@ class DashboardView extends StatelessWidget {
                             'Receive', '/receive-money'),
                         _buildAction(context, LucideIcons.landmark, 'Add Bank',
                             '/linked-methods'),
-                        _buildAction(context, LucideIcons.listChecks, 'Rules', '/routing-rules'),
                       ],
                     ),
                     const SizedBox(height: 32),
 
-                    // Linked Methods Card
-                    _buildSectionHeader('3 Linked Methods', showMore: true),
-                    const SizedBox(height: 16),
-                    Container(
-                      padding: const EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(20),
-                        border: Border.all(color: const Color(0xFFE2E8F0)),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            height: 32,
-                            child: Stack(
-                              children: [
-                                _buildMethodIcon(
-                                    const Color(0xFF1D4ED8)), // Visa
-                                Positioned(
-                                  left: 24,
-                                  child: _buildMethodIcon(
-                                      const Color(0xFF0F172A)), // Mastercard
-                                ),
-                                Positioned(
-                                  left: 48,
-                                  child: Container(
-                                    width: 32,
-                                    height: 32,
-                                    decoration: BoxDecoration(
-                                      color: const Color(0xFFF1F5F9),
-                                      borderRadius: BorderRadius.circular(8),
-                                      border: Border.all(
-                                          color: Colors.white, width: 2),
-                                    ),
-                                    child: const Center(
-                                      child: Text(
-                                        '+1',
-                                        style: TextStyle(
-                                          fontSize: 12,
-                                          color: Color(0xFF64748B),
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(height: 20),
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(4),
-                            child: const LinearProgressIndicator(
-                              value: 0.65,
-                              minHeight: 6,
-                              backgroundColor: Color(0xFFF1F5F9),
-                              valueColor: AlwaysStoppedAnimation<Color>(
-                                  Color(0xFF14532D)),
-                            ),
-                          ),
-                          const SizedBox(height: 12),
-                          const Text(
-                            'Limits: 65% used',
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: Color(0xFF64748B),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 32),
+
 
                     // Monthly Activity Card
                     _buildSectionHeader('Monthly Activity'),
@@ -530,17 +449,7 @@ class DashboardView extends StatelessWidget {
     );
   }
 
-  Widget _buildMethodIcon(Color color) {
-    return Container(
-      width: 32,
-      height: 32,
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: Colors.white, width: 2),
-      ),
-    );
-  }
+
 
   Widget _buildSectionHeader(String title, {bool showMore = false}) {
     return Row(

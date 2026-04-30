@@ -71,11 +71,45 @@ class BackendService {
   // validateId with 1.2s delay
   Future<bool> validateId(String id) async {
     await Future.delayed(const Duration(milliseconds: 1200));
-    // Simulation: "ahmed" is taken
-    if (id.toLowerCase() == 'ahmed') {
+    // Simulation: "ahmed", "ali", "sara", "ayman" are taken
+    final normalized = id.toLowerCase().trim().replaceFirst('@arabpay', '');
+    if (normalized == 'ahmed' || normalized == 'ali' || normalized == 'sara' || normalized == 'ayman') {
       return false; // Not unique
     }
     return true; // Unique
+  }
+
+  Future<Map<String, String>?> getReceiverInfo(String id) async {
+    await Future.delayed(const Duration(milliseconds: 800));
+    final normalizedId = id.replaceAll('@', '').toLowerCase().replaceFirst('arabpay', '');
+    
+    // 1. Static high-profile users
+    final knownUsers = {
+      'ahmed': {'name': 'Ahmed Al-Saud', 'status': 'Verified Member'},
+      'sara': {'name': 'Sara Khalid', 'status': 'Trusted Member'},
+      'ali': {'name': 'Ali Mansoor', 'status': 'Verified Member'},
+      'hassan': {'name': 'Hassan Salem', 'status': 'Verified Member'},
+      'faisal': {'name': 'Faisal Al-Fahad', 'status': 'Trusted Member'},
+      'osama': {'name': 'Osama Bin Zaid', 'status': 'Verified Member'},
+      'ayman': {'name': 'Ayman Mohammed', 'status': 'Verified Member'},
+      'azzam': {'name': 'Azzam Al-Khatib', 'status': 'Verified Member'},
+    };
+
+    if (knownUsers.containsKey(normalizedId)) {
+      return knownUsers[normalizedId];
+    }
+
+    // 2. Pattern-based fallback for "everyone" on the backend
+    // If it looks like a valid alias, we "find" them
+    if (normalizedId.length >= 3) {
+      final capitalizedName = normalizedId[0].toUpperCase() + normalizedId.substring(1);
+      return {
+        'name': capitalizedName,
+        'status': 'Verified Member',
+      };
+    }
+
+    return null;
   }
 
   // encryptInstruction simulation

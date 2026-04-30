@@ -40,11 +40,19 @@ class MoneyDeliveredView extends StatelessWidget {
             ).animate().fadeIn(delay: 400.ms).moveY(begin: 20, end: 0),
             const SizedBox(height: 16),
             Text(
-              '$amount SAR has been successfully sent to $recipientId',
+              '$amount SAR has been successfully sent to ${data['name'] ?? recipientId}',
               textAlign: TextAlign.center,
               style:
-                  const TextStyle(fontSize: 16, color: AppColors.softSlateGray),
+                  const TextStyle(fontSize: 16, color: AppColors.softSlateGray, fontWeight: FontWeight.w500),
             ).animate().fadeIn(delay: 600.ms),
+            const SizedBox(height: 8),
+            Text(
+              recipientId,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontSize: 14,
+                  color: AppColors.softSlateGray.withOpacity(0.7)),
+            ).animate().fadeIn(delay: 700.ms),
             const Spacer(),
             const SizedBox(height: 12),
             PrimaryButton(
