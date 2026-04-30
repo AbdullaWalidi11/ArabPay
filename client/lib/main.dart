@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'theme/app_theme.dart';
 import 'providers/app_provider.dart';
 import 'core/app_router.dart';
+import 'widgets/loading_overlay.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,6 +30,11 @@ class ArabPayApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             theme: AppTheme.lightTheme,
             routerConfig: AppRouter.router,
+            builder: (context, routerChild) {
+              return LoadingOverlay(
+                child: routerChild!,
+              );
+            },
           );
         },
       ),

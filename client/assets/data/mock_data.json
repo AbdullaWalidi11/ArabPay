@@ -25,15 +25,6 @@
       "country": "SA",
       "currency": "SAR",
       "is_active": true
-    },
-    {
-      "id": "bank_2",
-      "type": "bank",
-      "provider": "Ziraat Bank",
-      "account_ending": "1122",
-      "country": "TR",
-      "currency": "TRY",
-      "is_active": true
     }
   ],
   "routing_rules": {
