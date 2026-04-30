@@ -252,5 +252,18 @@
       }
     },
     "linkedAccounts": []
+  },
+  {
+    "uuid": "usr_157d9746",
+    "alias": "ali7@arabpay",
+    "displayName": "Ali7",
+    "country": "Unknown",
+    "verified": true,
+    "routingRules": {
+      "localTransfers": {
+        "enabled": true
+      }
+    },
+    "linkedAccounts": []
   }
 ]
