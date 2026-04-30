@@ -20,11 +20,10 @@ class _AddMethodViewState extends State<AddMethodView> {
   String? _selectedCountry;
   String? _selectedMethod;
   String? _selectedInstitution;
-  final _nicknameController = TextEditingController();
 
-  List<String> _countries = [];
+  List<Map<String, dynamic>> _countries = [];
   Map<String, List<Map<String, dynamic>>> _countryInstitutions = {};
-  List<String> _availableInstitutions = [];
+  List<Map<String, dynamic>> _availableInstitutions = [];
 
   @override
   void initState() {
@@ -39,8 +38,7 @@ class _AddMethodViewState extends State<AddMethodView> {
     final List<dynamic> countriesJson = data['countries'];
 
     setState(() {
-      _countries =
-          countriesJson.map((c) => c['country_name'] as String).toList();
+      _countries = countriesJson.map((c) => c as Map<String, dynamic>).toList();
       for (var country in countriesJson) {
         _countryInstitutions[country['country_name']] =
             List<Map<String, dynamic>>.from(country['institutions']);
@@ -55,23 +53,13 @@ class _AddMethodViewState extends State<AddMethodView> {
       setState(() {
         _availableInstitutions = _countryInstitutions[_selectedCountry!]!
             .where((inst) => inst['type'] == targetType)
-            .map((inst) => inst['name'] as String)
             .toList();
         _selectedInstitution = null; // Reset when selection changes
       });
     }
   }
 
-  final Map<String, String> _currencies = {
-    'Saudi Arabia': 'SAR - Saudi Riyal',
-    'Egypt': 'EGP - Egyptian Pound',
-    'Jordan': 'JOD - Jordanian Dinar',
-    'UAE': 'AED - UAE Dirham',
-    'United Arab Emirates': 'AED - UAE Dirham',
-    'Morocco': 'MAD - Moroccan Dirham',
-    'Qatar': 'QAR - Qatari Riyal',
-    'Kuwait': 'KWD - Kuwaiti Dinar',
-  };
+
 
   void _nextStep() {
     if (_currentStep < 2) {
@@ -186,16 +174,24 @@ class _AddMethodViewState extends State<AddMethodView> {
                           if (_selectedCountry != null) ...[
                             _buildLabel('Method Type'),
                             const SizedBox(height: 12),
-                            _buildMethodOption(
-                                LucideIcons.landmark,
-                                'Bank Account',
-                                _selectedMethod == 'Bank Account'),
-                            const SizedBox(height: 12),
-                            _buildMethodOption(
-                                LucideIcons.smartphone,
-                                'Mobile Wallet',
-                                _selectedMethod == 'Mobile Wallet'),
-                            const SizedBox(height: 12),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: _buildMethodOption(
+                                      LucideIcons.landmark,
+                                      'Bank Account',
+                                      _selectedMethod == 'Bank Account'),
+                                ),
+                                const SizedBox(width: 12),
+                                Expanded(
+                                  child: _buildMethodOption(
+                                      LucideIcons.smartphone,
+                                      'Mobile Wallet',
+                                      _selectedMethod == 'Mobile Wallet'),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 24),
                           ],
 
                           // STEP 3: Details (Visible if method selected)
@@ -203,39 +199,6 @@ class _AddMethodViewState extends State<AddMethodView> {
                             _buildLabel('Select Provider'),
                             const SizedBox(height: 12),
                             _buildInstitutionPicker(),
-                            const SizedBox(height: 24),
-
-                            _buildLabel('Currency'),
-                            const SizedBox(height: 12),
-                            Container(
-                              padding: const EdgeInsets.all(16),
-                              decoration: BoxDecoration(
-                                color: const Color(0xFFEFF6FF),
-                                borderRadius: BorderRadius.circular(12),
-                                border:
-                                    Border.all(color: const Color(0xFFDBEAFE)),
-                              ),
-                              child: Row(
-                                children: [
-                                  const Icon(LucideIcons.refreshCw,
-                                      size: 20, color: Color(0xFF1D4ED8)),
-                                  const SizedBox(width: 12),
-                                  Text(
-                                    _currencies[_selectedCountry] ??
-                                        'SAR - Saudi Riyal',
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: Color(0xFF1D4ED8)),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            const SizedBox(height: 24),
-
-                            _buildLabel('Account Nickname'),
-                            const SizedBox(height: 12),
-                            _buildTextField('e.g. My Savings', LucideIcons.tag,
-                                _nicknameController),
                             const SizedBox(height: 32),
 
                             // Security Note
@@ -290,8 +253,10 @@ class _AddMethodViewState extends State<AddMethodView> {
                                   provider: _selectedInstitution!,
                                   accountEnding: '9988',
                                   country: _selectedCountry!,
-                                  currency: _currencies[_selectedCountry]!
-                                      .split(' ')[0],
+                                  currency: _countries.firstWhere((c) =>
+                                          c['country_name'] ==
+                                          _selectedCountry)['currency_code'] ??
+                                      'SAR',
                                   isActive: true,
                                 ));
                                 context.pop();
@@ -448,15 +413,29 @@ class _AddMethodViewState extends State<AddMethodView> {
           isExpanded: true,
           icon: const Icon(LucideIcons.chevronDown,
               size: 20, color: Color(0xFF64748B)),
-          items: _countries.map((String country) {
+          items: _countries.map((Map<String, dynamic> country) {
             return DropdownMenuItem<String>(
-              value: country,
+              value: country['country_name'],
               child: Row(
                 children: [
-                  const Icon(LucideIcons.globe,
-                      size: 20, color: Color(0xFF64748B)),
+                  if (country['flag_url'] != null)
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(2),
+                      child: Image.network(
+                        country['flag_url'],
+                        width: 24,
+                        height: 16,
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) => Text(
+                            country['flag_emoji'] ?? '🌍',
+                            style: const TextStyle(fontSize: 16)),
+                      ),
+                    )
+                  else
+                    const Icon(LucideIcons.globe,
+                        size: 20, color: Color(0xFF64748B)),
                   const SizedBox(width: 12),
-                  Text(country),
+                  Text(country['country_name']),
                 ],
               ),
             );
@@ -476,7 +455,7 @@ class _AddMethodViewState extends State<AddMethodView> {
   }
 
   Widget _buildMethodOption(IconData icon, String label, bool isSelected) {
-    return InkWell(
+    return GestureDetector(
       onTap: () {
         setState(() {
           _selectedMethod = label;
@@ -484,24 +463,30 @@ class _AddMethodViewState extends State<AddMethodView> {
         });
         _filterInstitutions();
       },
-      child: Container(
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
         padding: const EdgeInsets.symmetric(vertical: 16),
         decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(12),
+          color: isSelected ? const Color(0xFFEFF6FF) : Colors.white,
+          borderRadius: BorderRadius.circular(16),
           border: Border.all(
               color: isSelected
-                  ? const Color(0xFF0F172A)
+                  ? const Color(0xFF1D4ED8)
                   : const Color(0xFFE2E8F0),
               width: isSelected ? 2 : 1),
         ),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(icon, color: const Color(0xFF0F172A), size: 24),
-            const SizedBox(height: 8),
+            Icon(icon, 
+                color: isSelected ? const Color(0xFF1D4ED8) : const Color(0xFF64748B), 
+                size: 28),
+            const SizedBox(height: 12),
             Text(label,
-                style:
-                    const TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
+                style: TextStyle(
+                    fontSize: 13, 
+                    fontWeight: isSelected ? FontWeight.bold : FontWeight.w600,
+                    color: isSelected ? const Color(0xFF1D4ED8) : const Color(0xFF64748B))),
           ],
         ),
       ),
@@ -524,15 +509,43 @@ class _AddMethodViewState extends State<AddMethodView> {
           isExpanded: true,
           icon: const Icon(LucideIcons.chevronDown,
               size: 20, color: Color(0xFF64748B)),
-          items: _availableInstitutions.map((String name) {
+          items: _availableInstitutions.map((Map<String, dynamic> inst) {
             return DropdownMenuItem<String>(
-              value: name,
+              value: inst['name'],
               child: Row(
                 children: [
-                  const Icon(LucideIcons.building2,
-                      size: 20, color: Color(0xFF64748B)),
+                  if (inst['logo_url'] != null)
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(4),
+                      child: Image.network(
+                        inst['logo_url'],
+                        width: 24,
+                        height: 24,
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) {
+                          if (inst['fallback_logo_url'] != null) {
+                            return Image.network(
+                              inst['fallback_logo_url'],
+                              width: 24,
+                              height: 24,
+                              fit: BoxFit.cover,
+                            );
+                          }
+                          return const Icon(LucideIcons.building2,
+                              size: 20, color: Color(0xFF64748B));
+                        },
+                      ),
+                    )
+                  else
+                    const Icon(LucideIcons.building2,
+                        size: 20, color: Color(0xFF64748B)),
                   const SizedBox(width: 12),
-                  Text(name),
+                  Expanded(
+                    child: Text(
+                      inst['name'],
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
                 ],
               ),
             );
@@ -547,22 +560,5 @@ class _AddMethodViewState extends State<AddMethodView> {
     );
   }
 
-  Widget _buildTextField(
-      String hint, IconData icon, TextEditingController controller) {
-    return TextField(
-      controller: controller,
-      onChanged: (_) => setState(() {}),
-      decoration: InputDecoration(
-        hintText: hint,
-        hintStyle: const TextStyle(color: Color(0xFF94A3B8)),
-        prefixIcon: Icon(icon, size: 20, color: const Color(0xFF64748B)),
-        border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: const BorderSide(color: Color(0xFFE2E8F0))),
-        enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: const BorderSide(color: Color(0xFFE2E8F0))),
-      ),
-    );
-  }
+
 }

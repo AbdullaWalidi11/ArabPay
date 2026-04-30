@@ -2,24 +2,33 @@
   "countries": [
     {
       "country_name": "Saudi Arabia",
+      "country_name_ar": "المملكة العربية السعودية",
       "country_code": "SA",
+      "flag_emoji": "🇸🇦",
+      "flag_url": "assets/flags/sa.png",
+      "flag_svg_url": null,
+      "currency_code": "SAR",
+      "currency_name": "Saudi riyal",
       "institutions": [
         {
           "name": "Al Rajhi Bank",
           "type": "bank",
-          "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/4/4e/Al_Rajhi_Bank_Logo.svg/1200px-Al_Rajhi_Bank_Logo.svg.png",
+          "logo_url": "assets/logos/sa_al_rajhi_bank.png",
+          "fallback_logo_url": "assets/logos/sa_al_rajhi_bank.png",
           "swift_code": "RJHISARI",
           "website": "https://www.alrajhibank.com.sa",
           "supported_currencies": [
             "SAR",
             "USD"
           ],
-          "is_active": true
+          "is_active": true,
+          "logo_asset": "assets/logos/sa_al_rajhi_bank.png"
         },
         {
-          "name": "SNB (Saudi National Bank)",
+          "name": "Saudi National Bank (SNB)",
           "type": "bank",
-          "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/6/6c/Saudi_National_Bank_logo.svg/1200px-Saudi_National_Bank_logo.svg.png",
+          "logo_url": "assets/logos/sa_saudi_national_bank_snb.png",
+          "fallback_logo_url": "assets/logos/sa_saudi_national_bank_snb.png",
           "swift_code": "NCBKSARI",
           "website": "https://www.alahli.com",
           "supported_currencies": [
@@ -27,331 +36,3735 @@
             "USD",
             "EUR"
           ],
-          "is_active": true
+          "is_active": true,
+          "logo_asset": "assets/logos/sa_saudi_national_bank_snb.png"
         },
         {
           "name": "Riyad Bank",
           "type": "bank",
-          "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Riyad_Bank_Logo.svg/1200px-Riyad_Bank_Logo.svg.png",
+          "logo_url": "assets/logos/sa_riyad_bank.png",
+          "fallback_logo_url": "assets/logos/sa_riyad_bank.png",
           "swift_code": "RYADSARI",
           "website": "https://www.riyadbank.com",
           "supported_currencies": [
-            "SAR"
+            "SAR",
+            "USD"
           ],
-          "is_active": true
+          "is_active": true,
+          "logo_asset": "assets/logos/sa_riyad_bank.png"
         },
         {
           "name": "Alinma Bank",
           "type": "bank",
-          "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/6/6d/Alinma_Bank_Logo.svg/1200px-Alinma_Bank_Logo.svg.png",
+          "logo_url": "assets/logos/sa_alinma_bank.png",
+          "fallback_logo_url": "assets/logos/sa_alinma_bank.png",
           "swift_code": "ALINBSARI",
           "website": "https://www.alinma.com",
           "supported_currencies": [
-            "SAR"
+            "SAR",
+            "USD"
           ],
-          "is_active": true
+          "is_active": true,
+          "logo_asset": "assets/logos/sa_alinma_bank.png"
         },
         {
-          "name": "STC Pay",
+          "name": "Saudi Awwal Bank (SAB)",
+          "type": "bank",
+          "logo_url": "assets/logos/sa_saudi_awwal_bank_sab.png",
+          "fallback_logo_url": "assets/logos/sa_saudi_awwal_bank_sab.png",
+          "swift_code": null,
+          "website": "https://www.sab.com",
+          "supported_currencies": [
+            "SAR",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/sa_saudi_awwal_bank_sab.png"
+        },
+        {
+          "name": "Banque Saudi Fransi",
+          "type": "bank",
+          "logo_url": "assets/logos/sa_banque_saudi_fransi.png",
+          "fallback_logo_url": "assets/logos/sa_banque_saudi_fransi.png",
+          "swift_code": null,
+          "website": "https://www.alfransi.com.sa",
+          "supported_currencies": [
+            "SAR",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/sa_banque_saudi_fransi.png"
+        },
+        {
+          "name": "Arab National Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/sa_arab_national_bank.png",
+          "fallback_logo_url": "assets/logos/sa_arab_national_bank.png",
+          "swift_code": null,
+          "website": "https://www.anb.com.sa",
+          "supported_currencies": [
+            "SAR",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/sa_arab_national_bank.png"
+        },
+        {
+          "name": "Bank Albilad",
+          "type": "bank",
+          "logo_url": "assets/logos/sa_bank_albilad.png",
+          "fallback_logo_url": "assets/logos/sa_bank_albilad.png",
+          "swift_code": null,
+          "website": "https://www.bankalbilad.com",
+          "supported_currencies": [
+            "SAR"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/sa_bank_albilad.png"
+        },
+        {
+          "name": "Bank Aljazira",
+          "type": "bank",
+          "logo_url": "assets/logos/sa_bank_aljazira.png",
+          "fallback_logo_url": "assets/logos/sa_bank_aljazira.png",
+          "swift_code": null,
+          "website": "https://www.bankaljazira.com",
+          "supported_currencies": [
+            "SAR"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/sa_bank_aljazira.png"
+        },
+        {
+          "name": "Saudi Investment Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/sa_saudi_investment_bank.png",
+          "fallback_logo_url": "assets/logos/sa_saudi_investment_bank.png",
+          "swift_code": null,
+          "website": "https://www.saib.com.sa",
+          "supported_currencies": [
+            "SAR",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/sa_saudi_investment_bank.png"
+        },
+        {
+          "name": "Gulf International Bank Saudi Arabia",
+          "type": "bank",
+          "logo_url": "assets/logos/sa_gulf_international_bank_saudi_arabia.png",
+          "fallback_logo_url": "assets/logos/sa_gulf_international_bank_saudi_arabia.png",
+          "swift_code": null,
+          "website": "https://www.gib.com",
+          "supported_currencies": [
+            "SAR",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/sa_gulf_international_bank_saudi_arabia.png"
+        },
+        {
+          "name": "stc pay",
           "type": "wallet",
-          "logo_url": "https://stcpay.com.sa/wp-content/uploads/2021/04/stc-pay-logo.png",
+          "logo_url": "assets/logos/sa_stc_pay.png",
+          "fallback_logo_url": "assets/logos/sa_stc_pay.png",
           "swift_code": null,
           "website": "https://stcpay.com.sa",
           "supported_currencies": [
             "SAR"
           ],
-          "is_active": true
+          "is_active": true,
+          "logo_asset": "assets/logos/sa_stc_pay.png"
         },
         {
           "name": "urpay",
           "type": "wallet",
-          "logo_url": "https://urpay.com.sa/assets/images/logo.png",
+          "logo_url": "assets/logos/sa_urpay.png",
+          "fallback_logo_url": "assets/logos/sa_urpay.png",
           "swift_code": null,
           "website": "https://urpay.com.sa",
           "supported_currencies": [
             "SAR"
           ],
-          "is_active": true
+          "is_active": true,
+          "logo_asset": "assets/logos/sa_urpay.png"
         },
         {
           "name": "Mobily Pay",
           "type": "wallet",
-          "logo_url": "https://mobilypay.com.sa/assets/img/logo.png",
+          "logo_url": "assets/logos/sa_mobily_pay.png",
+          "fallback_logo_url": "assets/logos/sa_mobily_pay.png",
           "swift_code": null,
           "website": "https://mobilypay.com.sa",
           "supported_currencies": [
             "SAR"
           ],
-          "is_active": true
+          "is_active": true,
+          "logo_asset": "assets/logos/sa_mobily_pay.png"
         },
         {
           "name": "Tiqmo",
           "type": "wallet",
-          "logo_url": "https://tiqmo.com/assets/images/logo.png",
+          "logo_url": "assets/logos/sa_tiqmo.png",
+          "fallback_logo_url": "assets/logos/sa_tiqmo.png",
           "swift_code": null,
           "website": "https://tiqmo.com",
           "supported_currencies": [
             "SAR"
           ],
-          "is_active": true
+          "is_active": true,
+          "logo_asset": "assets/logos/sa_tiqmo.png"
+        },
+        {
+          "name": "Hala",
+          "type": "wallet",
+          "logo_url": "assets/logos/sa_hala.png",
+          "fallback_logo_url": "assets/logos/sa_hala.png",
+          "swift_code": null,
+          "website": "https://hala.com",
+          "supported_currencies": [
+            "SAR"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/sa_hala.png"
+        },
+        {
+          "name": "Tweeq",
+          "type": "wallet",
+          "logo_url": "assets/logos/sa_tweeq.png",
+          "fallback_logo_url": "assets/logos/sa_tweeq.png",
+          "swift_code": null,
+          "website": "https://tweeq.sa",
+          "supported_currencies": [
+            "SAR"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/sa_tweeq.png"
         }
-      ]
+      ],
+      "flag_asset": "assets/flags/sa.png"
     },
     {
       "country_name": "United Arab Emirates",
+      "country_name_ar": "الإمارات العربية المتحدة",
       "country_code": "AE",
+      "flag_emoji": "🇦🇪",
+      "flag_url": "assets/flags/ae.png",
+      "flag_svg_url": null,
+      "currency_code": "AED",
+      "currency_name": "UAE dirham",
       "institutions": [
         {
           "name": "First Abu Dhabi Bank (FAB)",
           "type": "bank",
-          "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/4/4b/First_Abu_Dhabi_Bank_logo.svg/1200px-First_Abu_Dhabi_Bank_logo.svg.png",
+          "logo_url": "assets/logos/ae_first_abu_dhabi_bank_fab.png",
+          "fallback_logo_url": "assets/logos/ae_first_abu_dhabi_bank_fab.png",
           "swift_code": "NBADAEAD",
           "website": "https://www.bankfab.com",
           "supported_currencies": [
             "AED",
             "USD"
           ],
-          "is_active": true
+          "is_active": true,
+          "logo_asset": "assets/logos/ae_first_abu_dhabi_bank_fab.png"
         },
         {
           "name": "Emirates NBD",
           "type": "bank",
-          "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/6/6f/Emirates_NBD_logo.svg/1200px-Emirates_NBD_logo.svg.png",
+          "logo_url": "assets/logos/ae_emirates_nbd.png",
+          "fallback_logo_url": "assets/logos/ae_emirates_nbd.png",
           "swift_code": "EBILAEAD",
           "website": "https://www.emiratesnbd.com",
           "supported_currencies": [
             "AED",
             "USD"
           ],
-          "is_active": true
+          "is_active": true,
+          "logo_asset": "assets/logos/ae_emirates_nbd.png"
         },
         {
           "name": "Abu Dhabi Commercial Bank (ADCB)",
           "type": "bank",
-          "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/d/d4/ADCB_logo.svg/1200px-ADCB_logo.svg.png",
-          "swift_code": "ADCB AE AD",
+          "logo_url": "assets/logos/ae_abu_dhabi_commercial_bank_adcb.png",
+          "fallback_logo_url": "assets/logos/ae_abu_dhabi_commercial_bank_adcb.png",
+          "swift_code": null,
           "website": "https://www.adcb.com",
+          "supported_currencies": [
+            "AED",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ae_abu_dhabi_commercial_bank_adcb.png"
+        },
+        {
+          "name": "Dubai Islamic Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/ae_dubai_islamic_bank.png",
+          "fallback_logo_url": "assets/logos/ae_dubai_islamic_bank.png",
+          "swift_code": null,
+          "website": "https://www.dib.ae",
+          "supported_currencies": [
+            "AED",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ae_dubai_islamic_bank.png"
+        },
+        {
+          "name": "Mashreq Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/ae_mashreq_bank.png",
+          "fallback_logo_url": "assets/logos/ae_mashreq_bank.png",
+          "swift_code": null,
+          "website": "https://www.mashreq.com",
+          "supported_currencies": [
+            "AED",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ae_mashreq_bank.png"
+        },
+        {
+          "name": "Abu Dhabi Islamic Bank (ADIB)",
+          "type": "bank",
+          "logo_url": "assets/logos/ae_abu_dhabi_islamic_bank_adib.png",
+          "fallback_logo_url": "assets/logos/ae_abu_dhabi_islamic_bank_adib.png",
+          "swift_code": null,
+          "website": "https://www.adib.ae",
           "supported_currencies": [
             "AED"
           ],
-          "is_active": true
+          "is_active": true,
+          "logo_asset": "assets/logos/ae_abu_dhabi_islamic_bank_adib.png"
+        },
+        {
+          "name": "Emirates Islamic",
+          "type": "bank",
+          "logo_url": "assets/logos/ae_emirates_islamic.png",
+          "fallback_logo_url": "assets/logos/ae_emirates_islamic.png",
+          "swift_code": null,
+          "website": "https://www.emiratesislamic.ae",
+          "supported_currencies": [
+            "AED"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ae_emirates_islamic.png"
+        },
+        {
+          "name": "Commercial Bank of Dubai",
+          "type": "bank",
+          "logo_url": "assets/logos/ae_commercial_bank_of_dubai.png",
+          "fallback_logo_url": "assets/logos/ae_commercial_bank_of_dubai.png",
+          "swift_code": null,
+          "website": "https://www.cbd.ae",
+          "supported_currencies": [
+            "AED"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ae_commercial_bank_of_dubai.png"
+        },
+        {
+          "name": "Sharjah Islamic Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/ae_sharjah_islamic_bank.png",
+          "fallback_logo_url": "assets/logos/ae_sharjah_islamic_bank.png",
+          "swift_code": null,
+          "website": "https://www.sib.ae",
+          "supported_currencies": [
+            "AED"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ae_sharjah_islamic_bank.png"
+        },
+        {
+          "name": "RAKBANK",
+          "type": "bank",
+          "logo_url": "assets/logos/ae_rakbank.png",
+          "fallback_logo_url": "assets/logos/ae_rakbank.png",
+          "swift_code": null,
+          "website": "https://rakbank.ae",
+          "supported_currencies": [
+            "AED"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ae_rakbank.png"
         },
         {
           "name": "e& money",
           "type": "wallet",
-          "logo_url": "https://www.etisalat.ae/en/images/e-money-logo.png",
+          "logo_url": "assets/logos/ae_eand_money.png",
+          "fallback_logo_url": "assets/logos/ae_eand_money.png",
           "swift_code": null,
           "website": "https://www.eandmoney.com",
           "supported_currencies": [
             "AED"
           ],
-          "is_active": true
+          "is_active": true,
+          "logo_asset": "assets/logos/ae_eand_money.png"
         },
         {
           "name": "Careem Pay",
           "type": "wallet",
-          "logo_url": "https://www.careem.com/static/careem-pay-logo.png",
+          "logo_url": "assets/logos/ae_careem_pay.png",
+          "fallback_logo_url": "assets/logos/ae_careem_pay.png",
           "swift_code": null,
           "website": "https://www.careem.com/pay",
           "supported_currencies": [
             "AED"
           ],
-          "is_active": true
+          "is_active": true,
+          "logo_asset": "assets/logos/ae_careem_pay.png"
         },
         {
           "name": "Botim Pay",
           "type": "wallet",
-          "logo_url": "https://botim.me/wp-content/uploads/2023/01/botim-logo.png",
+          "logo_url": "assets/logos/ae_botim_pay.png",
+          "fallback_logo_url": "assets/logos/ae_botim_pay.png",
           "swift_code": null,
           "website": "https://botim.me",
           "supported_currencies": [
             "AED"
           ],
-          "is_active": true
+          "is_active": true,
+          "logo_asset": "assets/logos/ae_botim_pay.png"
+        },
+        {
+          "name": "PayBy",
+          "type": "wallet",
+          "logo_url": "assets/logos/ae_payby.png",
+          "fallback_logo_url": "assets/logos/ae_payby.png",
+          "swift_code": null,
+          "website": "https://payby.com",
+          "supported_currencies": [
+            "AED"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ae_payby.png"
+        },
+        {
+          "name": "DubaiPay",
+          "type": "wallet",
+          "logo_url": "assets/logos/ae_dubaipay.png",
+          "fallback_logo_url": "assets/logos/ae_dubaipay.png",
+          "swift_code": null,
+          "website": "https://www.digitaldubai.ae/apps-services/dubaipay",
+          "supported_currencies": [
+            "AED"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ae_dubaipay.png"
         }
-      ]
+      ],
+      "flag_asset": "assets/flags/ae.png"
     },
     {
       "country_name": "Egypt",
+      "country_name_ar": "مصر",
       "country_code": "EG",
+      "flag_emoji": "🇪🇬",
+      "flag_url": "assets/flags/eg.png",
+      "flag_svg_url": null,
+      "currency_code": "EGP",
+      "currency_name": "Egyptian pound",
       "institutions": [
         {
           "name": "National Bank of Egypt",
           "type": "bank",
-          "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/National_Bank_of_Egypt_logo.svg/1200px-National_Bank_of_Egypt_logo.svg.png",
+          "logo_url": "assets/logos/eg_national_bank_of_egypt.png",
+          "fallback_logo_url": "assets/logos/eg_national_bank_of_egypt.png",
           "swift_code": "NBEGEGCX",
           "website": "https://www.nbe.com.eg",
           "supported_currencies": [
             "EGP",
             "USD"
           ],
-          "is_active": true
+          "is_active": true,
+          "logo_asset": "assets/logos/eg_national_bank_of_egypt.png"
         },
         {
           "name": "Banque Misr",
           "type": "bank",
-          "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Banque_Misr_logo.svg/1200px-Banque_Misr_logo.svg.png",
+          "logo_url": "assets/logos/eg_banque_misr.png",
+          "fallback_logo_url": "assets/logos/eg_banque_misr.png",
           "swift_code": "BMISEGCX",
           "website": "https://www.banquemisr.com",
           "supported_currencies": [
-            "EGP"
+            "EGP",
+            "USD"
           ],
-          "is_active": true
+          "is_active": true,
+          "logo_asset": "assets/logos/eg_banque_misr.png"
         },
         {
-          "name": "CIB (Commercial International Bank)",
+          "name": "Commercial International Bank (CIB)",
           "type": "bank",
-          "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Commercial_International_Bank_logo.svg/1200px-Commercial_International_Bank_logo.svg.png",
+          "logo_url": "assets/logos/eg_commercial_international_bank_cib.png",
+          "fallback_logo_url": "assets/logos/eg_commercial_international_bank_cib.png",
           "swift_code": "CIBEEGCX",
           "website": "https://www.cibeg.com",
           "supported_currencies": [
+            "EGP",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/eg_commercial_international_bank_cib.png"
+        },
+        {
+          "name": "QNB Alahli",
+          "type": "bank",
+          "logo_url": "assets/logos/eg_qnb_alahli.png",
+          "fallback_logo_url": "assets/logos/eg_qnb_alahli.png",
+          "swift_code": null,
+          "website": "https://www.qnbalahli.com",
+          "supported_currencies": [
+            "EGP",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/eg_qnb_alahli.png"
+        },
+        {
+          "name": "Banque du Caire",
+          "type": "bank",
+          "logo_url": "assets/logos/eg_banque_du_caire.png",
+          "fallback_logo_url": "assets/logos/eg_banque_du_caire.png",
+          "swift_code": null,
+          "website": "https://www.bdc.com.eg",
+          "supported_currencies": [
             "EGP"
           ],
-          "is_active": true
+          "is_active": true,
+          "logo_asset": "assets/logos/eg_banque_du_caire.png"
+        },
+        {
+          "name": "AlexBank",
+          "type": "bank",
+          "logo_url": "assets/logos/eg_alexbank.png",
+          "fallback_logo_url": "assets/logos/eg_alexbank.png",
+          "swift_code": null,
+          "website": "https://www.alexbank.com",
+          "supported_currencies": [
+            "EGP",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/eg_alexbank.png"
+        },
+        {
+          "name": "Arab African International Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/eg_arab_african_international_bank.png",
+          "fallback_logo_url": "assets/logos/eg_arab_african_international_bank.png",
+          "swift_code": null,
+          "website": "https://aaib.com",
+          "supported_currencies": [
+            "EGP",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/eg_arab_african_international_bank.png"
+        },
+        {
+          "name": "Faisal Islamic Bank of Egypt",
+          "type": "bank",
+          "logo_url": "assets/logos/eg_faisal_islamic_bank_of_egypt.png",
+          "fallback_logo_url": "assets/logos/eg_faisal_islamic_bank_of_egypt.png",
+          "swift_code": null,
+          "website": "https://www.faisalbank.com.eg",
+          "supported_currencies": [
+            "EGP"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/eg_faisal_islamic_bank_of_egypt.png"
+        },
+        {
+          "name": "Abu Dhabi Islamic Bank Egypt",
+          "type": "bank",
+          "logo_url": "assets/logos/eg_abu_dhabi_islamic_bank_egypt.png",
+          "fallback_logo_url": "assets/logos/eg_abu_dhabi_islamic_bank_egypt.png",
+          "swift_code": null,
+          "website": "https://www.adib.eg",
+          "supported_currencies": [
+            "EGP"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/eg_abu_dhabi_islamic_bank_egypt.png"
+        },
+        {
+          "name": "HSBC Egypt",
+          "type": "bank",
+          "logo_url": "assets/logos/eg_hsbc_egypt.png",
+          "fallback_logo_url": "assets/logos/eg_hsbc_egypt.png",
+          "swift_code": null,
+          "website": "https://www.hsbc.com.eg",
+          "supported_currencies": [
+            "EGP",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/eg_hsbc_egypt.png"
         },
         {
           "name": "Vodafone Cash",
           "type": "wallet",
-          "logo_url": "https://web.vodafone.com.eg/static/images/vodafone-logo.png",
+          "logo_url": "assets/logos/eg_vodafone_cash.png",
+          "fallback_logo_url": "assets/logos/eg_vodafone_cash.png",
           "swift_code": null,
           "website": "https://web.vodafone.com.eg",
           "supported_currencies": [
             "EGP"
           ],
-          "is_active": true
+          "is_active": true,
+          "logo_asset": "assets/logos/eg_vodafone_cash.png"
+        },
+        {
+          "name": "Orange Cash",
+          "type": "wallet",
+          "logo_url": "assets/logos/eg_orange_cash.png",
+          "fallback_logo_url": "assets/logos/eg_orange_cash.png",
+          "swift_code": null,
+          "website": "https://www.orange.eg",
+          "supported_currencies": [
+            "EGP"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/eg_orange_cash.png"
         },
         {
           "name": "Etisalat Cash",
           "type": "wallet",
-          "logo_url": "https://www.etisalat.eg/static/images/etisalat-logo.png",
+          "logo_url": "assets/logos/eg_etisalat_cash.png",
+          "fallback_logo_url": "assets/logos/eg_etisalat_cash.png",
           "swift_code": null,
           "website": "https://www.etisalat.eg",
           "supported_currencies": [
             "EGP"
           ],
-          "is_active": true
+          "is_active": true,
+          "logo_asset": "assets/logos/eg_etisalat_cash.png"
+        },
+        {
+          "name": "WE Pay",
+          "type": "wallet",
+          "logo_url": "assets/logos/eg_we_pay.png",
+          "fallback_logo_url": "assets/logos/eg_we_pay.png",
+          "swift_code": null,
+          "website": "https://te.eg",
+          "supported_currencies": [
+            "EGP"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/eg_we_pay.png"
         },
         {
           "name": "InstaPay",
           "type": "wallet",
-          "logo_url": "https://instapay.eg/assets/images/logo.png",
+          "logo_url": "assets/logos/eg_instapay.png",
+          "fallback_logo_url": "assets/logos/eg_instapay.png",
           "swift_code": null,
           "website": "https://instapay.eg",
           "supported_currencies": [
             "EGP"
           ],
-          "is_active": true
+          "is_active": true,
+          "logo_asset": "assets/logos/eg_instapay.png"
+        },
+        {
+          "name": "Fawry",
+          "type": "wallet",
+          "logo_url": "assets/logos/eg_fawry.png",
+          "fallback_logo_url": "assets/logos/eg_fawry.png",
+          "swift_code": null,
+          "website": "https://fawry.com",
+          "supported_currencies": [
+            "EGP"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/eg_fawry.png"
+        },
+        {
+          "name": "Meeza",
+          "type": "wallet",
+          "logo_url": "assets/logos/eg_meeza.png",
+          "fallback_logo_url": "assets/logos/eg_meeza.png",
+          "swift_code": null,
+          "website": "https://www.meeza.eg",
+          "supported_currencies": [
+            "EGP"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/eg_meeza.png"
+        },
+        {
+          "name": "Telda",
+          "type": "wallet",
+          "logo_url": "assets/logos/eg_telda.png",
+          "fallback_logo_url": "assets/logos/eg_telda.png",
+          "swift_code": null,
+          "website": "https://telda.com",
+          "supported_currencies": [
+            "EGP"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/eg_telda.png"
         }
-      ]
+      ],
+      "flag_asset": "assets/flags/eg.png"
     },
     {
       "country_name": "Jordan",
+      "country_name_ar": "الأردن",
       "country_code": "JO",
+      "flag_emoji": "🇯🇴",
+      "flag_url": "assets/flags/jo.png",
+      "flag_svg_url": null,
+      "currency_code": "JOD",
+      "currency_name": "Jordanian dinar",
       "institutions": [
         {
           "name": "Arab Bank",
           "type": "bank",
-          "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/0/05/Arab_Bank_logo.svg/1200px-Arab_Bank_logo.svg.png",
+          "logo_url": "assets/logos/jo_arab_bank.png",
+          "fallback_logo_url": "assets/logos/jo_arab_bank.png",
           "swift_code": "ARABJOAX",
           "website": "https://www.arabbank.com",
           "supported_currencies": [
             "JOD",
             "USD"
           ],
-          "is_active": true
+          "is_active": true,
+          "logo_asset": "assets/logos/jo_arab_bank.png"
         },
         {
-          "name": "Housing Bank",
+          "name": "Housing Bank for Trade and Finance",
           "type": "bank",
-          "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/b/b2/Housing_Bank_for_Trade_and_Finance_logo.svg/1200px-Housing_Bank_for_Trade_and_Finance_logo.svg.png",
+          "logo_url": "assets/logos/jo_housing_bank_for_trade_and_finance.png",
+          "fallback_logo_url": "assets/logos/jo_housing_bank_for_trade_and_finance.png",
           "swift_code": "HBTFJOAX",
           "website": "https://www.hbtf.com",
           "supported_currencies": [
+            "JOD",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/jo_housing_bank_for_trade_and_finance.png"
+        },
+        {
+          "name": "Bank of Jordan",
+          "type": "bank",
+          "logo_url": "assets/logos/jo_bank_of_jordan.png",
+          "fallback_logo_url": "assets/logos/jo_bank_of_jordan.png",
+          "swift_code": null,
+          "website": "https://www.bankofjordan.com",
+          "supported_currencies": [
+            "JOD",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/jo_bank_of_jordan.png"
+        },
+        {
+          "name": "Cairo Amman Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/jo_cairo_amman_bank.png",
+          "fallback_logo_url": "assets/logos/jo_cairo_amman_bank.png",
+          "swift_code": null,
+          "website": "https://www.cab.jo",
+          "supported_currencies": [
             "JOD"
           ],
-          "is_active": true
+          "is_active": true,
+          "logo_asset": "assets/logos/jo_cairo_amman_bank.png"
+        },
+        {
+          "name": "Jordan Kuwait Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/jo_jordan_kuwait_bank.png",
+          "fallback_logo_url": "assets/logos/jo_jordan_kuwait_bank.png",
+          "swift_code": null,
+          "website": "https://www.jkb.com",
+          "supported_currencies": [
+            "JOD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/jo_jordan_kuwait_bank.png"
+        },
+        {
+          "name": "Capital Bank of Jordan",
+          "type": "bank",
+          "logo_url": "assets/logos/jo_capital_bank_of_jordan.png",
+          "fallback_logo_url": "assets/logos/jo_capital_bank_of_jordan.png",
+          "swift_code": null,
+          "website": "https://www.capitalbank.jo",
+          "supported_currencies": [
+            "JOD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/jo_capital_bank_of_jordan.png"
+        },
+        {
+          "name": "Jordan Islamic Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/jo_jordan_islamic_bank.png",
+          "fallback_logo_url": "assets/logos/jo_jordan_islamic_bank.png",
+          "swift_code": null,
+          "website": "https://www.jordanislamicbank.com",
+          "supported_currencies": [
+            "JOD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/jo_jordan_islamic_bank.png"
+        },
+        {
+          "name": "Jordan Ahli Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/jo_jordan_ahli_bank.png",
+          "fallback_logo_url": "assets/logos/jo_jordan_ahli_bank.png",
+          "swift_code": null,
+          "website": "https://www.ahli.com",
+          "supported_currencies": [
+            "JOD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/jo_jordan_ahli_bank.png"
         },
         {
           "name": "Zain Cash Jordan",
           "type": "wallet",
-          "logo_url": "https://www.jo.zain.com/english/ZainCash/Documents/zain-cash-logo.png",
+          "logo_url": "assets/logos/jo_zain_cash_jordan.png",
+          "fallback_logo_url": "assets/logos/jo_zain_cash_jordan.png",
           "swift_code": null,
           "website": "https://www.zaincash.jo",
           "supported_currencies": [
             "JOD"
           ],
-          "is_active": true
+          "is_active": true,
+          "logo_asset": "assets/logos/jo_zain_cash_jordan.png"
         },
         {
-          "name": "Orange Money",
+          "name": "Orange Money Jordan",
           "type": "wallet",
-          "logo_url": "https://www.orange.jo/en/PublishingImages/orange-money-logo.png",
+          "logo_url": "assets/logos/jo_orange_money_jordan.png",
+          "fallback_logo_url": "assets/logos/jo_orange_money_jordan.png",
           "swift_code": null,
           "website": "https://www.orangemoney.jo",
           "supported_currencies": [
             "JOD"
           ],
-          "is_active": true
+          "is_active": true,
+          "logo_asset": "assets/logos/jo_orange_money_jordan.png"
+        },
+        {
+          "name": "Dinarak",
+          "type": "wallet",
+          "logo_url": "assets/logos/jo_dinarak.png",
+          "fallback_logo_url": "assets/logos/jo_dinarak.png",
+          "swift_code": null,
+          "website": "https://www.dinarak.com",
+          "supported_currencies": [
+            "JOD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/jo_dinarak.png"
+        },
+        {
+          "name": "UWallet",
+          "type": "wallet",
+          "logo_url": "assets/logos/jo_uwallet.png",
+          "fallback_logo_url": "assets/logos/jo_uwallet.png",
+          "swift_code": null,
+          "website": "https://www.uwallet.jo",
+          "supported_currencies": [
+            "JOD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/jo_uwallet.png"
+        },
+        {
+          "name": "Mahfazti",
+          "type": "wallet",
+          "logo_url": "assets/logos/jo_mahfazti.png",
+          "fallback_logo_url": "assets/logos/jo_mahfazti.png",
+          "swift_code": null,
+          "website": "https://www.mahfazti.com.jo",
+          "supported_currencies": [
+            "JOD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/jo_mahfazti.png"
+        },
+        {
+          "name": "CliQ Jordan",
+          "type": "wallet",
+          "logo_url": "assets/logos/jo_cliq_jordan.png",
+          "fallback_logo_url": "assets/logos/jo_cliq_jordan.png",
+          "swift_code": null,
+          "website": "https://www.jopacc.com/En/Pages/CliQ",
+          "supported_currencies": [
+            "JOD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/jo_cliq_jordan.png"
         }
-      ]
+      ],
+      "flag_asset": "assets/flags/jo.png"
     },
     {
       "country_name": "Kuwait",
+      "country_name_ar": "الكويت",
       "country_code": "KW",
+      "flag_emoji": "🇰🇼",
+      "flag_url": "assets/flags/kw.png",
+      "flag_svg_url": null,
+      "currency_code": "KWD",
+      "currency_name": "Kuwaiti dinar",
       "institutions": [
         {
           "name": "National Bank of Kuwait (NBK)",
           "type": "bank",
-          "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/3/3a/National_Bank_of_Kuwait_logo.svg/1200px-National_Bank_of_Kuwait_logo.svg.png",
+          "logo_url": "assets/logos/kw_national_bank_of_kuwait_nbk.png",
+          "fallback_logo_url": "assets/logos/kw_national_bank_of_kuwait_nbk.png",
           "swift_code": "NBOKKWKW",
           "website": "https://www.nbk.com",
           "supported_currencies": [
             "KWD",
             "USD"
           ],
-          "is_active": true
+          "is_active": true,
+          "logo_asset": "assets/logos/kw_national_bank_of_kuwait_nbk.png"
         },
         {
           "name": "Kuwait Finance House (KFH)",
           "type": "bank",
-          "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/2/2c/Kuwait_Finance_House_logo.svg/1200px-Kuwait_Finance_House_logo.svg.png",
-          "swift_code": "KFHUKWKW",
+          "logo_url": "assets/logos/kw_kuwait_finance_house_kfh.png",
+          "fallback_logo_url": "assets/logos/kw_kuwait_finance_house_kfh.png",
+          "swift_code": "KFHOKWKW",
           "website": "https://www.kfh.com",
+          "supported_currencies": [
+            "KWD",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/kw_kuwait_finance_house_kfh.png"
+        },
+        {
+          "name": "Gulf Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/kw_gulf_bank.png",
+          "fallback_logo_url": "assets/logos/kw_gulf_bank.png",
+          "swift_code": null,
+          "website": "https://www.e-gulfbank.com",
           "supported_currencies": [
             "KWD"
           ],
-          "is_active": true
+          "is_active": true,
+          "logo_asset": "assets/logos/kw_gulf_bank.png"
+        },
+        {
+          "name": "Burgan Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/kw_burgan_bank.png",
+          "fallback_logo_url": "assets/logos/kw_burgan_bank.png",
+          "swift_code": null,
+          "website": "https://www.burgan.com",
+          "supported_currencies": [
+            "KWD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/kw_burgan_bank.png"
+        },
+        {
+          "name": "Commercial Bank of Kuwait",
+          "type": "bank",
+          "logo_url": "assets/logos/kw_commercial_bank_of_kuwait.png",
+          "fallback_logo_url": "assets/logos/kw_commercial_bank_of_kuwait.png",
+          "swift_code": null,
+          "website": "https://www.cbk.com",
+          "supported_currencies": [
+            "KWD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/kw_commercial_bank_of_kuwait.png"
+        },
+        {
+          "name": "Boubyan Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/kw_boubyan_bank.png",
+          "fallback_logo_url": "assets/logos/kw_boubyan_bank.png",
+          "swift_code": null,
+          "website": "https://boubyan.bankboubyan.com",
+          "supported_currencies": [
+            "KWD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/kw_boubyan_bank.png"
+        },
+        {
+          "name": "Warba Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/kw_warba_bank.png",
+          "fallback_logo_url": "assets/logos/kw_warba_bank.png",
+          "swift_code": null,
+          "website": "https://www.warbabank.com",
+          "supported_currencies": [
+            "KWD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/kw_warba_bank.png"
+        },
+        {
+          "name": "Al Ahli Bank of Kuwait",
+          "type": "bank",
+          "logo_url": "assets/logos/kw_al_ahli_bank_of_kuwait.png",
+          "fallback_logo_url": "assets/logos/kw_al_ahli_bank_of_kuwait.png",
+          "swift_code": null,
+          "website": "https://www.eahli.com",
+          "supported_currencies": [
+            "KWD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/kw_al_ahli_bank_of_kuwait.png"
+        },
+        {
+          "name": "Ahli United Bank Kuwait",
+          "type": "bank",
+          "logo_url": "assets/logos/kw_ahli_united_bank_kuwait.png",
+          "fallback_logo_url": "assets/logos/kw_ahli_united_bank_kuwait.png",
+          "swift_code": null,
+          "website": "https://www.ahliunited.com.kw",
+          "supported_currencies": [
+            "KWD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/kw_ahli_united_bank_kuwait.png"
+        },
+        {
+          "name": "Weyay Bank",
+          "type": "wallet",
+          "logo_url": "assets/logos/kw_weyay_bank.png",
+          "fallback_logo_url": "assets/logos/kw_weyay_bank.png",
+          "swift_code": null,
+          "website": "https://www.weyaybank.com",
+          "supported_currencies": [
+            "KWD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/kw_weyay_bank.png"
+        },
+        {
+          "name": "KNET",
+          "type": "wallet",
+          "logo_url": "assets/logos/kw_knet.png",
+          "fallback_logo_url": "assets/logos/kw_knet.png",
+          "swift_code": null,
+          "website": "https://www.knet.com.kw",
+          "supported_currencies": [
+            "KWD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/kw_knet.png"
+        },
+        {
+          "name": "MyFatoorah",
+          "type": "wallet",
+          "logo_url": "assets/logos/kw_myfatoorah.png",
+          "fallback_logo_url": "assets/logos/kw_myfatoorah.png",
+          "swift_code": null,
+          "website": "https://www.myfatoorah.com",
+          "supported_currencies": [
+            "KWD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/kw_myfatoorah.png"
+        },
+        {
+          "name": "Tap Payments",
+          "type": "wallet",
+          "logo_url": "assets/logos/kw_tap_payments.png",
+          "fallback_logo_url": "assets/logos/kw_tap_payments.png",
+          "swift_code": null,
+          "website": "https://www.tap.company",
+          "supported_currencies": [
+            "KWD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/kw_tap_payments.png"
         }
-      ]
+      ],
+      "flag_asset": "assets/flags/kw.png"
     },
     {
       "country_name": "Morocco",
+      "country_name_ar": "المغرب",
       "country_code": "MA",
+      "flag_emoji": "🇲🇦",
+      "flag_url": "assets/flags/ma.png",
+      "flag_svg_url": null,
+      "currency_code": "MAD",
+      "currency_name": "Moroccan dirham",
       "institutions": [
         {
           "name": "Attijariwafa Bank",
           "type": "bank",
-          "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Attijariwafa_Bank_logo.svg/1200px-Attijariwafa_Bank_logo.svg.png",
+          "logo_url": "assets/logos/ma_attijariwafa_bank.png",
+          "fallback_logo_url": "assets/logos/ma_attijariwafa_bank.png",
           "swift_code": "BCMAMAMC",
           "website": "https://www.attijariwafabank.com",
           "supported_currencies": [
             "MAD",
             "EUR"
           ],
-          "is_active": true
+          "is_active": true,
+          "logo_asset": "assets/logos/ma_attijariwafa_bank.png"
         },
         {
-          "name": "BMCE Bank (Bank of Africa)",
+          "name": "Bank of Africa Morocco",
           "type": "bank",
-          "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Bank_of_Africa_logo.svg/1200px-Bank_of_Africa_logo.svg.png",
-          "swift_code": "BMCE MAMC",
+          "logo_url": "assets/logos/ma_bank_of_africa_morocco.png",
+          "fallback_logo_url": "assets/logos/ma_bank_of_africa_morocco.png",
+          "swift_code": null,
           "website": "https://www.bankofafrica.ma",
+          "supported_currencies": [
+            "MAD",
+            "EUR"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ma_bank_of_africa_morocco.png"
+        },
+        {
+          "name": "Banque Populaire",
+          "type": "bank",
+          "logo_url": "assets/logos/ma_banque_populaire.png",
+          "fallback_logo_url": "assets/logos/ma_banque_populaire.png",
+          "swift_code": null,
+          "website": "https://www.gbp.ma",
           "supported_currencies": [
             "MAD"
           ],
-          "is_active": true
+          "is_active": true,
+          "logo_asset": "assets/logos/ma_banque_populaire.png"
+        },
+        {
+          "name": "CIH Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/ma_cih_bank.png",
+          "fallback_logo_url": "assets/logos/ma_cih_bank.png",
+          "swift_code": null,
+          "website": "https://www.cihbank.ma",
+          "supported_currencies": [
+            "MAD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ma_cih_bank.png"
+        },
+        {
+          "name": "Crédit Agricole du Maroc",
+          "type": "bank",
+          "logo_url": "assets/logos/ma_cr_dit_agricole_du_maroc.png",
+          "fallback_logo_url": "assets/logos/ma_cr_dit_agricole_du_maroc.png",
+          "swift_code": null,
+          "website": "https://www.creditagricole.ma",
+          "supported_currencies": [
+            "MAD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ma_cr_dit_agricole_du_maroc.png"
+        },
+        {
+          "name": "Société Générale Maroc",
+          "type": "bank",
+          "logo_url": "assets/logos/ma_soci_t_g_n_rale_maroc.png",
+          "fallback_logo_url": "assets/logos/ma_soci_t_g_n_rale_maroc.png",
+          "swift_code": null,
+          "website": "https://www.sgmaroc.com",
+          "supported_currencies": [
+            "MAD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ma_soci_t_g_n_rale_maroc.png"
+        },
+        {
+          "name": "BMCI",
+          "type": "bank",
+          "logo_url": "assets/logos/ma_bmci.png",
+          "fallback_logo_url": "assets/logos/ma_bmci.png",
+          "swift_code": null,
+          "website": "https://www.bmci.ma",
+          "supported_currencies": [
+            "MAD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ma_bmci.png"
+        },
+        {
+          "name": "Al Barid Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/ma_al_barid_bank.png",
+          "fallback_logo_url": "assets/logos/ma_al_barid_bank.png",
+          "swift_code": null,
+          "website": "https://www.albaridbank.ma",
+          "supported_currencies": [
+            "MAD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ma_al_barid_bank.png"
+        },
+        {
+          "name": "CFG Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/ma_cfg_bank.png",
+          "fallback_logo_url": "assets/logos/ma_cfg_bank.png",
+          "swift_code": null,
+          "website": "https://www.cfgbank.com",
+          "supported_currencies": [
+            "MAD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ma_cfg_bank.png"
+        },
+        {
+          "name": "Orange Money Maroc",
+          "type": "wallet",
+          "logo_url": "assets/logos/ma_orange_money_maroc.png",
+          "fallback_logo_url": "assets/logos/ma_orange_money_maroc.png",
+          "swift_code": null,
+          "website": "https://orangemoney.orange.ma",
+          "supported_currencies": [
+            "MAD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ma_orange_money_maroc.png"
+        },
+        {
+          "name": "inwi money",
+          "type": "wallet",
+          "logo_url": "assets/logos/ma_inwi_money.png",
+          "fallback_logo_url": "assets/logos/ma_inwi_money.png",
+          "swift_code": null,
+          "website": "https://inwimoney.ma",
+          "supported_currencies": [
+            "MAD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ma_inwi_money.png"
+        },
+        {
+          "name": "Wafacash",
+          "type": "wallet",
+          "logo_url": "assets/logos/ma_wafacash.png",
+          "fallback_logo_url": "assets/logos/ma_wafacash.png",
+          "swift_code": null,
+          "website": "https://www.wafacash.com",
+          "supported_currencies": [
+            "MAD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ma_wafacash.png"
+        },
+        {
+          "name": "Cash Plus",
+          "type": "wallet",
+          "logo_url": "assets/logos/ma_cash_plus.png",
+          "fallback_logo_url": "assets/logos/ma_cash_plus.png",
+          "swift_code": null,
+          "website": "https://www.cashplus.ma",
+          "supported_currencies": [
+            "MAD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ma_cash_plus.png"
+        },
+        {
+          "name": "Barid Cash",
+          "type": "wallet",
+          "logo_url": "assets/logos/ma_barid_cash.png",
+          "fallback_logo_url": "assets/logos/ma_barid_cash.png",
+          "swift_code": null,
+          "website": "https://www.baridcash.ma",
+          "supported_currencies": [
+            "MAD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ma_barid_cash.png"
         }
-      ]
+      ],
+      "flag_asset": "assets/flags/ma.png"
+    },
+    {
+      "country_name": "Algeria",
+      "country_name_ar": "الجزائر",
+      "country_code": "DZ",
+      "flag_emoji": "🇩🇿",
+      "flag_url": "assets/flags/dz.png",
+      "flag_svg_url": null,
+      "currency_code": "DZD",
+      "currency_name": "Algerian dinar",
+      "institutions": [
+        {
+          "name": "Banque Nationale d'Algérie (BNA)",
+          "type": "bank",
+          "logo_url": "assets/logos/dz_banque_nationale_d_alg_rie_bna.png",
+          "fallback_logo_url": "assets/logos/dz_banque_nationale_d_alg_rie_bna.png",
+          "swift_code": null,
+          "website": "https://www.bna.dz",
+          "supported_currencies": [
+            "DZD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/dz_banque_nationale_d_alg_rie_bna.png"
+        },
+        {
+          "name": "Banque Extérieure d'Algérie (BEA)",
+          "type": "bank",
+          "logo_url": "assets/logos/dz_banque_ext_rieure_d_alg_rie_bea.png",
+          "fallback_logo_url": "assets/logos/dz_banque_ext_rieure_d_alg_rie_bea.png",
+          "swift_code": null,
+          "website": "https://www.bea.dz",
+          "supported_currencies": [
+            "DZD",
+            "EUR"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/dz_banque_ext_rieure_d_alg_rie_bea.png"
+        },
+        {
+          "name": "Crédit Populaire d'Algérie (CPA)",
+          "type": "bank",
+          "logo_url": "assets/logos/dz_cr_dit_populaire_d_alg_rie_cpa.png",
+          "fallback_logo_url": "assets/logos/dz_cr_dit_populaire_d_alg_rie_cpa.png",
+          "swift_code": null,
+          "website": "https://www.cpa-bank.dz",
+          "supported_currencies": [
+            "DZD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/dz_cr_dit_populaire_d_alg_rie_cpa.png"
+        },
+        {
+          "name": "Banque de l'Agriculture et du Développement Rural (BADR)",
+          "type": "bank",
+          "logo_url": "assets/logos/dz_banque_de_l_agriculture_et_du_d_veloppement_rural_badr.png",
+          "fallback_logo_url": "assets/logos/dz_banque_de_l_agriculture_et_du_d_veloppement_rural_badr.png",
+          "swift_code": null,
+          "website": "https://badrbanque.dz",
+          "supported_currencies": [
+            "DZD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/dz_banque_de_l_agriculture_et_du_d_veloppement_rural_badr.png"
+        },
+        {
+          "name": "CNEP Banque",
+          "type": "bank",
+          "logo_url": "assets/logos/dz_cnep_banque.png",
+          "fallback_logo_url": "assets/logos/dz_cnep_banque.png",
+          "swift_code": null,
+          "website": "https://www.cnepbanque.dz",
+          "supported_currencies": [
+            "DZD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/dz_cnep_banque.png"
+        },
+        {
+          "name": "Banque de Développement Local (BDL)",
+          "type": "bank",
+          "logo_url": "assets/logos/dz_banque_de_d_veloppement_local_bdl.png",
+          "fallback_logo_url": "assets/logos/dz_banque_de_d_veloppement_local_bdl.png",
+          "swift_code": null,
+          "website": "https://www.bdl.dz",
+          "supported_currencies": [
+            "DZD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/dz_banque_de_d_veloppement_local_bdl.png"
+        },
+        {
+          "name": "Al Baraka Bank Algeria",
+          "type": "bank",
+          "logo_url": "assets/logos/dz_al_baraka_bank_algeria.png",
+          "fallback_logo_url": "assets/logos/dz_al_baraka_bank_algeria.png",
+          "swift_code": null,
+          "website": "https://www.albaraka-bank.dz",
+          "supported_currencies": [
+            "DZD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/dz_al_baraka_bank_algeria.png"
+        },
+        {
+          "name": "Gulf Bank Algeria",
+          "type": "bank",
+          "logo_url": "assets/logos/dz_gulf_bank_algeria.png",
+          "fallback_logo_url": "assets/logos/dz_gulf_bank_algeria.png",
+          "swift_code": null,
+          "website": "https://www.agb.dz",
+          "supported_currencies": [
+            "DZD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/dz_gulf_bank_algeria.png"
+        },
+        {
+          "name": "Société Générale Algérie",
+          "type": "bank",
+          "logo_url": "assets/logos/dz_soci_t_g_n_rale_alg_rie.png",
+          "fallback_logo_url": "assets/logos/dz_soci_t_g_n_rale_alg_rie.png",
+          "swift_code": null,
+          "website": "https://particuliers.sg.dz",
+          "supported_currencies": [
+            "DZD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/dz_soci_t_g_n_rale_alg_rie.png"
+        },
+        {
+          "name": "BaridiMob",
+          "type": "wallet",
+          "logo_url": "assets/logos/dz_baridimob.png",
+          "fallback_logo_url": "assets/logos/dz_baridimob.png",
+          "swift_code": null,
+          "website": "https://edcarte.poste.dz",
+          "supported_currencies": [
+            "DZD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/dz_baridimob.png"
+        },
+        {
+          "name": "SATIM",
+          "type": "wallet",
+          "logo_url": "assets/logos/dz_satim.png",
+          "fallback_logo_url": "assets/logos/dz_satim.png",
+          "swift_code": null,
+          "website": "https://www.satim.dz",
+          "supported_currencies": [
+            "DZD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/dz_satim.png"
+        },
+        {
+          "name": "Djezzy Pay",
+          "type": "wallet",
+          "logo_url": "assets/logos/dz_djezzy_pay.png",
+          "fallback_logo_url": "assets/logos/dz_djezzy_pay.png",
+          "swift_code": null,
+          "website": "https://www.djezzy.dz",
+          "supported_currencies": [
+            "DZD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/dz_djezzy_pay.png"
+        }
+      ],
+      "flag_asset": "assets/flags/dz.png"
+    },
+    {
+      "country_name": "Bahrain",
+      "country_name_ar": "البحرين",
+      "country_code": "BH",
+      "flag_emoji": "🇧🇭",
+      "flag_url": "assets/flags/bh.png",
+      "flag_svg_url": null,
+      "currency_code": "BHD",
+      "currency_name": "Bahraini dinar",
+      "institutions": [
+        {
+          "name": "National Bank of Bahrain (NBB)",
+          "type": "bank",
+          "logo_url": "assets/logos/bh_national_bank_of_bahrain_nbb.png",
+          "fallback_logo_url": "assets/logos/bh_national_bank_of_bahrain_nbb.png",
+          "swift_code": null,
+          "website": "https://www.nbbonline.com",
+          "supported_currencies": [
+            "BHD",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/bh_national_bank_of_bahrain_nbb.png"
+        },
+        {
+          "name": "Bank of Bahrain and Kuwait (BBK)",
+          "type": "bank",
+          "logo_url": "assets/logos/bh_bank_of_bahrain_and_kuwait_bbk.png",
+          "fallback_logo_url": "assets/logos/bh_bank_of_bahrain_and_kuwait_bbk.png",
+          "swift_code": null,
+          "website": "https://www.bbkonline.com",
+          "supported_currencies": [
+            "BHD",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/bh_bank_of_bahrain_and_kuwait_bbk.png"
+        },
+        {
+          "name": "Ahli United Bank Bahrain",
+          "type": "bank",
+          "logo_url": "assets/logos/bh_ahli_united_bank_bahrain.png",
+          "fallback_logo_url": "assets/logos/bh_ahli_united_bank_bahrain.png",
+          "swift_code": null,
+          "website": "https://www.ahliunited.com",
+          "supported_currencies": [
+            "BHD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/bh_ahli_united_bank_bahrain.png"
+        },
+        {
+          "name": "Bahrain Islamic Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/bh_bahrain_islamic_bank.png",
+          "fallback_logo_url": "assets/logos/bh_bahrain_islamic_bank.png",
+          "swift_code": null,
+          "website": "https://www.bisb.com",
+          "supported_currencies": [
+            "BHD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/bh_bahrain_islamic_bank.png"
+        },
+        {
+          "name": "Al Salam Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/bh_al_salam_bank.png",
+          "fallback_logo_url": "assets/logos/bh_al_salam_bank.png",
+          "swift_code": null,
+          "website": "https://www.alsalambank.com",
+          "supported_currencies": [
+            "BHD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/bh_al_salam_bank.png"
+        },
+        {
+          "name": "Khaleeji Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/bh_khaleeji_bank.png",
+          "fallback_logo_url": "assets/logos/bh_khaleeji_bank.png",
+          "swift_code": null,
+          "website": "https://www.khaleeji.bank",
+          "supported_currencies": [
+            "BHD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/bh_khaleeji_bank.png"
+        },
+        {
+          "name": "ila Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/bh_ila_bank.png",
+          "fallback_logo_url": "assets/logos/bh_ila_bank.png",
+          "swift_code": null,
+          "website": "https://www.ilabank.com",
+          "supported_currencies": [
+            "BHD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/bh_ila_bank.png"
+        },
+        {
+          "name": "BenefitPay",
+          "type": "wallet",
+          "logo_url": "assets/logos/bh_benefitpay.png",
+          "fallback_logo_url": "assets/logos/bh_benefitpay.png",
+          "swift_code": null,
+          "website": "https://www.benefit.bh",
+          "supported_currencies": [
+            "BHD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/bh_benefitpay.png"
+        },
+        {
+          "name": "stc pay Bahrain",
+          "type": "wallet",
+          "logo_url": "assets/logos/bh_stc_pay_bahrain.png",
+          "fallback_logo_url": "assets/logos/bh_stc_pay_bahrain.png",
+          "swift_code": null,
+          "website": "https://www.stcpay.com.bh",
+          "supported_currencies": [
+            "BHD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/bh_stc_pay_bahrain.png"
+        },
+        {
+          "name": "Beyon Money",
+          "type": "wallet",
+          "logo_url": "assets/logos/bh_beyon_money.png",
+          "fallback_logo_url": "assets/logos/bh_beyon_money.png",
+          "swift_code": null,
+          "website": "https://www.beyonmoney.com",
+          "supported_currencies": [
+            "BHD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/bh_beyon_money.png"
+        }
+      ],
+      "flag_asset": "assets/flags/bh.png"
+    },
+    {
+      "country_name": "Comoros",
+      "country_name_ar": "جزر القمر",
+      "country_code": "KM",
+      "flag_emoji": "🇰🇲",
+      "flag_url": "assets/flags/km.png",
+      "flag_svg_url": null,
+      "currency_code": "KMF",
+      "currency_name": "Comorian franc",
+      "institutions": [
+        {
+          "name": "Exim Bank Comores",
+          "type": "bank",
+          "logo_url": "assets/logos/km_exim_bank_comores.png",
+          "fallback_logo_url": "assets/logos/km_exim_bank_comores.png",
+          "swift_code": null,
+          "website": "https://www.eximbankcomores.com",
+          "supported_currencies": [
+            "KMF",
+            "EUR"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/km_exim_bank_comores.png"
+        },
+        {
+          "name": "Banque Fédérale de Commerce",
+          "type": "bank",
+          "logo_url": "assets/logos/km_banque_f_d_rale_de_commerce.png",
+          "fallback_logo_url": "assets/logos/km_banque_f_d_rale_de_commerce.png",
+          "swift_code": null,
+          "website": "https://www.bfc-comores.com",
+          "supported_currencies": [
+            "KMF"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/km_banque_f_d_rale_de_commerce.png"
+        },
+        {
+          "name": "Banque de Développement des Comores",
+          "type": "bank",
+          "logo_url": "assets/logos/km_banque_de_d_veloppement_des_comores.png",
+          "fallback_logo_url": "assets/logos/km_banque_de_d_veloppement_des_comores.png",
+          "swift_code": null,
+          "website": "https://www.bdc-comores.com",
+          "supported_currencies": [
+            "KMF"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/km_banque_de_d_veloppement_des_comores.png"
+        },
+        {
+          "name": "Banque Postale des Comores",
+          "type": "bank",
+          "logo_url": "assets/logos/km_banque_postale_des_comores.png",
+          "fallback_logo_url": "assets/logos/km_banque_postale_des_comores.png",
+          "swift_code": null,
+          "website": "https://www.lapostecomores.com",
+          "supported_currencies": [
+            "KMF"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/km_banque_postale_des_comores.png"
+        },
+        {
+          "name": "Meck-Moroni",
+          "type": "bank",
+          "logo_url": "assets/logos/km_meck_moroni.png",
+          "fallback_logo_url": "assets/logos/km_meck_moroni.png",
+          "swift_code": null,
+          "website": "https://www.meck-moroni.com",
+          "supported_currencies": [
+            "KMF"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/km_meck_moroni.png"
+        },
+        {
+          "name": "Holo",
+          "type": "wallet",
+          "logo_url": "assets/logos/km_holo.png",
+          "fallback_logo_url": "assets/logos/km_holo.png",
+          "swift_code": null,
+          "website": "https://holo.km",
+          "supported_currencies": [
+            "KMF"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/km_holo.png"
+        },
+        {
+          "name": "Mvola Comores",
+          "type": "wallet",
+          "logo_url": "assets/logos/km_mvola_comores.png",
+          "fallback_logo_url": "assets/logos/km_mvola_comores.png",
+          "swift_code": null,
+          "website": "https://www.telma.km",
+          "supported_currencies": [
+            "KMF"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/km_mvola_comores.png"
+        }
+      ],
+      "flag_asset": "assets/flags/km.png"
+    },
+    {
+      "country_name": "Djibouti",
+      "country_name_ar": "جيبوتي",
+      "country_code": "DJ",
+      "flag_emoji": "🇩🇯",
+      "flag_url": "assets/flags/dj.png",
+      "flag_svg_url": null,
+      "currency_code": "DJF",
+      "currency_name": "Djiboutian franc",
+      "institutions": [
+        {
+          "name": "BCIMR",
+          "type": "bank",
+          "logo_url": "assets/logos/dj_bcimr.png",
+          "fallback_logo_url": "assets/logos/dj_bcimr.png",
+          "swift_code": null,
+          "website": "https://www.bcimr.dj",
+          "supported_currencies": [
+            "DJF",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/dj_bcimr.png"
+        },
+        {
+          "name": "Bank of Africa Djibouti",
+          "type": "bank",
+          "logo_url": "assets/logos/dj_bank_of_africa_djibouti.png",
+          "fallback_logo_url": "assets/logos/dj_bank_of_africa_djibouti.png",
+          "swift_code": null,
+          "website": "https://www.bankofafrica.dj",
+          "supported_currencies": [
+            "DJF"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/dj_bank_of_africa_djibouti.png"
+        },
+        {
+          "name": "CAC International Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/dj_cac_international_bank.png",
+          "fallback_logo_url": "assets/logos/dj_cac_international_bank.png",
+          "swift_code": null,
+          "website": "https://www.cacintbank.com",
+          "supported_currencies": [
+            "DJF"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/dj_cac_international_bank.png"
+        },
+        {
+          "name": "East Africa Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/dj_east_africa_bank.png",
+          "fallback_logo_url": "assets/logos/dj_east_africa_bank.png",
+          "swift_code": null,
+          "website": "https://www.eabdjibouti.com",
+          "supported_currencies": [
+            "DJF"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/dj_east_africa_bank.png"
+        },
+        {
+          "name": "Salaam African Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/dj_salaam_african_bank.png",
+          "fallback_logo_url": "assets/logos/dj_salaam_african_bank.png",
+          "swift_code": null,
+          "website": "https://www.salaambank.com",
+          "supported_currencies": [
+            "DJF"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/dj_salaam_african_bank.png"
+        },
+        {
+          "name": "Saba Islamic Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/dj_saba_islamic_bank.png",
+          "fallback_logo_url": "assets/logos/dj_saba_islamic_bank.png",
+          "swift_code": null,
+          "website": "https://www.sababank.com",
+          "supported_currencies": [
+            "DJF"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/dj_saba_islamic_bank.png"
+        },
+        {
+          "name": "Dahabshiil Bank International Djibouti",
+          "type": "bank",
+          "logo_url": "assets/logos/dj_dahabshiil_bank_international_djibouti.png",
+          "fallback_logo_url": "assets/logos/dj_dahabshiil_bank_international_djibouti.png",
+          "swift_code": null,
+          "website": "https://www.dahabshiilbank.com",
+          "supported_currencies": [
+            "DJF",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/dj_dahabshiil_bank_international_djibouti.png"
+        },
+        {
+          "name": "D-Money",
+          "type": "wallet",
+          "logo_url": "assets/logos/dj_d_money.png",
+          "fallback_logo_url": "assets/logos/dj_d_money.png",
+          "swift_code": null,
+          "website": "https://www.dmoney.dj",
+          "supported_currencies": [
+            "DJF"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/dj_d_money.png"
+        },
+        {
+          "name": "WAAFI Djibouti",
+          "type": "wallet",
+          "logo_url": "assets/logos/dj_waafi_djibouti.png",
+          "fallback_logo_url": "assets/logos/dj_waafi_djibouti.png",
+          "swift_code": null,
+          "website": "https://www.waafi.com",
+          "supported_currencies": [
+            "DJF"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/dj_waafi_djibouti.png"
+        }
+      ],
+      "flag_asset": "assets/flags/dj.png"
+    },
+    {
+      "country_name": "Iraq",
+      "country_name_ar": "العراق",
+      "country_code": "IQ",
+      "flag_emoji": "🇮🇶",
+      "flag_url": "assets/flags/iq.png",
+      "flag_svg_url": null,
+      "currency_code": "IQD",
+      "currency_name": "Iraqi dinar",
+      "institutions": [
+        {
+          "name": "Rafidain Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/iq_rafidain_bank.png",
+          "fallback_logo_url": "assets/logos/iq_rafidain_bank.png",
+          "swift_code": null,
+          "website": "https://www.rafidain-bank.gov.iq",
+          "supported_currencies": [
+            "IQD",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/iq_rafidain_bank.png"
+        },
+        {
+          "name": "Rasheed Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/iq_rasheed_bank.png",
+          "fallback_logo_url": "assets/logos/iq_rasheed_bank.png",
+          "swift_code": null,
+          "website": "https://www.rasheedbank.gov.iq",
+          "supported_currencies": [
+            "IQD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/iq_rasheed_bank.png"
+        },
+        {
+          "name": "Trade Bank of Iraq",
+          "type": "bank",
+          "logo_url": "assets/logos/iq_trade_bank_of_iraq.png",
+          "fallback_logo_url": "assets/logos/iq_trade_bank_of_iraq.png",
+          "swift_code": null,
+          "website": "https://tbi.com.iq",
+          "supported_currencies": [
+            "IQD",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/iq_trade_bank_of_iraq.png"
+        },
+        {
+          "name": "Bank of Baghdad",
+          "type": "bank",
+          "logo_url": "assets/logos/iq_bank_of_baghdad.png",
+          "fallback_logo_url": "assets/logos/iq_bank_of_baghdad.png",
+          "swift_code": null,
+          "website": "https://www.bankofbaghdad.com",
+          "supported_currencies": [
+            "IQD",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/iq_bank_of_baghdad.png"
+        },
+        {
+          "name": "National Bank of Iraq",
+          "type": "bank",
+          "logo_url": "assets/logos/iq_national_bank_of_iraq.png",
+          "fallback_logo_url": "assets/logos/iq_national_bank_of_iraq.png",
+          "swift_code": null,
+          "website": "https://nbi.iq",
+          "supported_currencies": [
+            "IQD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/iq_national_bank_of_iraq.png"
+        },
+        {
+          "name": "Kurdistan International Islamic Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/iq_kurdistan_international_islamic_bank.png",
+          "fallback_logo_url": "assets/logos/iq_kurdistan_international_islamic_bank.png",
+          "swift_code": null,
+          "website": "https://www.kib.iq",
+          "supported_currencies": [
+            "IQD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/iq_kurdistan_international_islamic_bank.png"
+        },
+        {
+          "name": "Cihan Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/iq_cihan_bank.png",
+          "fallback_logo_url": "assets/logos/iq_cihan_bank.png",
+          "swift_code": null,
+          "website": "https://www.cihanbank.com.iq",
+          "supported_currencies": [
+            "IQD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/iq_cihan_bank.png"
+        },
+        {
+          "name": "ZainCash Iraq",
+          "type": "wallet",
+          "logo_url": "assets/logos/iq_zaincash_iraq.png",
+          "fallback_logo_url": "assets/logos/iq_zaincash_iraq.png",
+          "swift_code": null,
+          "website": "https://www.zaincash.iq",
+          "supported_currencies": [
+            "IQD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/iq_zaincash_iraq.png"
+        },
+        {
+          "name": "AsiaHawala",
+          "type": "wallet",
+          "logo_url": "assets/logos/iq_asiahawala.png",
+          "fallback_logo_url": "assets/logos/iq_asiahawala.png",
+          "swift_code": null,
+          "website": "https://asiahawala.com",
+          "supported_currencies": [
+            "IQD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/iq_asiahawala.png"
+        },
+        {
+          "name": "FastPay",
+          "type": "wallet",
+          "logo_url": "assets/logos/iq_fastpay.png",
+          "fallback_logo_url": "assets/logos/iq_fastpay.png",
+          "swift_code": null,
+          "website": "https://www.fast-pay.iq",
+          "supported_currencies": [
+            "IQD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/iq_fastpay.png"
+        },
+        {
+          "name": "NassWallet",
+          "type": "wallet",
+          "logo_url": "assets/logos/iq_nasswallet.png",
+          "fallback_logo_url": "assets/logos/iq_nasswallet.png",
+          "swift_code": null,
+          "website": "https://nasswallet.com",
+          "supported_currencies": [
+            "IQD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/iq_nasswallet.png"
+        },
+        {
+          "name": "Qi Card",
+          "type": "wallet",
+          "logo_url": "assets/logos/iq_qi_card.png",
+          "fallback_logo_url": "assets/logos/iq_qi_card.png",
+          "swift_code": null,
+          "website": "https://www.qicard.net",
+          "supported_currencies": [
+            "IQD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/iq_qi_card.png"
+        }
+      ],
+      "flag_asset": "assets/flags/iq.png"
+    },
+    {
+      "country_name": "Lebanon",
+      "country_name_ar": "لبنان",
+      "country_code": "LB",
+      "flag_emoji": "🇱🇧",
+      "flag_url": "assets/flags/lb.png",
+      "flag_svg_url": null,
+      "currency_code": "LBP",
+      "currency_name": "Lebanese pound",
+      "institutions": [
+        {
+          "name": "Bank Audi",
+          "type": "bank",
+          "logo_url": "assets/logos/lb_bank_audi.png",
+          "fallback_logo_url": "assets/logos/lb_bank_audi.png",
+          "swift_code": null,
+          "website": "https://www.bankaudi.com.lb",
+          "supported_currencies": [
+            "LBP",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/lb_bank_audi.png"
+        },
+        {
+          "name": "BLOM Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/lb_blom_bank.png",
+          "fallback_logo_url": "assets/logos/lb_blom_bank.png",
+          "swift_code": null,
+          "website": "https://www.blombank.com",
+          "supported_currencies": [
+            "LBP",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/lb_blom_bank.png"
+        },
+        {
+          "name": "Byblos Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/lb_byblos_bank.png",
+          "fallback_logo_url": "assets/logos/lb_byblos_bank.png",
+          "swift_code": null,
+          "website": "https://www.byblosbank.com",
+          "supported_currencies": [
+            "LBP",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/lb_byblos_bank.png"
+        },
+        {
+          "name": "Fransabank",
+          "type": "bank",
+          "logo_url": "assets/logos/lb_fransabank.png",
+          "fallback_logo_url": "assets/logos/lb_fransabank.png",
+          "swift_code": null,
+          "website": "https://www.fransabank.com",
+          "supported_currencies": [
+            "LBP"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/lb_fransabank.png"
+        },
+        {
+          "name": "Bank of Beirut",
+          "type": "bank",
+          "logo_url": "assets/logos/lb_bank_of_beirut.png",
+          "fallback_logo_url": "assets/logos/lb_bank_of_beirut.png",
+          "swift_code": null,
+          "website": "https://www.bankofbeirut.com",
+          "supported_currencies": [
+            "LBP"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/lb_bank_of_beirut.png"
+        },
+        {
+          "name": "BBAC Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/lb_bbac_bank.png",
+          "fallback_logo_url": "assets/logos/lb_bbac_bank.png",
+          "swift_code": null,
+          "website": "https://www.bbacbank.com",
+          "supported_currencies": [
+            "LBP"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/lb_bbac_bank.png"
+        },
+        {
+          "name": "IBL Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/lb_ibl_bank.png",
+          "fallback_logo_url": "assets/logos/lb_ibl_bank.png",
+          "swift_code": null,
+          "website": "https://www.ibl.com.lb",
+          "supported_currencies": [
+            "LBP"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/lb_ibl_bank.png"
+        },
+        {
+          "name": "Credit Libanais",
+          "type": "bank",
+          "logo_url": "assets/logos/lb_credit_libanais.png",
+          "fallback_logo_url": "assets/logos/lb_credit_libanais.png",
+          "swift_code": null,
+          "website": "https://www.creditlibanais.com.lb",
+          "supported_currencies": [
+            "LBP"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/lb_credit_libanais.png"
+        },
+        {
+          "name": "Whish Money",
+          "type": "wallet",
+          "logo_url": "assets/logos/lb_whish_money.png",
+          "fallback_logo_url": "assets/logos/lb_whish_money.png",
+          "swift_code": null,
+          "website": "https://www.whish.money",
+          "supported_currencies": [
+            "LBP",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/lb_whish_money.png"
+        },
+        {
+          "name": "OMT Pay",
+          "type": "wallet",
+          "logo_url": "assets/logos/lb_omt_pay.png",
+          "fallback_logo_url": "assets/logos/lb_omt_pay.png",
+          "swift_code": null,
+          "website": "https://www.omt.com.lb",
+          "supported_currencies": [
+            "LBP",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/lb_omt_pay.png"
+        },
+        {
+          "name": "PinPay",
+          "type": "wallet",
+          "logo_url": "assets/logos/lb_pinpay.png",
+          "fallback_logo_url": "assets/logos/lb_pinpay.png",
+          "swift_code": null,
+          "website": "https://www.pin-pay.com",
+          "supported_currencies": [
+            "LBP"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/lb_pinpay.png"
+        },
+        {
+          "name": "Bob Finance",
+          "type": "wallet",
+          "logo_url": "assets/logos/lb_bob_finance.png",
+          "fallback_logo_url": "assets/logos/lb_bob_finance.png",
+          "swift_code": null,
+          "website": "https://www.bob-finance.com",
+          "supported_currencies": [
+            "LBP"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/lb_bob_finance.png"
+        }
+      ],
+      "flag_asset": "assets/flags/lb.png"
+    },
+    {
+      "country_name": "Libya",
+      "country_name_ar": "ليبيا",
+      "country_code": "LY",
+      "flag_emoji": "🇱🇾",
+      "flag_url": "assets/flags/ly.png",
+      "flag_svg_url": null,
+      "currency_code": "LYD",
+      "currency_name": "Libyan dinar",
+      "institutions": [
+        {
+          "name": "Jumhouria Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/ly_jumhouria_bank.png",
+          "fallback_logo_url": "assets/logos/ly_jumhouria_bank.png",
+          "swift_code": null,
+          "website": "https://www.jbank.ly",
+          "supported_currencies": [
+            "LYD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ly_jumhouria_bank.png"
+        },
+        {
+          "name": "National Commercial Bank Libya",
+          "type": "bank",
+          "logo_url": "assets/logos/ly_national_commercial_bank_libya.png",
+          "fallback_logo_url": "assets/logos/ly_national_commercial_bank_libya.png",
+          "swift_code": null,
+          "website": "https://www.ncb.ly",
+          "supported_currencies": [
+            "LYD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ly_national_commercial_bank_libya.png"
+        },
+        {
+          "name": "Sahara Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/ly_sahara_bank.png",
+          "fallback_logo_url": "assets/logos/ly_sahara_bank.png",
+          "swift_code": null,
+          "website": "https://www.saharabank.ly",
+          "supported_currencies": [
+            "LYD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ly_sahara_bank.png"
+        },
+        {
+          "name": "Wahda Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/ly_wahda_bank.png",
+          "fallback_logo_url": "assets/logos/ly_wahda_bank.png",
+          "swift_code": null,
+          "website": "https://www.wahdabank.ly",
+          "supported_currencies": [
+            "LYD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ly_wahda_bank.png"
+        },
+        {
+          "name": "Aman Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/ly_aman_bank.png",
+          "fallback_logo_url": "assets/logos/ly_aman_bank.png",
+          "swift_code": null,
+          "website": "https://www.amanbank.ly",
+          "supported_currencies": [
+            "LYD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ly_aman_bank.png"
+        },
+        {
+          "name": "Assaray Trade and Investment Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/ly_assaray_trade_and_investment_bank.png",
+          "fallback_logo_url": "assets/logos/ly_assaray_trade_and_investment_bank.png",
+          "swift_code": null,
+          "website": "https://www.assaraybank.com",
+          "supported_currencies": [
+            "LYD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ly_assaray_trade_and_investment_bank.png"
+        },
+        {
+          "name": "Al-Waha Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/ly_al_waha_bank.png",
+          "fallback_logo_url": "assets/logos/ly_al_waha_bank.png",
+          "swift_code": null,
+          "website": "https://www.alwahabank.ly",
+          "supported_currencies": [
+            "LYD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ly_al_waha_bank.png"
+        },
+        {
+          "name": "Tadawul Technology Wallet",
+          "type": "wallet",
+          "logo_url": "assets/logos/ly_tadawul_technology_wallet.png",
+          "fallback_logo_url": "assets/logos/ly_tadawul_technology_wallet.png",
+          "swift_code": null,
+          "website": "https://tadawul.ly",
+          "supported_currencies": [
+            "LYD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ly_tadawul_technology_wallet.png"
+        },
+        {
+          "name": "Moamalat",
+          "type": "wallet",
+          "logo_url": "assets/logos/ly_moamalat.png",
+          "fallback_logo_url": "assets/logos/ly_moamalat.png",
+          "swift_code": null,
+          "website": "https://www.moamalat.net",
+          "supported_currencies": [
+            "LYD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ly_moamalat.png"
+        },
+        {
+          "name": "MobiCash Libya",
+          "type": "wallet",
+          "logo_url": "assets/logos/ly_mobicash_libya.png",
+          "fallback_logo_url": "assets/logos/ly_mobicash_libya.png",
+          "swift_code": null,
+          "website": "https://www.mobicash.ly",
+          "supported_currencies": [
+            "LYD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ly_mobicash_libya.png"
+        }
+      ],
+      "flag_asset": "assets/flags/ly.png"
+    },
+    {
+      "country_name": "Mauritania",
+      "country_name_ar": "موريتانيا",
+      "country_code": "MR",
+      "flag_emoji": "🇲🇷",
+      "flag_url": "assets/flags/mr.png",
+      "flag_svg_url": null,
+      "currency_code": "MRU",
+      "currency_name": "Mauritanian ouguiya",
+      "institutions": [
+        {
+          "name": "Banque Populaire de Mauritanie",
+          "type": "bank",
+          "logo_url": "assets/logos/mr_banque_populaire_de_mauritanie.png",
+          "fallback_logo_url": "assets/logos/mr_banque_populaire_de_mauritanie.png",
+          "swift_code": null,
+          "website": "https://bpm.mr",
+          "supported_currencies": [
+            "MRU"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/mr_banque_populaire_de_mauritanie.png"
+        },
+        {
+          "name": "Banque Mauritanienne pour le Commerce International (BMCI)",
+          "type": "bank",
+          "logo_url": "assets/logos/mr_banque_mauritanienne_pour_le_commerce_international_bmci.png",
+          "fallback_logo_url": "assets/logos/mr_banque_mauritanienne_pour_le_commerce_international_bmci.png",
+          "swift_code": null,
+          "website": "https://www.bmci.mr",
+          "supported_currencies": [
+            "MRU"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/mr_banque_mauritanienne_pour_le_commerce_international_bmci.png"
+        },
+        {
+          "name": "Générale de Banque de Mauritanie",
+          "type": "bank",
+          "logo_url": "assets/logos/mr_g_n_rale_de_banque_de_mauritanie.png",
+          "fallback_logo_url": "assets/logos/mr_g_n_rale_de_banque_de_mauritanie.png",
+          "swift_code": null,
+          "website": "https://gbm.mr",
+          "supported_currencies": [
+            "MRU"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/mr_g_n_rale_de_banque_de_mauritanie.png"
+        },
+        {
+          "name": "Attijari Bank Mauritanie",
+          "type": "bank",
+          "logo_url": "assets/logos/mr_attijari_bank_mauritanie.png",
+          "fallback_logo_url": "assets/logos/mr_attijari_bank_mauritanie.png",
+          "swift_code": null,
+          "website": "https://www.attijaribank.mr",
+          "supported_currencies": [
+            "MRU"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/mr_attijari_bank_mauritanie.png"
+        },
+        {
+          "name": "Banque El Amana",
+          "type": "bank",
+          "logo_url": "assets/logos/mr_banque_el_amana.png",
+          "fallback_logo_url": "assets/logos/mr_banque_el_amana.png",
+          "swift_code": null,
+          "website": "https://bea.mr",
+          "supported_currencies": [
+            "MRU"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/mr_banque_el_amana.png"
+        },
+        {
+          "name": "Banque Islamique de Mauritanie",
+          "type": "bank",
+          "logo_url": "assets/logos/mr_banque_islamique_de_mauritanie.png",
+          "fallback_logo_url": "assets/logos/mr_banque_islamique_de_mauritanie.png",
+          "swift_code": null,
+          "website": "https://bim.mr",
+          "supported_currencies": [
+            "MRU"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/mr_banque_islamique_de_mauritanie.png"
+        },
+        {
+          "name": "Bankily",
+          "type": "wallet",
+          "logo_url": "assets/logos/mr_bankily.png",
+          "fallback_logo_url": "assets/logos/mr_bankily.png",
+          "swift_code": null,
+          "website": "https://www.bankily.mr",
+          "supported_currencies": [
+            "MRU"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/mr_bankily.png"
+        },
+        {
+          "name": "Masrvi",
+          "type": "wallet",
+          "logo_url": "assets/logos/mr_masrvi.png",
+          "fallback_logo_url": "assets/logos/mr_masrvi.png",
+          "swift_code": null,
+          "website": "https://www.masrvi.mr",
+          "supported_currencies": [
+            "MRU"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/mr_masrvi.png"
+        },
+        {
+          "name": "Sedad",
+          "type": "wallet",
+          "logo_url": "assets/logos/mr_sedad.png",
+          "fallback_logo_url": "assets/logos/mr_sedad.png",
+          "swift_code": null,
+          "website": "https://sedad.mr",
+          "supported_currencies": [
+            "MRU"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/mr_sedad.png"
+        }
+      ],
+      "flag_asset": "assets/flags/mr.png"
+    },
+    {
+      "country_name": "Oman",
+      "country_name_ar": "عُمان",
+      "country_code": "OM",
+      "flag_emoji": "🇴🇲",
+      "flag_url": "assets/flags/om.png",
+      "flag_svg_url": null,
+      "currency_code": "OMR",
+      "currency_name": "Omani rial",
+      "institutions": [
+        {
+          "name": "Bank Muscat",
+          "type": "bank",
+          "logo_url": "assets/logos/om_bank_muscat.png",
+          "fallback_logo_url": "assets/logos/om_bank_muscat.png",
+          "swift_code": null,
+          "website": "https://www.bankmuscat.com",
+          "supported_currencies": [
+            "OMR",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/om_bank_muscat.png"
+        },
+        {
+          "name": "Bank Dhofar",
+          "type": "bank",
+          "logo_url": "assets/logos/om_bank_dhofar.png",
+          "fallback_logo_url": "assets/logos/om_bank_dhofar.png",
+          "swift_code": null,
+          "website": "https://www.bankdhofar.com",
+          "supported_currencies": [
+            "OMR"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/om_bank_dhofar.png"
+        },
+        {
+          "name": "National Bank of Oman",
+          "type": "bank",
+          "logo_url": "assets/logos/om_national_bank_of_oman.png",
+          "fallback_logo_url": "assets/logos/om_national_bank_of_oman.png",
+          "swift_code": null,
+          "website": "https://www.nbo.om",
+          "supported_currencies": [
+            "OMR",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/om_national_bank_of_oman.png"
+        },
+        {
+          "name": "Oman Arab Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/om_oman_arab_bank.png",
+          "fallback_logo_url": "assets/logos/om_oman_arab_bank.png",
+          "swift_code": null,
+          "website": "https://www.oman-arabbank.com",
+          "supported_currencies": [
+            "OMR"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/om_oman_arab_bank.png"
+        },
+        {
+          "name": "Sohar International",
+          "type": "bank",
+          "logo_url": "assets/logos/om_sohar_international.png",
+          "fallback_logo_url": "assets/logos/om_sohar_international.png",
+          "swift_code": null,
+          "website": "https://www.soharinternational.com",
+          "supported_currencies": [
+            "OMR"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/om_sohar_international.png"
+        },
+        {
+          "name": "Ahli Bank Oman",
+          "type": "bank",
+          "logo_url": "assets/logos/om_ahli_bank_oman.png",
+          "fallback_logo_url": "assets/logos/om_ahli_bank_oman.png",
+          "swift_code": null,
+          "website": "https://www.ahlibank.om",
+          "supported_currencies": [
+            "OMR"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/om_ahli_bank_oman.png"
+        },
+        {
+          "name": "Bank Nizwa",
+          "type": "bank",
+          "logo_url": "assets/logos/om_bank_nizwa.png",
+          "fallback_logo_url": "assets/logos/om_bank_nizwa.png",
+          "swift_code": null,
+          "website": "https://www.banknizwa.om",
+          "supported_currencies": [
+            "OMR"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/om_bank_nizwa.png"
+        },
+        {
+          "name": "Alizz Islamic Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/om_alizz_islamic_bank.png",
+          "fallback_logo_url": "assets/logos/om_alizz_islamic_bank.png",
+          "swift_code": null,
+          "website": "https://alizzislamic.com",
+          "supported_currencies": [
+            "OMR"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/om_alizz_islamic_bank.png"
+        },
+        {
+          "name": "Thawani",
+          "type": "wallet",
+          "logo_url": "assets/logos/om_thawani.png",
+          "fallback_logo_url": "assets/logos/om_thawani.png",
+          "swift_code": null,
+          "website": "https://thawani.om",
+          "supported_currencies": [
+            "OMR"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/om_thawani.png"
+        },
+        {
+          "name": "Omantel Pay",
+          "type": "wallet",
+          "logo_url": "assets/logos/om_omantel_pay.png",
+          "fallback_logo_url": "assets/logos/om_omantel_pay.png",
+          "swift_code": null,
+          "website": "https://www.omantel.om",
+          "supported_currencies": [
+            "OMR"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/om_omantel_pay.png"
+        },
+        {
+          "name": "Vodafone Oman Wallet",
+          "type": "wallet",
+          "logo_url": "assets/logos/om_vodafone_oman_wallet.png",
+          "fallback_logo_url": "assets/logos/om_vodafone_oman_wallet.png",
+          "swift_code": null,
+          "website": "https://www.vodafone.om",
+          "supported_currencies": [
+            "OMR"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/om_vodafone_oman_wallet.png"
+        }
+      ],
+      "flag_asset": "assets/flags/om.png"
+    },
+    {
+      "country_name": "Palestine",
+      "country_name_ar": "فلسطين",
+      "country_code": "PS",
+      "flag_emoji": "🇵🇸",
+      "flag_url": "assets/flags/ps.png",
+      "flag_svg_url": null,
+      "currency_code": "ILS",
+      "currency_name": "Israeli shekel / Jordanian dinar / US dollar",
+      "institutions": [
+        {
+          "name": "Bank of Palestine",
+          "type": "bank",
+          "logo_url": "assets/logos/ps_bank_of_palestine.png",
+          "fallback_logo_url": "assets/logos/ps_bank_of_palestine.png",
+          "swift_code": null,
+          "website": "https://www.bankofpalestine.com",
+          "supported_currencies": [
+            "ILS",
+            "JOD",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ps_bank_of_palestine.png"
+        },
+        {
+          "name": "Arab Bank Palestine",
+          "type": "bank",
+          "logo_url": "assets/logos/ps_arab_bank_palestine.png",
+          "fallback_logo_url": "assets/logos/ps_arab_bank_palestine.png",
+          "swift_code": null,
+          "website": "https://www.arabbank.ps",
+          "supported_currencies": [
+            "ILS",
+            "JOD",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ps_arab_bank_palestine.png"
+        },
+        {
+          "name": "Cairo Amman Bank Palestine",
+          "type": "bank",
+          "logo_url": "assets/logos/ps_cairo_amman_bank_palestine.png",
+          "fallback_logo_url": "assets/logos/ps_cairo_amman_bank_palestine.png",
+          "swift_code": null,
+          "website": "https://www.cab.jo",
+          "supported_currencies": [
+            "ILS",
+            "JOD",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ps_cairo_amman_bank_palestine.png"
+        },
+        {
+          "name": "Quds Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/ps_quds_bank.png",
+          "fallback_logo_url": "assets/logos/ps_quds_bank.png",
+          "swift_code": null,
+          "website": "https://www.qudsbank.ps",
+          "supported_currencies": [
+            "ILS",
+            "JOD",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ps_quds_bank.png"
+        },
+        {
+          "name": "Palestine Islamic Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/ps_palestine_islamic_bank.png",
+          "fallback_logo_url": "assets/logos/ps_palestine_islamic_bank.png",
+          "swift_code": null,
+          "website": "https://www.islamicbank.ps",
+          "supported_currencies": [
+            "ILS",
+            "JOD",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ps_palestine_islamic_bank.png"
+        },
+        {
+          "name": "The National Bank Palestine",
+          "type": "bank",
+          "logo_url": "assets/logos/ps_the_national_bank_palestine.png",
+          "fallback_logo_url": "assets/logos/ps_the_national_bank_palestine.png",
+          "swift_code": null,
+          "website": "https://www.tnb.ps",
+          "supported_currencies": [
+            "ILS",
+            "JOD",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ps_the_national_bank_palestine.png"
+        },
+        {
+          "name": "Palestine Investment Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/ps_palestine_investment_bank.png",
+          "fallback_logo_url": "assets/logos/ps_palestine_investment_bank.png",
+          "swift_code": null,
+          "website": "https://www.pib.ps",
+          "supported_currencies": [
+            "ILS",
+            "JOD",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ps_palestine_investment_bank.png"
+        },
+        {
+          "name": "Jawwal Pay",
+          "type": "wallet",
+          "logo_url": "assets/logos/ps_jawwal_pay.png",
+          "fallback_logo_url": "assets/logos/ps_jawwal_pay.png",
+          "swift_code": null,
+          "website": "https://jawwalpay.ps",
+          "supported_currencies": [
+            "ILS"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ps_jawwal_pay.png"
+        },
+        {
+          "name": "PalPay",
+          "type": "wallet",
+          "logo_url": "assets/logos/ps_palpay.png",
+          "fallback_logo_url": "assets/logos/ps_palpay.png",
+          "swift_code": null,
+          "website": "https://palpay.ps",
+          "supported_currencies": [
+            "ILS"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ps_palpay.png"
+        },
+        {
+          "name": "Mada Pay Palestine",
+          "type": "wallet",
+          "logo_url": "assets/logos/ps_mada_pay_palestine.png",
+          "fallback_logo_url": "assets/logos/ps_mada_pay_palestine.png",
+          "swift_code": null,
+          "website": "https://www.mada.ps",
+          "supported_currencies": [
+            "ILS"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ps_mada_pay_palestine.png"
+        }
+      ],
+      "flag_asset": "assets/flags/ps.png"
+    },
+    {
+      "country_name": "Qatar",
+      "country_name_ar": "قطر",
+      "country_code": "QA",
+      "flag_emoji": "🇶🇦",
+      "flag_url": "assets/flags/qa.png",
+      "flag_svg_url": null,
+      "currency_code": "QAR",
+      "currency_name": "Qatari riyal",
+      "institutions": [
+        {
+          "name": "Qatar National Bank (QNB)",
+          "type": "bank",
+          "logo_url": "assets/logos/qa_qatar_national_bank_qnb.png",
+          "fallback_logo_url": "assets/logos/qa_qatar_national_bank_qnb.png",
+          "swift_code": null,
+          "website": "https://www.qnb.com",
+          "supported_currencies": [
+            "QAR",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/qa_qatar_national_bank_qnb.png"
+        },
+        {
+          "name": "Qatar Islamic Bank (QIB)",
+          "type": "bank",
+          "logo_url": "assets/logos/qa_qatar_islamic_bank_qib.png",
+          "fallback_logo_url": "assets/logos/qa_qatar_islamic_bank_qib.png",
+          "swift_code": null,
+          "website": "https://www.qib.com.qa",
+          "supported_currencies": [
+            "QAR"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/qa_qatar_islamic_bank_qib.png"
+        },
+        {
+          "name": "Commercial Bank of Qatar",
+          "type": "bank",
+          "logo_url": "assets/logos/qa_commercial_bank_of_qatar.png",
+          "fallback_logo_url": "assets/logos/qa_commercial_bank_of_qatar.png",
+          "swift_code": null,
+          "website": "https://www.cbq.qa",
+          "supported_currencies": [
+            "QAR"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/qa_commercial_bank_of_qatar.png"
+        },
+        {
+          "name": "Doha Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/qa_doha_bank.png",
+          "fallback_logo_url": "assets/logos/qa_doha_bank.png",
+          "swift_code": null,
+          "website": "https://www.dohabank.qa",
+          "supported_currencies": [
+            "QAR"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/qa_doha_bank.png"
+        },
+        {
+          "name": "Masraf Al Rayan",
+          "type": "bank",
+          "logo_url": "assets/logos/qa_masraf_al_rayan.png",
+          "fallback_logo_url": "assets/logos/qa_masraf_al_rayan.png",
+          "swift_code": null,
+          "website": "https://www.alrayan.com",
+          "supported_currencies": [
+            "QAR"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/qa_masraf_al_rayan.png"
+        },
+        {
+          "name": "Dukhan Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/qa_dukhan_bank.png",
+          "fallback_logo_url": "assets/logos/qa_dukhan_bank.png",
+          "swift_code": null,
+          "website": "https://www.dukhanbank.com",
+          "supported_currencies": [
+            "QAR"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/qa_dukhan_bank.png"
+        },
+        {
+          "name": "Ahli Bank Qatar",
+          "type": "bank",
+          "logo_url": "assets/logos/qa_ahli_bank_qatar.png",
+          "fallback_logo_url": "assets/logos/qa_ahli_bank_qatar.png",
+          "swift_code": null,
+          "website": "https://www.ahlibank.com.qa",
+          "supported_currencies": [
+            "QAR"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/qa_ahli_bank_qatar.png"
+        },
+        {
+          "name": "Qatar International Islamic Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/qa_qatar_international_islamic_bank.png",
+          "fallback_logo_url": "assets/logos/qa_qatar_international_islamic_bank.png",
+          "swift_code": null,
+          "website": "https://www.qiib.com.qa",
+          "supported_currencies": [
+            "QAR"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/qa_qatar_international_islamic_bank.png"
+        },
+        {
+          "name": "Ooredoo Money Qatar",
+          "type": "wallet",
+          "logo_url": "assets/logos/qa_ooredoo_money_qatar.png",
+          "fallback_logo_url": "assets/logos/qa_ooredoo_money_qatar.png",
+          "swift_code": null,
+          "website": "https://www.ooredoo.qa",
+          "supported_currencies": [
+            "QAR"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/qa_ooredoo_money_qatar.png"
+        },
+        {
+          "name": "Vodafone Qatar Wallet",
+          "type": "wallet",
+          "logo_url": "assets/logos/qa_vodafone_qatar_wallet.png",
+          "fallback_logo_url": "assets/logos/qa_vodafone_qatar_wallet.png",
+          "swift_code": null,
+          "website": "https://www.vodafone.qa",
+          "supported_currencies": [
+            "QAR"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/qa_vodafone_qatar_wallet.png"
+        },
+        {
+          "name": "QPay",
+          "type": "wallet",
+          "logo_url": "assets/logos/qa_qpay.png",
+          "fallback_logo_url": "assets/logos/qa_qpay.png",
+          "swift_code": null,
+          "website": "https://www.qpay.com.qa",
+          "supported_currencies": [
+            "QAR"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/qa_qpay.png"
+        }
+      ],
+      "flag_asset": "assets/flags/qa.png"
+    },
+    {
+      "country_name": "Somalia",
+      "country_name_ar": "الصومال",
+      "country_code": "SO",
+      "flag_emoji": "🇸🇴",
+      "flag_url": "assets/flags/so.png",
+      "flag_svg_url": null,
+      "currency_code": "SOS",
+      "currency_name": "Somali shilling",
+      "institutions": [
+        {
+          "name": "Dahabshiil Bank International Somalia",
+          "type": "bank",
+          "logo_url": "assets/logos/so_dahabshiil_bank_international_somalia.png",
+          "fallback_logo_url": "assets/logos/so_dahabshiil_bank_international_somalia.png",
+          "swift_code": null,
+          "website": "https://www.dahabshiilbank.com",
+          "supported_currencies": [
+            "SOS",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/so_dahabshiil_bank_international_somalia.png"
+        },
+        {
+          "name": "Premier Bank Somalia",
+          "type": "bank",
+          "logo_url": "assets/logos/so_premier_bank_somalia.png",
+          "fallback_logo_url": "assets/logos/so_premier_bank_somalia.png",
+          "swift_code": null,
+          "website": "https://www.premierbank.so",
+          "supported_currencies": [
+            "SOS",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/so_premier_bank_somalia.png"
+        },
+        {
+          "name": "Salaam Somali Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/so_salaam_somali_bank.png",
+          "fallback_logo_url": "assets/logos/so_salaam_somali_bank.png",
+          "swift_code": null,
+          "website": "https://www.salaambank.so",
+          "supported_currencies": [
+            "SOS",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/so_salaam_somali_bank.png"
+        },
+        {
+          "name": "Amal Bank Somalia",
+          "type": "bank",
+          "logo_url": "assets/logos/so_amal_bank_somalia.png",
+          "fallback_logo_url": "assets/logos/so_amal_bank_somalia.png",
+          "swift_code": null,
+          "website": "https://amalbankso.so",
+          "supported_currencies": [
+            "SOS",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/so_amal_bank_somalia.png"
+        },
+        {
+          "name": "International Bank of Somalia",
+          "type": "bank",
+          "logo_url": "assets/logos/so_international_bank_of_somalia.png",
+          "fallback_logo_url": "assets/logos/so_international_bank_of_somalia.png",
+          "swift_code": null,
+          "website": "https://ibsom.com",
+          "supported_currencies": [
+            "SOS",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/so_international_bank_of_somalia.png"
+        },
+        {
+          "name": "MyBank Somalia",
+          "type": "bank",
+          "logo_url": "assets/logos/so_mybank_somalia.png",
+          "fallback_logo_url": "assets/logos/so_mybank_somalia.png",
+          "swift_code": null,
+          "website": "https://mybank.so",
+          "supported_currencies": [
+            "SOS",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/so_mybank_somalia.png"
+        },
+        {
+          "name": "eDahab",
+          "type": "wallet",
+          "logo_url": "assets/logos/so_edahab.png",
+          "fallback_logo_url": "assets/logos/so_edahab.png",
+          "swift_code": null,
+          "website": "https://edahab.com",
+          "supported_currencies": [
+            "SOS",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/so_edahab.png"
+        },
+        {
+          "name": "ZAAD",
+          "type": "wallet",
+          "logo_url": "assets/logos/so_zaad.png",
+          "fallback_logo_url": "assets/logos/so_zaad.png",
+          "swift_code": null,
+          "website": "https://telesom.com",
+          "supported_currencies": [
+            "SOS",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/so_zaad.png"
+        },
+        {
+          "name": "Sahal",
+          "type": "wallet",
+          "logo_url": "assets/logos/so_sahal.png",
+          "fallback_logo_url": "assets/logos/so_sahal.png",
+          "swift_code": null,
+          "website": "https://sahal.so",
+          "supported_currencies": [
+            "SOS",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/so_sahal.png"
+        },
+        {
+          "name": "EVC Plus",
+          "type": "wallet",
+          "logo_url": "assets/logos/so_evc_plus.png",
+          "fallback_logo_url": "assets/logos/so_evc_plus.png",
+          "swift_code": null,
+          "website": "https://www.hormuud.com",
+          "supported_currencies": [
+            "SOS",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/so_evc_plus.png"
+        },
+        {
+          "name": "WAAFI Somalia",
+          "type": "wallet",
+          "logo_url": "assets/logos/so_waafi_somalia.png",
+          "fallback_logo_url": "assets/logos/so_waafi_somalia.png",
+          "swift_code": null,
+          "website": "https://www.waafi.com",
+          "supported_currencies": [
+            "SOS",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/so_waafi_somalia.png"
+        }
+      ],
+      "flag_asset": "assets/flags/so.png"
+    },
+    {
+      "country_name": "Sudan",
+      "country_name_ar": "السودان",
+      "country_code": "SD",
+      "flag_emoji": "🇸🇩",
+      "flag_url": "assets/flags/sd.png",
+      "flag_svg_url": null,
+      "currency_code": "SDG",
+      "currency_name": "Sudanese pound",
+      "institutions": [
+        {
+          "name": "Bank of Khartoum",
+          "type": "bank",
+          "logo_url": "assets/logos/sd_bank_of_khartoum.png",
+          "fallback_logo_url": "assets/logos/sd_bank_of_khartoum.png",
+          "swift_code": null,
+          "website": "https://bankofkhartoum.com",
+          "supported_currencies": [
+            "SDG",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/sd_bank_of_khartoum.png"
+        },
+        {
+          "name": "Faisal Islamic Bank Sudan",
+          "type": "bank",
+          "logo_url": "assets/logos/sd_faisal_islamic_bank_sudan.png",
+          "fallback_logo_url": "assets/logos/sd_faisal_islamic_bank_sudan.png",
+          "swift_code": null,
+          "website": "https://fib-sd.com",
+          "supported_currencies": [
+            "SDG"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/sd_faisal_islamic_bank_sudan.png"
+        },
+        {
+          "name": "Omdurman National Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/sd_omdurman_national_bank.png",
+          "fallback_logo_url": "assets/logos/sd_omdurman_national_bank.png",
+          "swift_code": null,
+          "website": "https://www.onb-sd.com",
+          "supported_currencies": [
+            "SDG"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/sd_omdurman_national_bank.png"
+        },
+        {
+          "name": "Sudanese French Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/sd_sudanese_french_bank.png",
+          "fallback_logo_url": "assets/logos/sd_sudanese_french_bank.png",
+          "swift_code": null,
+          "website": "https://www.sfb.sd",
+          "supported_currencies": [
+            "SDG"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/sd_sudanese_french_bank.png"
+        },
+        {
+          "name": "Blue Nile Mashreq Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/sd_blue_nile_mashreq_bank.png",
+          "fallback_logo_url": "assets/logos/sd_blue_nile_mashreq_bank.png",
+          "swift_code": null,
+          "website": "https://www.bnm-sd.com",
+          "supported_currencies": [
+            "SDG"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/sd_blue_nile_mashreq_bank.png"
+        },
+        {
+          "name": "Agricultural Bank of Sudan",
+          "type": "bank",
+          "logo_url": "assets/logos/sd_agricultural_bank_of_sudan.png",
+          "fallback_logo_url": "assets/logos/sd_agricultural_bank_of_sudan.png",
+          "swift_code": null,
+          "website": "https://www.abs.sd",
+          "supported_currencies": [
+            "SDG"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/sd_agricultural_bank_of_sudan.png"
+        },
+        {
+          "name": "Tadamon Islamic Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/sd_tadamon_islamic_bank.png",
+          "fallback_logo_url": "assets/logos/sd_tadamon_islamic_bank.png",
+          "swift_code": null,
+          "website": "https://www.tadamonbank.com",
+          "supported_currencies": [
+            "SDG"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/sd_tadamon_islamic_bank.png"
+        },
+        {
+          "name": "Ivory Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/sd_ivory_bank.png",
+          "fallback_logo_url": "assets/logos/sd_ivory_bank.png",
+          "swift_code": null,
+          "website": "https://www.ivorybank.sd",
+          "supported_currencies": [
+            "SDG"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/sd_ivory_bank.png"
+        },
+        {
+          "name": "Bankak",
+          "type": "wallet",
+          "logo_url": "assets/logos/sd_bankak.png",
+          "fallback_logo_url": "assets/logos/sd_bankak.png",
+          "swift_code": null,
+          "website": "https://bankofkhartoum.com/bankak",
+          "supported_currencies": [
+            "SDG"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/sd_bankak.png"
+        },
+        {
+          "name": "mBOK",
+          "type": "wallet",
+          "logo_url": "assets/logos/sd_mbok.png",
+          "fallback_logo_url": "assets/logos/sd_mbok.png",
+          "swift_code": null,
+          "website": "https://bankofkhartoum.com",
+          "supported_currencies": [
+            "SDG"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/sd_mbok.png"
+        },
+        {
+          "name": "EBS Sudan",
+          "type": "wallet",
+          "logo_url": "assets/logos/sd_ebs_sudan.png",
+          "fallback_logo_url": "assets/logos/sd_ebs_sudan.png",
+          "swift_code": null,
+          "website": "https://www.ebs-sd.com",
+          "supported_currencies": [
+            "SDG"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/sd_ebs_sudan.png"
+        }
+      ],
+      "flag_asset": "assets/flags/sd.png"
+    },
+    {
+      "country_name": "Syria",
+      "country_name_ar": "سوريا",
+      "country_code": "SY",
+      "flag_emoji": "🇸🇾",
+      "flag_url": "assets/flags/sy.png",
+      "flag_svg_url": null,
+      "currency_code": "SYP",
+      "currency_name": "Syrian pound",
+      "institutions": [
+        {
+          "name": "Commercial Bank of Syria",
+          "type": "bank",
+          "logo_url": "assets/logos/sy_commercial_bank_of_syria.png",
+          "fallback_logo_url": "assets/logos/sy_commercial_bank_of_syria.png",
+          "swift_code": null,
+          "website": "https://www.cbs-bank.sy",
+          "supported_currencies": [
+            "SYP"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/sy_commercial_bank_of_syria.png"
+        },
+        {
+          "name": "Real Estate Bank Syria",
+          "type": "bank",
+          "logo_url": "assets/logos/sy_real_estate_bank_syria.png",
+          "fallback_logo_url": "assets/logos/sy_real_estate_bank_syria.png",
+          "swift_code": null,
+          "website": "https://www.reb.sy",
+          "supported_currencies": [
+            "SYP"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/sy_real_estate_bank_syria.png"
+        },
+        {
+          "name": "Banque Bemo Saudi Fransi",
+          "type": "bank",
+          "logo_url": "assets/logos/sy_banque_bemo_saudi_fransi.png",
+          "fallback_logo_url": "assets/logos/sy_banque_bemo_saudi_fransi.png",
+          "swift_code": null,
+          "website": "https://www.bbsfonline.com",
+          "supported_currencies": [
+            "SYP"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/sy_banque_bemo_saudi_fransi.png"
+        },
+        {
+          "name": "Bank of Syria and Overseas",
+          "type": "bank",
+          "logo_url": "assets/logos/sy_bank_of_syria_and_overseas.png",
+          "fallback_logo_url": "assets/logos/sy_bank_of_syria_and_overseas.png",
+          "swift_code": null,
+          "website": "https://www.bso.com.sy",
+          "supported_currencies": [
+            "SYP"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/sy_bank_of_syria_and_overseas.png"
+        },
+        {
+          "name": "Byblos Bank Syria",
+          "type": "bank",
+          "logo_url": "assets/logos/sy_byblos_bank_syria.png",
+          "fallback_logo_url": "assets/logos/sy_byblos_bank_syria.png",
+          "swift_code": null,
+          "website": "https://www.byblosbanksyria.com",
+          "supported_currencies": [
+            "SYP"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/sy_byblos_bank_syria.png"
+        },
+        {
+          "name": "Syria International Islamic Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/sy_syria_international_islamic_bank.png",
+          "fallback_logo_url": "assets/logos/sy_syria_international_islamic_bank.png",
+          "swift_code": null,
+          "website": "https://www.siib.sy",
+          "supported_currencies": [
+            "SYP"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/sy_syria_international_islamic_bank.png"
+        },
+        {
+          "name": "Cham Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/sy_cham_bank.png",
+          "fallback_logo_url": "assets/logos/sy_cham_bank.png",
+          "swift_code": null,
+          "website": "https://www.chambank.sy",
+          "supported_currencies": [
+            "SYP"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/sy_cham_bank.png"
+        },
+        {
+          "name": "Al Baraka Bank Syria",
+          "type": "bank",
+          "logo_url": "assets/logos/sy_al_baraka_bank_syria.png",
+          "fallback_logo_url": "assets/logos/sy_al_baraka_bank_syria.png",
+          "swift_code": null,
+          "website": "https://www.albarakasyria.com",
+          "supported_currencies": [
+            "SYP"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/sy_al_baraka_bank_syria.png"
+        },
+        {
+          "name": "Syriatel Cash",
+          "type": "wallet",
+          "logo_url": "assets/logos/sy_syriatel_cash.png",
+          "fallback_logo_url": "assets/logos/sy_syriatel_cash.png",
+          "swift_code": null,
+          "website": "https://www.syriatel.sy",
+          "supported_currencies": [
+            "SYP"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/sy_syriatel_cash.png"
+        },
+        {
+          "name": "MTN Cash Syria",
+          "type": "wallet",
+          "logo_url": "assets/logos/sy_mtn_cash_syria.png",
+          "fallback_logo_url": "assets/logos/sy_mtn_cash_syria.png",
+          "swift_code": null,
+          "website": "https://www.mtnsyr.com",
+          "supported_currencies": [
+            "SYP"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/sy_mtn_cash_syria.png"
+        }
+      ],
+      "flag_asset": "assets/flags/sy.png"
+    },
+    {
+      "country_name": "Tunisia",
+      "country_name_ar": "تونس",
+      "country_code": "TN",
+      "flag_emoji": "🇹🇳",
+      "flag_url": "assets/flags/tn.png",
+      "flag_svg_url": null,
+      "currency_code": "TND",
+      "currency_name": "Tunisian dinar",
+      "institutions": [
+        {
+          "name": "BIAT",
+          "type": "bank",
+          "logo_url": "assets/logos/tn_biat.png",
+          "fallback_logo_url": "assets/logos/tn_biat.png",
+          "swift_code": null,
+          "website": "https://www.biat.com.tn",
+          "supported_currencies": [
+            "TND",
+            "EUR"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/tn_biat.png"
+        },
+        {
+          "name": "Société Tunisienne de Banque (STB)",
+          "type": "bank",
+          "logo_url": "assets/logos/tn_soci_t_tunisienne_de_banque_stb.png",
+          "fallback_logo_url": "assets/logos/tn_soci_t_tunisienne_de_banque_stb.png",
+          "swift_code": null,
+          "website": "https://www.stb.com.tn",
+          "supported_currencies": [
+            "TND"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/tn_soci_t_tunisienne_de_banque_stb.png"
+        },
+        {
+          "name": "Banque Nationale Agricole (BNA)",
+          "type": "bank",
+          "logo_url": "assets/logos/tn_banque_nationale_agricole_bna.png",
+          "fallback_logo_url": "assets/logos/tn_banque_nationale_agricole_bna.png",
+          "swift_code": null,
+          "website": "https://www.bna.tn",
+          "supported_currencies": [
+            "TND"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/tn_banque_nationale_agricole_bna.png"
+        },
+        {
+          "name": "Amen Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/tn_amen_bank.png",
+          "fallback_logo_url": "assets/logos/tn_amen_bank.png",
+          "swift_code": null,
+          "website": "https://www.amenbank.com.tn",
+          "supported_currencies": [
+            "TND"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/tn_amen_bank.png"
+        },
+        {
+          "name": "Banque de Tunisie",
+          "type": "bank",
+          "logo_url": "assets/logos/tn_banque_de_tunisie.png",
+          "fallback_logo_url": "assets/logos/tn_banque_de_tunisie.png",
+          "swift_code": null,
+          "website": "https://www.bt.com.tn",
+          "supported_currencies": [
+            "TND"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/tn_banque_de_tunisie.png"
+        },
+        {
+          "name": "Attijari Bank Tunisia",
+          "type": "bank",
+          "logo_url": "assets/logos/tn_attijari_bank_tunisia.png",
+          "fallback_logo_url": "assets/logos/tn_attijari_bank_tunisia.png",
+          "swift_code": null,
+          "website": "https://www.attijaribank.com.tn",
+          "supported_currencies": [
+            "TND"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/tn_attijari_bank_tunisia.png"
+        },
+        {
+          "name": "UIB",
+          "type": "bank",
+          "logo_url": "assets/logos/tn_uib.png",
+          "fallback_logo_url": "assets/logos/tn_uib.png",
+          "swift_code": null,
+          "website": "https://www.uib.com.tn",
+          "supported_currencies": [
+            "TND"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/tn_uib.png"
+        },
+        {
+          "name": "Zitouna Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/tn_zitouna_bank.png",
+          "fallback_logo_url": "assets/logos/tn_zitouna_bank.png",
+          "swift_code": null,
+          "website": "https://www.banquezitouna.com",
+          "supported_currencies": [
+            "TND"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/tn_zitouna_bank.png"
+        },
+        {
+          "name": "Arab Tunisian Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/tn_arab_tunisian_bank.png",
+          "fallback_logo_url": "assets/logos/tn_arab_tunisian_bank.png",
+          "swift_code": null,
+          "website": "https://www.atb.tn",
+          "supported_currencies": [
+            "TND"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/tn_arab_tunisian_bank.png"
+        },
+        {
+          "name": "BH Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/tn_bh_bank.png",
+          "fallback_logo_url": "assets/logos/tn_bh_bank.png",
+          "swift_code": null,
+          "website": "https://www.bhbank.tn",
+          "supported_currencies": [
+            "TND"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/tn_bh_bank.png"
+        },
+        {
+          "name": "D17",
+          "type": "wallet",
+          "logo_url": "assets/logos/tn_d17.png",
+          "fallback_logo_url": "assets/logos/tn_d17.png",
+          "swift_code": null,
+          "website": "https://www.d17.tn",
+          "supported_currencies": [
+            "TND"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/tn_d17.png"
+        },
+        {
+          "name": "Flouci",
+          "type": "wallet",
+          "logo_url": "assets/logos/tn_flouci.png",
+          "fallback_logo_url": "assets/logos/tn_flouci.png",
+          "swift_code": null,
+          "website": "https://www.flouci.com",
+          "supported_currencies": [
+            "TND"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/tn_flouci.png"
+        },
+        {
+          "name": "Sobflous",
+          "type": "wallet",
+          "logo_url": "assets/logos/tn_sobflous.png",
+          "fallback_logo_url": "assets/logos/tn_sobflous.png",
+          "swift_code": null,
+          "website": "https://www.sobflous.tn",
+          "supported_currencies": [
+            "TND"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/tn_sobflous.png"
+        },
+        {
+          "name": "Mobiflouss",
+          "type": "wallet",
+          "logo_url": "assets/logos/tn_mobiflouss.png",
+          "fallback_logo_url": "assets/logos/tn_mobiflouss.png",
+          "swift_code": null,
+          "website": "https://www.mobicash.tn",
+          "supported_currencies": [
+            "TND"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/tn_mobiflouss.png"
+        }
+      ],
+      "flag_asset": "assets/flags/tn.png"
+    },
+    {
+      "country_name": "Yemen",
+      "country_name_ar": "اليمن",
+      "country_code": "YE",
+      "flag_emoji": "🇾🇪",
+      "flag_url": "assets/flags/ye.png",
+      "flag_svg_url": null,
+      "currency_code": "YER",
+      "currency_name": "Yemeni rial",
+      "institutions": [
+        {
+          "name": "Cooperative and Agricultural Credit Bank (CAC Bank)",
+          "type": "bank",
+          "logo_url": "assets/logos/ye_cooperative_and_agricultural_credit_bank_cac_bank.png",
+          "fallback_logo_url": "assets/logos/ye_cooperative_and_agricultural_credit_bank_cac_bank.png",
+          "swift_code": null,
+          "website": "https://www.cacbank.com.ye",
+          "supported_currencies": [
+            "YER",
+            "USD"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ye_cooperative_and_agricultural_credit_bank_cac_bank.png"
+        },
+        {
+          "name": "Yemen Kuwait Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/ye_yemen_kuwait_bank.png",
+          "fallback_logo_url": "assets/logos/ye_yemen_kuwait_bank.png",
+          "swift_code": null,
+          "website": "https://www.ykb.com.ye",
+          "supported_currencies": [
+            "YER"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ye_yemen_kuwait_bank.png"
+        },
+        {
+          "name": "Tadhamon Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/ye_tadhamon_bank.png",
+          "fallback_logo_url": "assets/logos/ye_tadhamon_bank.png",
+          "swift_code": null,
+          "website": "https://www.tadhamonbank.com",
+          "supported_currencies": [
+            "YER"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ye_tadhamon_bank.png"
+        },
+        {
+          "name": "International Bank of Yemen",
+          "type": "bank",
+          "logo_url": "assets/logos/ye_international_bank_of_yemen.png",
+          "fallback_logo_url": "assets/logos/ye_international_bank_of_yemen.png",
+          "swift_code": null,
+          "website": "https://www.ibyemen.com",
+          "supported_currencies": [
+            "YER"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ye_international_bank_of_yemen.png"
+        },
+        {
+          "name": "Yemen Commercial Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/ye_yemen_commercial_bank.png",
+          "fallback_logo_url": "assets/logos/ye_yemen_commercial_bank.png",
+          "swift_code": null,
+          "website": "https://www.ycb.com.ye",
+          "supported_currencies": [
+            "YER"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ye_yemen_commercial_bank.png"
+        },
+        {
+          "name": "Saba Islamic Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/ye_saba_islamic_bank.png",
+          "fallback_logo_url": "assets/logos/ye_saba_islamic_bank.png",
+          "swift_code": null,
+          "website": "https://www.sababank.com.ye",
+          "supported_currencies": [
+            "YER"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ye_saba_islamic_bank.png"
+        },
+        {
+          "name": "Shamil Bank of Yemen and Bahrain",
+          "type": "bank",
+          "logo_url": "assets/logos/ye_shamil_bank_of_yemen_and_bahrain.png",
+          "fallback_logo_url": "assets/logos/ye_shamil_bank_of_yemen_and_bahrain.png",
+          "swift_code": null,
+          "website": "https://www.shamilbank.com",
+          "supported_currencies": [
+            "YER"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ye_shamil_bank_of_yemen_and_bahrain.png"
+        },
+        {
+          "name": "Al Kuraimi Islamic Microfinance Bank",
+          "type": "bank",
+          "logo_url": "assets/logos/ye_al_kuraimi_islamic_microfinance_bank.png",
+          "fallback_logo_url": "assets/logos/ye_al_kuraimi_islamic_microfinance_bank.png",
+          "swift_code": null,
+          "website": "https://kuraimibank.com",
+          "supported_currencies": [
+            "YER"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ye_al_kuraimi_islamic_microfinance_bank.png"
+        },
+        {
+          "name": "YCash",
+          "type": "wallet",
+          "logo_url": "assets/logos/ye_ycash.png",
+          "fallback_logo_url": "assets/logos/ye_ycash.png",
+          "swift_code": null,
+          "website": "https://www.ycash.com.ye",
+          "supported_currencies": [
+            "YER"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ye_ycash.png"
+        },
+        {
+          "name": "Jawali",
+          "type": "wallet",
+          "logo_url": "assets/logos/ye_jawali.png",
+          "fallback_logo_url": "assets/logos/ye_jawali.png",
+          "swift_code": null,
+          "website": "https://www.jawali.com.ye",
+          "supported_currencies": [
+            "YER"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ye_jawali.png"
+        },
+        {
+          "name": "PYes",
+          "type": "wallet",
+          "logo_url": "assets/logos/ye_pyes.png",
+          "fallback_logo_url": "assets/logos/ye_pyes.png",
+          "swift_code": null,
+          "website": "https://www.pyemen.com.ye",
+          "supported_currencies": [
+            "YER"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ye_pyes.png"
+        },
+        {
+          "name": "Floosak",
+          "type": "wallet",
+          "logo_url": "assets/logos/ye_floosak.png",
+          "fallback_logo_url": "assets/logos/ye_floosak.png",
+          "swift_code": null,
+          "website": "https://www.floosak.com",
+          "supported_currencies": [
+            "YER"
+          ],
+          "is_active": true,
+          "logo_asset": "assets/logos/ye_floosak.png"
+        }
+      ],
+      "flag_asset": "assets/flags/ye.png"
     }
   ]
 }
