@@ -208,6 +208,17 @@ class _SendMoneyViewState extends State<SendMoneyView> {
 
   // --- STEP 1: ENTER RECEIVER ---
   Widget _buildStep1() {
+    final provider = context.watch<AppProvider>();
+    
+    // Get unique recent recipients from transaction history
+    final recents = <String, String>{}; // ID -> Name
+    for (var tx in provider.recentTransactions) {
+      if (tx.recipientId != provider.currentUser?.arabPayId) {
+        recents[tx.recipientId] = tx.recipientName;
+      }
+    }
+    final recentList = recents.entries.toList().reversed.take(5).toList();
+
     return SingleChildScrollView(
       padding: const EdgeInsets.all(24),
       child: Column(
@@ -314,24 +325,34 @@ class _SendMoneyViewState extends State<SendMoneyView> {
             ),
           ),
           const SizedBox(height: 32),
-          // Quick Select Recents
-          const Text(
-            'Recent Transfers',
-            style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Color(0xFF64748B)),
-          ),
-          const SizedBox(height: 16),
-          SizedBox(
-            height: 100,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: [
-                _buildRecentAvatar('Ahmed', 'A', const Color(0xFF3B82F6)),
-                _buildRecentAvatar('Sara', 'S', const Color(0xFFEC4899)),
-                _buildRecentAvatar('Khalid', 'K', const Color(0xFF10B981)),
-                _buildRecentAvatar('Osama', 'O', const Color(0xFFF59E0B)),
-              ],
+          // Dynamic Recents
+          if (recentList.isNotEmpty) ...[
+            const Text(
+              'Recent Transfers',
+              style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Color(0xFF64748B)),
             ),
-          ),
+            const SizedBox(height: 16),
+            SizedBox(
+              height: 100,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: recentList.length,
+                itemBuilder: (context, index) {
+                  final item = recentList[index];
+                  final colors = [const Color(0xFF3B82F6), const Color(0xFFEC4899), const Color(0xFF10B981), const Color(0xFFF59E0B), const Color(0xFF6366F1)];
+                  return _buildRecentAvatar(
+                    item.value, 
+                    item.value[0].toUpperCase(), 
+                    colors[index % colors.length],
+                    () {
+                      _idController.text = item.key;
+                      _verifyReceiver();
+                    }
+                  );
+                },
+              ),
+            ),
+          ],
           const SizedBox(height: 32),
           _buildNextButton(enabled: _isVerified),
         ],
@@ -800,32 +821,36 @@ class _SendMoneyViewState extends State<SendMoneyView> {
     );
   }
 
-  Widget _buildRecentAvatar(String name, String initial, Color color) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 20),
-      child: Column(
-        children: [
-          Container(
-            width: 56,
-            height: 56,
-            decoration: BoxDecoration(
-              color: color.withOpacity(0.1),
-              shape: BoxShape.circle,
-              border: Border.all(color: color.withOpacity(0.2), width: 2),
-            ),
-            child: Center(
-              child: Text(
-                initial,
-                style: TextStyle(color: color, fontWeight: FontWeight.bold, fontSize: 20),
+  Widget _buildRecentAvatar(String name, String initial, Color color, VoidCallback onTap) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(12),
+      child: Padding(
+        padding: const EdgeInsets.only(right: 20),
+        child: Column(
+          children: [
+            Container(
+              width: 56,
+              height: 56,
+              decoration: BoxDecoration(
+                color: color.withOpacity(0.1),
+                shape: BoxShape.circle,
+                border: Border.all(color: color.withOpacity(0.2), width: 2),
+              ),
+              child: Center(
+                child: Text(
+                  initial,
+                  style: TextStyle(color: color, fontWeight: FontWeight.bold, fontSize: 20),
+                ),
               ),
             ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            name,
-            style: const TextStyle(fontSize: 12, color: Color(0xFF0F172A), fontWeight: FontWeight.w500),
-          ),
-        ],
+            const SizedBox(height: 8),
+            Text(
+              name,
+              style: const TextStyle(fontSize: 12, color: Color(0xFF0F172A), fontWeight: FontWeight.w500),
+            ),
+          ],
+        ),
       ),
     );
   }
