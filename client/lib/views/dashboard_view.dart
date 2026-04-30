@@ -1,13 +1,52 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:share_plus/share_plus.dart';
 import '../providers/app_provider.dart';
 import '../theme/app_colors.dart';
 import '../widgets/shimmer_loader.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 import 'package:go_router/go_router.dart';
 
-class DashboardView extends StatelessWidget {
+class DashboardView extends StatefulWidget {
   const DashboardView({super.key});
+
+  @override
+  State<DashboardView> createState() => _DashboardViewState();
+}
+
+class _DashboardViewState extends State<DashboardView> {
+  bool _isCopied = false;
+
+  void _copyId(String id) {
+    Clipboard.setData(ClipboardData(text: id));
+    setState(() => _isCopied = true);
+
+    // Reset after 2 seconds
+    Future.delayed(const Duration(seconds: 2), () {
+      if (mounted) setState(() => _isCopied = false);
+    });
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Row(
+          children: [
+            const Icon(LucideIcons.checkCircle2, color: Colors.white, size: 20),
+            const SizedBox(width: 12),
+            Text('ID "$id" copied!'),
+          ],
+        ),
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: const Color(0xFF0F172A),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        duration: const Duration(seconds: 2),
+      ),
+    );
+  }
+
+  void _shareId(String id) {
+    Share.share('My ArabPay ID is: $id\nSend me money securely via ArabPay!');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,19 +75,20 @@ class DashboardView extends StatelessWidget {
                     Row(
                       children: [
                         const CircleAvatar(
-                          radius: 20,
-                          backgroundColor: Color(0xFFFFD1C1),
-                          child: Icon(LucideIcons.user, color: Colors.brown),
+                          radius: 32,
+                          backgroundColor: Colors.transparent,
+                          backgroundImage:
+                              AssetImage('assets/image/app_logo.png'),
                         ),
-                        const SizedBox(width: 12),
-                        const Text(
-                          'ArabPay',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xFF0F172A),
-                          ),
-                        ),
+                        // const SizedBox(width: 12),
+                        // const Text(
+                        //   'ArabPay',
+                        //   style: TextStyle(
+                        //     fontSize: 18,
+                        //     fontWeight: FontWeight.bold,
+                        //     color: Color(0xFF0F172A),
+                        //   ),
+                        // ),
                         const Spacer(),
                         IconButton(
                           icon: const Icon(LucideIcons.bell,
@@ -57,17 +97,8 @@ class DashboardView extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 24),
 
                     // Greetings
-                    Text(
-                      'Welcome, ${user?.arabPayId.split('@')[0].split('').first.toUpperCase()}${user?.arabPayId.split('@')[0].substring(1) ?? 'User'}',
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500,
-                        color: Color(0xFF0F172A),
-                      ),
-                    ),
 
                     const SizedBox(height: 24),
 
@@ -141,23 +172,25 @@ class DashboardView extends StatelessWidget {
                                 ),
                               ),
                               const SizedBox(height: 24),
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: _buildCardAction(
-                                      LucideIcons.copy,
-                                      'Copy',
-                                    ),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: _buildCardAction(
+                                          _isCopied ? LucideIcons.check : LucideIcons.copy,
+                                          _isCopied ? 'Copied!' : 'Copy',
+                                          () => _copyId(user?.arabPayId ?? 'ali@arabpay'),
+                                        ),
+                                      ),
+                                      const SizedBox(width: 12),
+                                      Expanded(
+                                        child: _buildCardAction(
+                                          LucideIcons.share2,
+                                          'Share',
+                                          () => _shareId(user?.arabPayId ?? 'ali@arabpay'),
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                  const SizedBox(width: 12),
-                                  Expanded(
-                                    child: _buildCardAction(
-                                      LucideIcons.share2,
-                                      'Share',
-                                    ),
-                                  ),
-                                ],
-                              ),
                             ],
                           ),
                         ],
@@ -179,49 +212,47 @@ class DashboardView extends StatelessWidget {
                     ),
                     const SizedBox(height: 32),
 
-
-
                     // Monthly Activity Card
-                    _buildSectionHeader('Monthly Activity'),
-                    const SizedBox(height: 16),
-                    Container(
-                      padding: const EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(20),
-                        border: Border.all(color: const Color(0xFFE2E8F0)),
-                      ),
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              _buildBar(40, const Color(0xFFF1F5F9)),
-                              _buildBar(60, const Color(0xFFF1F5F9)),
-                              _buildBar(100, const Color(0xFF1E293B)),
-                              _buildBar(50, const Color(0xFFF1F5F9)),
-                              _buildBar(80, const Color(0xFF065F46)),
-                              _buildBar(30, const Color(0xFFF1F5F9)),
-                              _buildBar(45, const Color(0xFFF1F5F9)),
-                            ],
-                          ),
-                          const SizedBox(height: 12),
-                          const Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text('MON',
-                                  style: TextStyle(
-                                      fontSize: 10, color: Color(0xFF94A3B8))),
-                              Text('SUN',
-                                  style: TextStyle(
-                                      fontSize: 10, color: Color(0xFF94A3B8))),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 32),
+                    // _buildSectionHeader('Monthly Activity'),
+                    // const SizedBox(height: 16),
+                    // Container(
+                    //   padding: const EdgeInsets.all(20),
+                    //   decoration: BoxDecoration(
+                    //     color: Colors.white,
+                    //     borderRadius: BorderRadius.circular(20),
+                    //     border: Border.all(color: const Color(0xFFE2E8F0)),
+                    //   ),
+                    //   child: Column(
+                    //     children: [
+                    //       Row(
+                    //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //         crossAxisAlignment: CrossAxisAlignment.end,
+                    //         children: [
+                    //           _buildBar(40, const Color(0xFFF1F5F9)),
+                    //           _buildBar(60, const Color(0xFFF1F5F9)),
+                    //           _buildBar(100, const Color(0xFF1E293B)),
+                    //           _buildBar(50, const Color(0xFFF1F5F9)),
+                    //           _buildBar(80, const Color(0xFF065F46)),
+                    //           _buildBar(30, const Color(0xFFF1F5F9)),
+                    //           _buildBar(45, const Color(0xFFF1F5F9)),
+                    //         ],
+                    //       ),
+                    //       const SizedBox(height: 12),
+                    //       const Row(
+                    //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //         children: [
+                    //           Text('MON',
+                    //               style: TextStyle(
+                    //                   fontSize: 10, color: Color(0xFF94A3B8))),
+                    //           Text('SUN',
+                    //               style: TextStyle(
+                    //                   fontSize: 10, color: Color(0xFF94A3B8))),
+                    //         ],
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
+                    // const SizedBox(height: 32),
 
                     // Recent Activity
                     Row(
@@ -387,27 +418,31 @@ class DashboardView extends StatelessWidget {
     );
   }
 
-  Widget _buildCardAction(IconData icon, String label) {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 10),
-      decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(icon, color: Colors.white, size: 16),
-          const SizedBox(width: 8),
-          Text(
-            label,
-            style: const TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 14,
+  Widget _buildCardAction(IconData icon, String label, VoidCallback onTap) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(12),
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 10),
+        decoration: BoxDecoration(
+          color: Colors.white.withOpacity(0.1),
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(icon, color: Colors.white, size: 16),
+            const SizedBox(width: 8),
+            Text(
+              label,
+              style: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 14,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -448,8 +483,6 @@ class DashboardView extends StatelessWidget {
       ),
     );
   }
-
-
 
   Widget _buildSectionHeader(String title, {bool showMore = false}) {
     return Row(

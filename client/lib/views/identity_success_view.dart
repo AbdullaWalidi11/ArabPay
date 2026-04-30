@@ -1,12 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 import '../providers/app_provider.dart';
 import '../theme/app_colors.dart';
 
-class IdentitySuccessView extends StatelessWidget {
+class IdentitySuccessView extends StatefulWidget {
   const IdentitySuccessView({super.key});
+
+  @override
+  State<IdentitySuccessView> createState() => _IdentitySuccessViewState();
+}
+
+class _IdentitySuccessViewState extends State<IdentitySuccessView> {
+  bool _isCopied = false;
+
+  void _copyId(String id) {
+    Clipboard.setData(ClipboardData(text: id));
+    setState(() => _isCopied = true);
+    
+    // Reset after 2 seconds
+    Future.delayed(const Duration(seconds: 2), () {
+      if (mounted) setState(() => _isCopied = false);
+    });
+    
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Row(
+          children: [
+            const Icon(LucideIcons.checkCircle2, color: Colors.white, size: 20),
+            const SizedBox(width: 12),
+            Text('ID "$id" copied to clipboard!'),
+          ],
+        ),
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: const Color(0xFF0F172A),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        duration: const Duration(seconds: 2),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +68,7 @@ class IdentitySuccessView extends StatelessWidget {
               ),
             ),
           ),
-          
+
           SafeArea(
             child: SingleChildScrollView(
               padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -58,7 +92,7 @@ class IdentitySuccessView extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 48),
-                  
+
                   // Main Titles
                   const Text(
                     'Your payment\nidentity is ready.',
@@ -81,11 +115,12 @@ class IdentitySuccessView extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 40),
-                  
+
                   // Active Alias Box
                   Container(
                     width: double.infinity,
-                    padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 24),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 32, horizontal: 24),
                     decoration: BoxDecoration(
                       color: const Color(0xFFF1F7FF),
                       borderRadius: BorderRadius.circular(24),
@@ -115,7 +150,7 @@ class IdentitySuccessView extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 40),
-                  
+
                   // Action Buttons
                   SizedBox(
                     width: double.infinity,
@@ -151,22 +186,22 @@ class IdentitySuccessView extends StatelessWidget {
                     width: double.infinity,
                     height: 64,
                     child: OutlinedButton(
-                      onPressed: () {},
+                      onPressed: () => _copyId(user?.arabPayId ?? 'unknown@arabpay'),
                       style: OutlinedButton.styleFrom(
-                        side: const BorderSide(color: Color(0xFFE2E8F0)),
+                        side: BorderSide(color: _isCopied ? const Color(0xFF10B981) : const Color(0xFFE2E8F0)),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16),
                         ),
-                        foregroundColor: const Color(0xFF0F172A),
+                        foregroundColor: _isCopied ? const Color(0xFF10B981) : const Color(0xFF0F172A),
                       ),
-                      child: const Row(
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(LucideIcons.copy, size: 18),
-                          SizedBox(width: 8),
+                          Icon(_isCopied ? LucideIcons.check : LucideIcons.copy, size: 18),
+                          const SizedBox(width: 8),
                           Text(
-                            'Copy ID',
-                            style: TextStyle(
+                            _isCopied ? 'ID Copied!' : 'Copy ID',
+                            style: const TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
                             ),
@@ -175,42 +210,12 @@ class IdentitySuccessView extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 48),
-                  
-                  // Share Section
-                  Row(
-                    children: [
-                      const Expanded(child: Divider(color: Color(0xFFE2E8F0))),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: Text(
-                          'Share with contacts',
-                          style: TextStyle(
-                            fontSize: 13,
-                            color: const Color(0xFF0F172A).withOpacity(0.4),
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ),
-                      const Expanded(child: Divider(color: Color(0xFFE2E8F0))),
-                    ],
-                  ),
+
                   const SizedBox(height: 24),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      _buildShareIcon(LucideIcons.share2),
-                      const SizedBox(width: 24),
-                      _buildShareIcon(LucideIcons.link),
-                      const SizedBox(width: 24),
-                      _buildShareIcon(LucideIcons.messageCircle),
-                    ],
-                  ),
-                  
-                  const SizedBox(height: 60),
                   // Footer
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                     decoration: BoxDecoration(
                       color: const Color(0xFFF0FDF4),
                       borderRadius: BorderRadius.circular(20),
@@ -219,7 +224,8 @@ class IdentitySuccessView extends StatelessWidget {
                     child: const Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Icon(LucideIcons.shieldCheck, color: Color(0xFF166534), size: 16),
+                        Icon(LucideIcons.shieldCheck,
+                            color: Color(0xFF166534), size: 16),
                         SizedBox(width: 8),
                         Text(
                           'Secured by ArabPay Encryption',
@@ -232,25 +238,13 @@ class IdentitySuccessView extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 40),
+                  // const SizedBox(height: 40),
                 ],
               ),
             ),
           ),
         ],
       ),
-    );
-  }
-
-  Widget _buildShareIcon(IconData icon) {
-    return Container(
-      width: 56,
-      height: 56,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        border: Border.all(color: const Color(0xFFE2E8F0)),
-      ),
-      child: Icon(icon, color: const Color(0xFF0F172A), size: 24),
     );
   }
 }
