@@ -141,6 +141,29 @@ class _AddMethodViewState extends State<AddMethodView> {
       currency: _countries.firstWhere((c) => c['country_name'] == _selectedCountry)['currency_code'] ?? 'SAR',
       isActive: true,
     ));
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Row(
+          children: [
+            const Icon(LucideIcons.checkCircle2, color: Colors.white),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Text(
+                'Successfully linked $_selectedInstitution!',
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+          ],
+        ),
+        backgroundColor: const Color(0xFF065F46),
+        behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        margin: const EdgeInsets.all(20),
+        duration: const Duration(seconds: 3),
+      ),
+    );
+
     context.pop();
   }
 
@@ -259,32 +282,24 @@ class _AddMethodViewState extends State<AddMethodView> {
         type: BottomNavigationBarType.fixed,
         selectedItemColor: const Color(0xFF0B132B),
         unselectedItemColor: const Color(0xFF94A3B8),
-        currentIndex: 2,
+        currentIndex: 4,
         backgroundColor: Colors.white,
         elevation: 20,
         onTap: (index) {
           switch (index) {
-            case 0:
-              context.go('/dashboard');
-              break;
-            case 1:
-              context.push('/send-money');
-              break;
-            case 2:
-              context.push('/receive-money');
-              break;
-            case 3:
-              context.push('/profile');
-              break;
+            case 0: context.go('/dashboard'); break;
+            case 1: context.push('/send-money'); break;
+            case 2: context.push('/receive-money'); break;
+            case 3: context.push('/routing-rules'); break;
+            case 4: context.push('/profile'); break;
           }
         },
         items: const [
           BottomNavigationBarItem(icon: Icon(LucideIcons.home), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(LucideIcons.send), label: 'Send'),
-          BottomNavigationBarItem(
-              icon: Icon(LucideIcons.qrCode), label: 'Receive'),
-          BottomNavigationBarItem(
-              icon: Icon(LucideIcons.userCircle), label: 'Profile'),
+          BottomNavigationBarItem(icon: Icon(LucideIcons.qrCode), label: 'Receive'),
+          BottomNavigationBarItem(icon: Icon(LucideIcons.gitBranch), label: 'Routing'),
+          BottomNavigationBarItem(icon: Icon(LucideIcons.userCircle), label: 'Profile'),
         ],
       ),
     );
