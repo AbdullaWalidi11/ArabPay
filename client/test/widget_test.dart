@@ -7,7 +7,7 @@ void main() {
     await tester.pumpWidget(const ArabPayApp());
 
     // Verify that onboarding text is present.
-    expect(find.text('Global Arab Payment Identity'), findsOneWidget);
-    expect(find.text('Claim Your Identity'), findsOneWidget);
+    expect(find.textContaining('Global Arab'), findsOneWidget);
+    expect(find.text('Get Started'), findsOneWidget);
   });
 }

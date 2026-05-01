@@ -140,6 +140,15 @@
         "currency": "KWD",
         "balance": 7500,
         "isPreferred": false
+      },
+      {
+        "id": "acc_4f437fa6",
+        "type": "bank",
+        "provider": "Société Générale Maroc",
+        "country": "Morocco",
+        "currency": "MAD",
+        "balance": 7500,
+        "isPreferred": false
       }
     ],
     "transactions": []
@@ -277,6 +286,74 @@
       },
       {
         "id": "acc_wallet_4632",
+        "type": "wallet",
+        "provider": "stc pay",
+        "country": "Saudi Arabia",
+        "currency": "SAR",
+        "balance": 4500,
+        "isPreferred": false
+      }
+    ],
+    "transactions": []
+  },
+  {
+    "uuid": "usr_08aa5d8f",
+    "alias": "soso@arabpay",
+    "displayName": "Soso",
+    "country": "Saudi Arabia",
+    "verified": true,
+    "routingRules": {
+      "localTransfers": {
+        "enabled": true
+      }
+    },
+    "contacts": [],
+    "linkedAccounts": [
+      {
+        "id": "acc_bank_5d8f",
+        "type": "bank",
+        "provider": "Al Rajhi Bank",
+        "country": "Saudi Arabia",
+        "currency": "SAR",
+        "balance": 15000,
+        "isPreferred": true
+      },
+      {
+        "id": "acc_wallet_5d8f",
+        "type": "wallet",
+        "provider": "stc pay",
+        "country": "Saudi Arabia",
+        "currency": "SAR",
+        "balance": 4500,
+        "isPreferred": false
+      }
+    ],
+    "transactions": []
+  },
+  {
+    "uuid": "usr_fcaa2085",
+    "alias": "koko@arabpay",
+    "displayName": "Koko",
+    "country": "Saudi Arabia",
+    "verified": true,
+    "routingRules": {
+      "localTransfers": {
+        "enabled": true
+      }
+    },
+    "contacts": [],
+    "linkedAccounts": [
+      {
+        "id": "acc_bank_2085",
+        "type": "bank",
+        "provider": "Al Rajhi Bank",
+        "country": "Saudi Arabia",
+        "currency": "SAR",
+        "balance": 15000,
+        "isPreferred": true
+      },
+      {
+        "id": "acc_wallet_2085",
         "type": "wallet",
         "provider": "stc pay",
         "country": "Saudi Arabia",

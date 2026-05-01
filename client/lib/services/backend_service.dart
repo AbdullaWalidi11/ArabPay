@@ -214,4 +214,39 @@ class BackendService {
       return null;
     }
   }
+
+  // ==========================================
+  // REAL API CALL: Execute Transfer (Stage 4)
+  // ==========================================
+  Future<Map<String, dynamic>?> executeTransfer({
+    required String senderUuid,
+    required String senderAccountId,
+    required String receiverAlias,
+    required String receiverAccountId,
+    required double amount,
+  }) async {
+    try {
+      final response = await http.post(
+        Uri.parse('$baseUrl/api/transfers/execute'),
+        headers: {'Content-Type': 'application/json'},
+        body: json.encode({
+          'senderUuid': senderUuid,
+          'senderAccountId': senderAccountId,
+          'receiverAlias': receiverAlias,
+          'receiverAccountId': receiverAccountId,
+          'amount': amount,
+        }),
+      );
+
+      if (response.statusCode == 200) {
+        return json.decode(response.body);
+      } else {
+        print('Transfer failed: ${response.body}');
+        return null;
+      }
+    } catch (e) {
+      print('HTTP Connection Error: $e');
+      return null;
+    }
+  }
 }

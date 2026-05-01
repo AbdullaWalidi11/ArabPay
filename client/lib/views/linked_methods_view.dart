@@ -58,26 +58,25 @@ class _LinkedMethodsViewState extends State<LinkedMethodsView> {
               child: Row(
                 children: [
                   const CircleAvatar(
-                    radius: 20,
-                    backgroundColor: Color(0xFFFFD1C1),
-                    child:
-                        Icon(LucideIcons.user, color: Colors.brown, size: 20),
+                    radius: 32,
+                    backgroundColor: Colors.transparent,
+                    backgroundImage: AssetImage('assets/image/app_logo.png'),
                   ),
                   const SizedBox(width: 12),
-                  const Text(
-                    'ArabPay',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF0F172A),
-                    ),
-                  ),
+                  // const Text(
+                  //   'ArabPay',
+                  //   style: TextStyle(
+                  //     fontSize: 18,
+                  //     fontWeight: FontWeight.bold,
+                  //     color: Color(0xFF0F172A),
+                  //   ),
+                  // ),
                   const Spacer(),
-                  IconButton(
-                    icon:
-                        const Icon(LucideIcons.bell, color: Color(0xFF0F172A)),
-                    onPressed: () {},
-                  ),
+                  // IconButton(
+                  //   icon:
+                  //       const Icon(LucideIcons.bell, color: Color(0xFF0F172A)),
+                  //   onPressed: () {},
+                  // ),
                 ],
               ),
             ),

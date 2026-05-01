@@ -238,49 +238,61 @@ class AppProvider with ChangeNotifier {
     error = null;
     notifyListeners();
     
-    // Simulate high-security processing
-    await Future.delayed(const Duration(seconds: 2));
-
-    final totalDeduction = amount + fee;
-
-    bool success = false;
-    if (sourceMethod.type == 'wallet' && currentUser != null) {
-      if (currentUser!.balance >= totalDeduction) {
-        updateBalance(currentUser!.balance - totalDeduction);
-        success = true;
-      } else {
-        error = "Insufficient Wallet Balance";
-      }
-    } else {
-      final methodIndex = linkedMethods.indexWhere((m) => m.id == sourceMethod.id);
-      if (methodIndex != -1) {
-        if (linkedMethods[methodIndex].balance >= totalDeduction) {
-          linkedMethods[methodIndex].balance -= totalDeduction;
-          success = true;
-        } else {
-          error = "Insufficient funds in ${sourceMethod.provider}";
-        }
-      }
+    if (currentUser == null || currentReceiverTarget == null) {
+      error = "Missing sender or receiver information";
+      isLoading = false;
+      notifyListeners();
+      return false;
     }
 
-    if (success) {
-      // Create a real transaction record
-      final newTx = AppTransaction(
-        id: 'TXN-${DateTime.now().millisecondsSinceEpoch.toString().substring(7)}',
-        date: DateTime.now(),
-        amount: -amount, // Negative for outgoing
-        currency: 'SAR',
-        recipientId: receiverId,
-        recipientName: receiverName,
-        status: 'Completed',
-        routeUsed: sourceMethod.provider,
+    try {
+      final result = await _backendService.executeTransfer(
+        senderUuid: currentUser!.id,
+        senderAccountId: sourceMethod.id,
+        receiverAlias: receiverId,
+        receiverAccountId: currentReceiverTarget!['accountId'],
+        amount: amount,
       );
-      
-      recentTransactions.insert(0, newTx);
-    }
 
-    isLoading = false;
-    notifyListeners();
-    return success;
+      if (result != null) {
+        // Update local balance if it was a wallet transfer (simplified sync)
+        if (sourceMethod.type == 'wallet') {
+          updateBalance(result['senderNewBalance'].toDouble());
+        } else {
+          // Update the specific linked method balance
+          final idx = linkedMethods.indexWhere((m) => m.id == sourceMethod.id);
+          if (idx != -1) {
+            linkedMethods[idx].balance = result['senderNewBalance'].toDouble();
+          }
+        }
+
+        // Add to local history for immediate UI feedback
+        final newTx = AppTransaction(
+          id: result['transactionId'] ?? 'TXN-${DateTime.now().millisecondsSinceEpoch}',
+          date: DateTime.now(),
+          amount: -amount,
+          currency: sourceMethod.currency,
+          recipientId: receiverId,
+          recipientName: receiverName,
+          status: 'Completed',
+          routeUsed: sourceMethod.provider,
+        );
+        recentTransactions.insert(0, newTx);
+
+        isLoading = false;
+        notifyListeners();
+        return true;
+      } else {
+        error = "Transfer failed. Please check your balance.";
+        isLoading = false;
+        notifyListeners();
+        return false;
+      }
+    } catch (e) {
+      error = "Connection error. Transaction aborted.";
+      isLoading = false;
+      notifyListeners();
+      return false;
+    }
   }
 }

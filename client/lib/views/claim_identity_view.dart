@@ -67,26 +67,27 @@ class _ClaimIdentityViewState extends State<ClaimIdentityView> {
                   // Custom App Bar
                   Row(
                     children: [
-                      const CircleAvatar(
-                        radius: 20,
-                        backgroundColor: Color(0xFFFFD1C1),
-                        child: Icon(LucideIcons.user, color: Colors.brown),
-                      ),
-                      const SizedBox(width: 12),
-                      const Text(
-                        'ArabPay',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF0F172A),
-                        ),
-                      ),
+                      // const CircleAvatar(
+                      //   radius: 32,
+                      //   backgroundColor: Colors.transparent,
+                      //   backgroundImage:
+                      //       AssetImage('assets/image/app_logo.png'),
+                      // ),
+                      // const SizedBox(width: 12),
+                      // const Text(
+                      //   'ArabPay',
+                      //   style: TextStyle(
+                      //     fontSize: 18,
+                      //     fontWeight: FontWeight.bold,
+                      //     color: Color(0xFF0F172A),
+                      //   ),
+                      // ),
                       const Spacer(),
-                      IconButton(
-                        icon: const Icon(LucideIcons.bell,
-                            color: Color(0xFF64748B)),
-                        onPressed: () {},
-                      ),
+                      // IconButton(
+                      //   icon: const Icon(LucideIcons.bell,
+                      //       color: Color(0xFF64748B)),
+                      //   onPressed: () {},
+                      // ),
                     ],
                   ),
                   const SizedBox(height: 40),
