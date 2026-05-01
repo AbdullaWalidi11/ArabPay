@@ -15,6 +15,7 @@ class AppProvider with ChangeNotifier {
   List<LinkedMethod> linkedMethods = [];
   List<AppTransaction> recentTransactions = [];
   RoutingRules? routingRules;
+  List<Map<String, dynamic>>? configuredRoutingRules;
 
   bool isLoading = false;
   bool isCheckingAvailability = false;
@@ -98,6 +99,11 @@ class AppProvider with ChangeNotifier {
 
   void addLinkedMethod(LinkedMethod method) {
     linkedMethods.add(method);
+    notifyListeners();
+  }
+
+  void saveConfiguredRoutingRules(List<Map<String, dynamic>> rules) {
+    configuredRoutingRules = rules.map((e) => Map<String, dynamic>.from(e)).toList();
     notifyListeners();
   }
 
