@@ -13,7 +13,8 @@ class BackendService {
   final String baseUrl = 'http://127.0.0.1:3000';
 
   Future<void> init() async {
-    final String response = await rootBundle.loadString('assets/data/mock_data.json');
+    final String response =
+        await rootBundle.loadString('assets/data/mock_data.json');
     _mockData = json.decode(response);
   }
 
@@ -57,7 +58,7 @@ class BackendService {
       );
 
       if (response.statusCode == 201) {
-        return json.decode(response.body); 
+        return json.decode(response.body);
       } else {
         print('Backend rejected: ${response.body}');
         return null;
@@ -68,14 +69,113 @@ class BackendService {
     }
   }
 
-  // validateId with 1.2s delay
+  // ==========================================
+  // REAL API CALL: Validate ID Availability
+  // ==========================================
   Future<bool> validateId(String id) async {
-    await Future.delayed(const Duration(milliseconds: 1200));
-    // Simulation: "ahmed" is taken
-    if (id.toLowerCase() == 'ahmed') {
-      return false; // Not unique
+    try {
+      final response =
+          await http.get(Uri.parse('$baseUrl/api/users/resolve/$id'));
+      // If 404, it means it's available! If 200, it's taken.
+      return response.statusCode == 404;
+    } catch (e) {
+      return false;
     }
-    return true; // Unique
+  }
+
+  // ==========================================
+  // REAL API CALL: Get Receiver Info
+  // ==========================================
+  Future<Map<String, dynamic>?> getReceiverInfo(String id) async {
+    try {
+      final response =
+          await http.get(Uri.parse('$baseUrl/api/users/resolve/$id'));
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        return {
+          'name': data['user']['displayName'],
+          'status': data['user']['verified'] ? 'Verified Member' : 'Member',
+          'country': data['user']['country']
+        };
+      }
+      return null;
+    } catch (e) {
+      print('HTTP Connection Error: $e');
+      return null;
+    }
+  }
+
+  // ==========================================
+  // REAL API CALL: Evaluate Transfer (Stage 2)
+  // ==========================================
+  Future<Map<String, dynamic>?> evaluateTransfer(
+      String senderUuid, String receiverAlias) async {
+    try {
+      final response = await http.post(
+        Uri.parse('$baseUrl/api/transfers/evaluate'),
+        headers: {'Content-Type': 'application/json'},
+        body: json
+            .encode({'senderUuid': senderUuid, 'receiverAlias': receiverAlias}),
+      );
+      if (response.statusCode == 200) {
+        return json.decode(response.body);
+      }
+      return null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  // ==========================================
+  // REAL API CALL: Execute Transfer (Stage 4)
+  // ==========================================
+  Future<Map<String, dynamic>?> executeTransfer({
+    required String senderUuid,
+    required String senderAccountId,
+    required String receiverAlias,
+    required String receiverAccountId,
+    required double amount,
+  }) async {
+    try {
+      final response = await http.post(
+        Uri.parse('$baseUrl/api/transfers/execute'),
+        headers: {'Content-Type': 'application/json'},
+        body: json.encode({
+          'senderUuid': senderUuid,
+          'senderAccountId': senderAccountId,
+          'receiverAlias': receiverAlias,
+          'receiverAccountId': receiverAccountId,
+          'amount': amount,
+        }),
+      );
+      if (response.statusCode == 200) {
+        return json.decode(response.body);
+      }
+      return null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  // ==========================================
+  // REAL API CALL: Save Contact
+  // ==========================================
+  Future<bool> saveContact(
+      String uuid, String targetAlias, String customName) async {
+    try {
+      final response = await http.post(
+        Uri.parse('$baseUrl/api/users/save-contact'),
+        headers: {'Content-Type': 'application/json'},
+        body: json.encode({
+          'uuid': uuid,
+          'targetAlias': targetAlias,
+          'customName': customName,
+        }),
+      );
+      return response.statusCode == 200;
+    } catch (e) {
+      return false;
+    }
   }
 
   // encryptInstruction simulation
