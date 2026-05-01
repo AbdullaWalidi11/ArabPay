@@ -369,5 +369,44 @@
       }
     },
     "linkedAccounts": []
+  },
+  {
+    "uuid": "usr_e1599cef",
+    "alias": "nasr@arabpay",
+    "displayName": "Nasr",
+    "country": "Unknown",
+    "verified": true,
+    "routingRules": {
+      "localTransfers": {
+        "enabled": true
+      }
+    },
+    "linkedAccounts": []
+  },
+  {
+    "uuid": "usr_721cb9a0",
+    "alias": "soma@arabpay",
+    "displayName": "Soma",
+    "country": "Unknown",
+    "verified": true,
+    "routingRules": {
+      "localTransfers": {
+        "enabled": true
+      }
+    },
+    "linkedAccounts": []
+  },
+  {
+    "uuid": "usr_094bf6c9",
+    "alias": "soso@arabpay",
+    "displayName": "Soso",
+    "country": "Unknown",
+    "verified": true,
+    "routingRules": {
+      "localTransfers": {
+        "enabled": true
+      }
+    },
+    "linkedAccounts": []
   }
 ]

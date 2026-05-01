@@ -24,24 +24,25 @@ class ProfileView extends StatelessWidget {
               child: Row(
                 children: [
                   const CircleAvatar(
-                    radius: 20,
-                    backgroundColor: Color(0xFFFFD1C1),
-                    child: Icon(LucideIcons.user, color: Colors.brown, size: 20),
+                    radius: 32,
+                    backgroundColor: Colors.transparent,
+                    backgroundImage: AssetImage('assets/image/app_logo.png'),
                   ),
-                  const SizedBox(width: 12),
-                  const Text(
-                    'ArabPay',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF0F172A),
-                    ),
-                  ),
+                  //const SizedBox(width: 12),
+                  // const Text(
+                  //   'ArabPay',
+                  //   style: TextStyle(
+                  //     fontSize: 18,
+                  //     fontWeight: FontWeight.bold,
+                  //     color: Color(0xFF0F172A),
+                  //   ),
+                  // ),
                   const Spacer(),
-                  IconButton(
-                    icon: const Icon(LucideIcons.bell, color: Color(0xFF0F172A)),
-                    onPressed: () {},
-                  ),
+                  // IconButton(
+                  //   icon:
+                  //       const Icon(LucideIcons.bell, color: Color(0xFF0F172A)),
+                  //   onPressed: () {},
+                  // ),
                 ],
               ),
             ),
@@ -69,8 +70,11 @@ class ProfileView extends StatelessWidget {
                               opacity: 0.03,
                               child: GridView.builder(
                                 physics: const NeverScrollableScrollPhysics(),
-                                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 6),
-                                itemBuilder: (context, index) => const Icon(LucideIcons.star, size: 40),
+                                gridDelegate:
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount: 6),
+                                itemBuilder: (context, index) =>
+                                    const Icon(LucideIcons.star, size: 40),
                               ),
                             ),
                           ),
@@ -81,16 +85,21 @@ class ProfileView extends StatelessWidget {
                                 const CircleAvatar(
                                   radius: 50,
                                   backgroundColor: Color(0xFFF1F5F9),
-                                  child: Icon(LucideIcons.user, size: 50, color: Color(0xFF94A3B8)),
+                                  child: Icon(LucideIcons.user,
+                                      size: 50, color: Color(0xFF94A3B8)),
                                 ),
                                 const SizedBox(height: 16),
                                 Text(
                                   user?.name ?? 'Ali Ahmed',
-                                  style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Color(0xFF0F172A)),
+                                  style: const TextStyle(
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.bold,
+                                      color: Color(0xFF0F172A)),
                                 ),
                                 const SizedBox(height: 8),
                                 Container(
-                                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 12, vertical: 4),
                                   decoration: BoxDecoration(
                                     color: const Color(0xFFEFF6FF),
                                     borderRadius: BorderRadius.circular(20),
@@ -98,11 +107,15 @@ class ProfileView extends StatelessWidget {
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
-                                      const Icon(LucideIcons.checkCircle2, size: 14, color: Color(0xFF1D4ED8)),
+                                      const Icon(LucideIcons.checkCircle2,
+                                          size: 14, color: Color(0xFF1D4ED8)),
                                       const SizedBox(width: 6),
                                       Text(
                                         user?.arabPayId ?? 'ali@arabpay',
-                                        style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: Color(0xFF1D4ED8)),
+                                        style: const TextStyle(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w600,
+                                            color: Color(0xFF1D4ED8)),
                                       ),
                                     ],
                                   ),
@@ -110,9 +123,11 @@ class ProfileView extends StatelessWidget {
                                 const SizedBox(height: 32),
                                 Row(
                                   children: [
-                                    _buildStatTile('Total Balance', '\$12,850.00'),
+                                    _buildStatTile(
+                                        'Total Balance', '\$12,850.00'),
                                     const SizedBox(width: 16),
-                                    _buildStatTile('Status', 'Verified', isStatus: true),
+                                    _buildStatTile('Status', 'Verified',
+                                        isStatus: true),
                                   ],
                                 ),
                               ],
@@ -139,7 +154,8 @@ class ProfileView extends StatelessWidget {
                               color: const Color(0xFF0F172A),
                               borderRadius: BorderRadius.circular(12),
                             ),
-                            child: const Icon(LucideIcons.shieldCheck, color: Colors.white, size: 24),
+                            child: const Icon(LucideIcons.shieldCheck,
+                                color: Colors.white, size: 24),
                           ),
                           const SizedBox(width: 16),
                           const Expanded(
@@ -148,17 +164,22 @@ class ProfileView extends StatelessWidget {
                               children: [
                                 Text(
                                   'Verified ID Status',
-                                  style: TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF0F172A), fontSize: 15),
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Color(0xFF0F172A),
+                                      fontSize: 15),
                                 ),
                                 SizedBox(height: 2),
                                 Text(
                                   'Your account is fully secured',
-                                  style: TextStyle(color: Color(0xFF64748B), fontSize: 12),
+                                  style: TextStyle(
+                                      color: Color(0xFF64748B), fontSize: 12),
                                 ),
                               ],
                             ),
                           ),
-                          const Icon(LucideIcons.checkCircle2, color: Color(0xFF10B981), size: 24),
+                          const Icon(LucideIcons.checkCircle2,
+                              color: Color(0xFF10B981), size: 24),
                         ],
                       ),
                     ),
@@ -166,16 +187,31 @@ class ProfileView extends StatelessWidget {
 
                     const Text(
                       'ACCOUNT SETTINGS',
-                      style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Color(0xFF94A3B8), letterSpacing: 1),
+                      style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF94A3B8),
+                          letterSpacing: 1),
                     ),
                     const SizedBox(height: 16),
 
                     // Settings List
-                    _buildSettingItem(LucideIcons.landmark, 'My Linked Accounts', () => context.push('/linked-methods')),
-                    _buildSettingItem(LucideIcons.gitBranch, 'Routing Preferences', () => context.push('/routing-rules')),
-                    _buildSettingItem(LucideIcons.lock, 'Security & Privacy', () {}),
-                    _buildSettingItem(LucideIcons.bell, 'Notification Settings', () {}),
-                    _buildSettingItem(LucideIcons.helpCircle, 'Support & FAQ', () {}),
+                    _buildSettingItem(
+                        LucideIcons.landmark,
+                        'My Linked Accounts',
+                        () => context.push('/linked-methods')),
+                    _buildSettingItem(
+                        LucideIcons.gitBranch,
+                        'Routing Preferences',
+                        () => context.push('/routing-rules')),
+                    // _buildSettingItem(
+                    //     LucideIcons.lock, 'Security & Privacy', () {}),
+                    // _buildSettingItem(
+                    //     LucideIcons.bell, 'Notification Settings', () {}),
+                    _buildSettingItem(
+                        LucideIcons.helpCircle,
+                        'Support & FAQ',
+                        () => context.push('/support-faq')),
 
                     const SizedBox(height: 32),
                     // Logout Button
@@ -186,7 +222,8 @@ class ProfileView extends StatelessWidget {
                         onPressed: () => context.go('/'),
                         style: OutlinedButton.styleFrom(
                           side: const BorderSide(color: Color(0xFFEF4444)),
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12)),
                           foregroundColor: const Color(0xFFEF4444),
                         ),
                         child: const Row(
@@ -194,7 +231,9 @@ class ProfileView extends StatelessWidget {
                           children: [
                             Icon(LucideIcons.logOut, size: 20),
                             SizedBox(width: 12),
-                            Text('Logout', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                            Text('Logout',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 16)),
                           ],
                         ),
                       ),
@@ -202,8 +241,9 @@ class ProfileView extends StatelessWidget {
                     const SizedBox(height: 24),
                     const Center(
                       child: Text(
-                        'ArabPay Version 2.4.0 (2023)',
-                        style: TextStyle(color: Color(0xFF94A3B8), fontSize: 12),
+                        'ArabPay Version 1.0.0 (2026)',
+                        style:
+                            TextStyle(color: Color(0xFF94A3B8), fontSize: 12),
                       ),
                     ),
                     const SizedBox(height: 40),
@@ -223,17 +263,27 @@ class ProfileView extends StatelessWidget {
         elevation: 20,
         onTap: (index) {
           switch (index) {
-            case 0: context.go('/dashboard'); break;
-            case 1: context.push('/send-money'); break;
-            case 2: context.push('/receive-money'); break;
-            case 3: context.push('/profile'); break;
+            case 0:
+              context.go('/dashboard');
+              break;
+            case 1:
+              context.push('/send-money');
+              break;
+            case 2:
+              context.push('/receive-money');
+              break;
+            case 3:
+              context.push('/profile');
+              break;
           }
         },
         items: const [
           BottomNavigationBarItem(icon: Icon(LucideIcons.home), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(LucideIcons.send), label: 'Send'),
-          BottomNavigationBarItem(icon: Icon(LucideIcons.qrCode), label: 'Receive'),
-          BottomNavigationBarItem(icon: Icon(LucideIcons.userCircle), label: 'Profile'),
+          BottomNavigationBarItem(
+              icon: Icon(LucideIcons.qrCode), label: 'Receive'),
+          BottomNavigationBarItem(
+              icon: Icon(LucideIcons.userCircle), label: 'Profile'),
         ],
       ),
     );
@@ -250,14 +300,20 @@ class ProfileView extends StatelessWidget {
         ),
         child: Column(
           children: [
-            Text(label, style: const TextStyle(fontSize: 10, color: Color(0xFF94A3B8), fontWeight: FontWeight.bold)),
+            Text(label,
+                style: const TextStyle(
+                    fontSize: 10,
+                    color: Color(0xFF94A3B8),
+                    fontWeight: FontWeight.bold)),
             const SizedBox(height: 8),
             Text(
               value,
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
-                color: isStatus ? const Color(0xFF10B981) : const Color(0xFF0F172A),
+                color: isStatus
+                    ? const Color(0xFF10B981)
+                    : const Color(0xFF0F172A),
               ),
             ),
           ],
@@ -292,10 +348,14 @@ class ProfileView extends StatelessWidget {
               const SizedBox(width: 16),
               Text(
                 title,
-                style: const TextStyle(fontWeight: FontWeight.w600, color: Color(0xFF0F172A), fontSize: 15),
+                style: const TextStyle(
+                    fontWeight: FontWeight.w600,
+                    color: Color(0xFF0F172A),
+                    fontSize: 15),
               ),
               const Spacer(),
-              const Icon(LucideIcons.chevronRight, color: Color(0xFF94A3B8), size: 20),
+              const Icon(LucideIcons.chevronRight,
+                  color: Color(0xFF94A3B8), size: 20),
             ],
           ),
         ),

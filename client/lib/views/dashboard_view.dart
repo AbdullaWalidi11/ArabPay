@@ -90,11 +90,11 @@ class _DashboardViewState extends State<DashboardView> {
                         //   ),
                         // ),
                         const Spacer(),
-                        IconButton(
-                          icon: const Icon(LucideIcons.bell,
-                              color: Color(0xFF0F172A)),
-                          onPressed: () {},
-                        ),
+                        // IconButton(
+                        //   icon: const Icon(LucideIcons.bell,
+                        //       color: Color(0xFF0F172A)),
+                        //   onPressed: () {},
+                        // ),
                       ],
                     ),
 
@@ -172,25 +172,29 @@ class _DashboardViewState extends State<DashboardView> {
                                 ),
                               ),
                               const SizedBox(height: 24),
-                                  Row(
-                                    children: [
-                                      Expanded(
-                                        child: _buildCardAction(
-                                          _isCopied ? LucideIcons.check : LucideIcons.copy,
-                                          _isCopied ? 'Copied!' : 'Copy',
-                                          () => _copyId(user?.arabPayId ?? 'ali@arabpay'),
-                                        ),
-                                      ),
-                                      const SizedBox(width: 12),
-                                      Expanded(
-                                        child: _buildCardAction(
-                                          LucideIcons.share2,
-                                          'Share',
-                                          () => _shareId(user?.arabPayId ?? 'ali@arabpay'),
-                                        ),
-                                      ),
-                                    ],
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: _buildCardAction(
+                                      _isCopied
+                                          ? LucideIcons.check
+                                          : LucideIcons.copy,
+                                      _isCopied ? 'Copied!' : 'Copy',
+                                      () => _copyId(
+                                          user?.arabPayId ?? 'ali@arabpay'),
+                                    ),
                                   ),
+                                  const SizedBox(width: 12),
+                                  Expanded(
+                                    child: _buildCardAction(
+                                      LucideIcons.share2,
+                                      'Share',
+                                      () => _shareId(
+                                          user?.arabPayId ?? 'ali@arabpay'),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ],
                           ),
                         ],

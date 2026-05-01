@@ -18,26 +18,33 @@ class RoutingRulesView extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
               child: Row(
                 children: [
-                  const CircleAvatar(
-                    radius: 20,
-                    backgroundColor: Color(0xFFFFD1C1),
-                    child: Icon(LucideIcons.user, color: Colors.brown),
+                  IconButton(
+                    icon: const Icon(LucideIcons.arrowLeft, color: Color(0xFF0F172A)),
+                    onPressed: () => context.pop(),
+                    padding: EdgeInsets.zero,
+                    constraints: const BoxConstraints(),
                   ),
                   const SizedBox(width: 12),
-                  const Text(
-                    'ArabPay',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF0F172A),
-                    ),
+                  const CircleAvatar(
+                    radius: 32,
+                    backgroundColor: Colors.transparent,
+                    backgroundImage: AssetImage('assets/image/app_logo.png'),
                   ),
+                  const SizedBox(width: 12),
+                  // const Text(
+                  //   'ArabPay',
+                  //   style: TextStyle(
+                  //     fontSize: 18,
+                  //     fontWeight: FontWeight.bold,
+                  //     color: Color(0xFF0F172A),
+                  //   ),
+                  // ),
                   const Spacer(),
-                  IconButton(
-                    icon:
-                        const Icon(LucideIcons.bell, color: Color(0xFF0F172A)),
-                    onPressed: () {},
-                  ),
+                  // IconButton(
+                  //   icon:
+                  //       const Icon(LucideIcons.bell, color: Color(0xFF0F172A)),
+                  //   onPressed: () {},
+                  // ),
                 ],
               ),
             ),
@@ -48,17 +55,7 @@ class RoutingRulesView extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Back Link
-                    TextButton.icon(
-                      onPressed: () => context.pop(),
-                      icon: const Icon(LucideIcons.arrowLeft, size: 16),
-                      label: const Text('Back'),
-                      style: TextButton.styleFrom(
-                        foregroundColor: const Color(0xFF0F172A),
-                        padding: EdgeInsets.zero,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
+                    const SizedBox(height: 12),
                     const Text(
                       'Smart Routing Rules',
                       style: TextStyle(
@@ -68,14 +65,14 @@ class RoutingRulesView extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 8),
-                    const Text(
-                      'Let ArabPay choose the best way to receive\nyour money.',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Color(0xFF64748B),
-                        height: 1.4,
-                      ),
-                    ),
+                    // const Text(
+                    //   'Let ArabPay choose the best way to receive\nyour money.',
+                    //   style: TextStyle(
+                    //     fontSize: 16,
+                    //     color: Color(0xFF64748B),
+                    //     height: 1.4,
+                    //   ),
+                    // ),
                     const SizedBox(height: 24),
 
                     // Rule 1: Small Payments

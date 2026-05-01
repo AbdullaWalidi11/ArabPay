@@ -24,7 +24,8 @@ class ReceiveMoneyView extends StatelessWidget {
               child: Row(
                 children: [
                   IconButton(
-                    icon: const Icon(LucideIcons.arrowLeft, color: Color(0xFF0F172A)),
+                    icon: const Icon(LucideIcons.arrowLeft,
+                        color: Color(0xFF0F172A)),
                     onPressed: () => context.pop(),
                   ),
                   const SizedBox(width: 8),
@@ -37,16 +38,17 @@ class ReceiveMoneyView extends StatelessWidget {
                     ),
                   ),
                   const Spacer(),
-                  IconButton(
-                    icon: const Icon(LucideIcons.bell, color: Color(0xFF0F172A)),
-                    onPressed: () {},
-                  ),
+                  // IconButton(
+                  //   icon:
+                  //       const Icon(LucideIcons.bell, color: Color(0xFF0F172A)),
+                  //   onPressed: () {},
+                  // ),
                   const SizedBox(width: 8),
-                  const CircleAvatar(
-                    radius: 16,
-                    backgroundColor: Color(0xFFFFD1C1),
-                    child: Icon(LucideIcons.user, color: Colors.brown, size: 16),
-                  ),
+                  // const CircleAvatar(
+                  //   radius: 16,
+                  //   backgroundColor: Color(0xFFFFD1C1),
+                  //   child: Icon(LucideIcons.user, color: Colors.brown, size: 16),
+                  // ),
                 ],
               ),
             ),
@@ -78,7 +80,10 @@ class ReceiveMoneyView extends StatelessWidget {
                           const SizedBox(height: 24),
                           const Text(
                             'ArabPay ID',
-                            style: TextStyle(color: Color(0xFF94A3B8), fontSize: 14, fontWeight: FontWeight.w500),
+                            style: TextStyle(
+                                color: Color(0xFF94A3B8),
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500),
                           ),
                           const SizedBox(height: 8),
                           Text(
@@ -100,17 +105,20 @@ class ReceiveMoneyView extends StatelessWidget {
                               border: Border.all(
                                 color: const Color(0xFFE2E8F0),
                                 width: 2,
-                                style: BorderStyle.solid, // Note: Dashed would need custom painter
+                                style: BorderStyle
+                                    .solid, // Note: Dashed would need custom painter
                               ),
                             ),
                             child: const Center(
-                              child: Icon(LucideIcons.qrCode, size: 140, color: Color(0xFF94A3B8)),
+                              child: Icon(LucideIcons.qrCode,
+                                  size: 140, color: Color(0xFF94A3B8)),
                             ),
                           ),
                           const SizedBox(height: 12),
                           // Verified Badge
                           Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 12, vertical: 6),
                             decoration: BoxDecoration(
                               color: const Color(0xFF065F46),
                               borderRadius: BorderRadius.circular(20),
@@ -118,11 +126,15 @@ class ReceiveMoneyView extends StatelessWidget {
                             child: const Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                Icon(LucideIcons.checkCircle2, color: Colors.white, size: 14),
+                                Icon(LucideIcons.checkCircle2,
+                                    color: Colors.white, size: 14),
                                 SizedBox(width: 6),
                                 Text(
                                   'VERIFIED',
-                                  style: TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold),
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.bold),
                                 ),
                               ],
                             ),
@@ -158,40 +170,49 @@ class ReceiveMoneyView extends StatelessWidget {
 
                     const Text(
                       'Quick Share',
-                      style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Color(0xFF0F172A)),
+                      style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF0F172A)),
                     ),
                     const SizedBox(height: 16),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        _buildShareOption(LucideIcons.messageSquare, 'WhatsApp', const Color(0xFFDCFCE7), const Color(0xFF166534)),
-                        _buildShareOption(LucideIcons.mail, 'Email', const Color(0xFFEFF6FF), const Color(0xFF1D4ED8)),
-                        _buildShareOption(LucideIcons.messageCircle, 'SMS', const Color(0xFFF8FAFF), const Color(0xFF64748B)),
+                        _buildShareOption(LucideIcons.messageSquare, 'WhatsApp',
+                            const Color(0xFFDCFCE7), const Color(0xFF166534)),
+                        _buildShareOption(LucideIcons.mail, 'Email',
+                            const Color(0xFFEFF6FF), const Color(0xFF1D4ED8)),
+                        _buildShareOption(LucideIcons.messageCircle, 'SMS',
+                            const Color(0xFFF8FAFF), const Color(0xFF64748B)),
                       ],
                     ),
                     const SizedBox(height: 24),
 
                     // Info Note
-                    Container(
-                      padding: const EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFEFF6FF),
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      child: const Row(
-                        children: [
-                          Icon(LucideIcons.info, color: Color(0xFF1D4ED8)),
-                          const SizedBox(width: 16),
-                          Expanded(
-                            child: Text(
-                              'Share this ID to receive money without exposing your private bank details.',
-                              style: TextStyle(color: Color(0xFF1D4ED8), fontSize: 13, height: 1.4),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 24),
+                    // Container(
+                    //   padding: const EdgeInsets.all(20),
+                    //   decoration: BoxDecoration(
+                    //     color: const Color(0xFFEFF6FF),
+                    //     borderRadius: BorderRadius.circular(16),
+                    //   ),
+                    //   child: const Row(
+                    //     children: [
+                    //       Icon(LucideIcons.info, color: Color(0xFF1D4ED8)),
+                    //       const SizedBox(width: 16),
+                    //       Expanded(
+                    //         child: Text(
+                    //           'Share this ID to receive money without exposing your private bank details.',
+                    //           style: TextStyle(
+                    //               color: Color(0xFF1D4ED8),
+                    //               fontSize: 13,
+                    //               height: 1.4),
+                    //         ),
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
+                    //const SizedBox(height: 24),
 
                     // Footer Card
                     Container(
@@ -209,7 +230,8 @@ class ReceiveMoneyView extends StatelessWidget {
                               color: const Color(0xFFDCFCE7),
                               shape: BoxShape.circle,
                             ),
-                            child: const Icon(LucideIcons.shieldCheck, color: Color(0xFF166534)),
+                            child: const Icon(LucideIcons.shieldCheck,
+                                color: Color(0xFF166534)),
                           ),
                           const SizedBox(width: 16),
                           const Expanded(
@@ -228,7 +250,8 @@ class ReceiveMoneyView extends StatelessWidget {
                                 SizedBox(height: 4),
                                 Text(
                                   'All transactions are protected by bank-grade security protocols.',
-                                  style: TextStyle(color: Color(0xFF64748B), fontSize: 12),
+                                  style: TextStyle(
+                                      color: Color(0xFF64748B), fontSize: 12),
                                 ),
                               ],
                             ),
@@ -253,23 +276,36 @@ class ReceiveMoneyView extends StatelessWidget {
         elevation: 20,
         onTap: (index) {
           switch (index) {
-            case 0: context.go('/dashboard'); break;
-            case 1: context.push('/send-money'); break;
-            case 2: context.push('/receive-money'); break;
-            case 3: context.push('/profile'); break;
+            case 0:
+              context.go('/dashboard');
+              break;
+            case 1:
+              context.push('/send-money');
+              break;
+            case 2:
+              context.push('/receive-money');
+              break;
+            case 3:
+              context.push('/profile');
+              break;
           }
         },
         items: const [
           BottomNavigationBarItem(icon: Icon(LucideIcons.home), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(LucideIcons.send), label: 'Send'),
-          BottomNavigationBarItem(icon: Icon(LucideIcons.qrCode), label: 'Receive'),
-          BottomNavigationBarItem(icon: Icon(LucideIcons.userCircle), label: 'Profile'),
+          BottomNavigationBarItem(
+              icon: Icon(LucideIcons.qrCode), label: 'Receive'),
+          BottomNavigationBarItem(
+              icon: Icon(LucideIcons.userCircle), label: 'Profile'),
         ],
       ),
     );
   }
 
-  Widget _buildCardButton({required IconData icon, required String label, required bool isPrimary}) {
+  Widget _buildCardButton(
+      {required IconData icon,
+      required String label,
+      required bool isPrimary}) {
     return Container(
       height: 56,
       decoration: BoxDecoration(
@@ -280,7 +316,9 @@ class ReceiveMoneyView extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(icon, color: isPrimary ? Colors.white : const Color(0xFF0F172A), size: 20),
+          Icon(icon,
+              color: isPrimary ? Colors.white : const Color(0xFF0F172A),
+              size: 20),
           const SizedBox(width: 8),
           Text(
             label,
@@ -294,7 +332,8 @@ class ReceiveMoneyView extends StatelessWidget {
     );
   }
 
-  Widget _buildShareOption(IconData icon, String label, Color bg, Color iconColor) {
+  Widget _buildShareOption(
+      IconData icon, String label, Color bg, Color iconColor) {
     return Column(
       children: [
         Container(
@@ -320,7 +359,10 @@ class ReceiveMoneyView extends StatelessWidget {
         const SizedBox(height: 8),
         Text(
           label,
-          style: const TextStyle(fontSize: 12, color: Color(0xFF64748B), fontWeight: FontWeight.w500),
+          style: const TextStyle(
+              fontSize: 12,
+              color: Color(0xFF64748B),
+              fontWeight: FontWeight.w500),
         ),
       ],
     );
