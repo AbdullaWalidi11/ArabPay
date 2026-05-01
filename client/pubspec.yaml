@@ -42,7 +42,8 @@ dependencies:
   lucide_icons: ^0.257.0
   google_fonts: ^6.3.0
   flutter_animate: ^4.5.2
-  go_router: any
+  go_router: ^16.1.0
+  share_plus: ^12.0.2
 
 dev_dependencies:
   flutter_test:
@@ -70,7 +71,7 @@ flutter:
   assets:
     - assets/data/mock_data.json
     - assets/data/institutions.json
-  #   - images/a_dot_ham.jpeg
+    - assets/image/app_logo.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

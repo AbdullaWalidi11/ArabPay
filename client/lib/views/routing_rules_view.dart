@@ -178,25 +178,33 @@ class _RoutingRulesViewState extends State<RoutingRulesView> {
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
               child: Row(
                 children: [
-                  const CircleAvatar(
-                    radius: 20,
-                    backgroundColor: Color(0xFFFFD1C1),
-                    child: Icon(LucideIcons.user, color: Colors.brown),
+                  IconButton(
+                    icon: const Icon(LucideIcons.arrowLeft, color: Color(0xFF0F172A)),
+                    onPressed: () => context.pop(),
+                    padding: EdgeInsets.zero,
+                    constraints: const BoxConstraints(),
                   ),
                   const SizedBox(width: 12),
-                  const Text(
-                    'ArabPay',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF0F172A),
-                    ),
+                  const CircleAvatar(
+                    radius: 32,
+                    backgroundColor: Colors.transparent,
+                    backgroundImage: AssetImage('assets/image/app_logo.png'),
                   ),
+                  const SizedBox(width: 12),
+                  // const Text(
+                  //   'ArabPay',
+                  //   style: TextStyle(
+                  //     fontSize: 18,
+                  //     fontWeight: FontWeight.bold,
+                  //     color: Color(0xFF0F172A),
+                  //   ),
+                  // ),
                   const Spacer(),
-                  IconButton(
-                    icon: const Icon(LucideIcons.bell, color: Color(0xFF0F172A)),
-                    onPressed: () {},
-                  ),
+                  // IconButton(
+                  //   icon:
+                  //       const Icon(LucideIcons.bell, color: Color(0xFF0F172A)),
+                  //   onPressed: () {},
+                  // ),
                 ],
               ),
             ),
@@ -207,7 +215,7 @@ class _RoutingRulesViewState extends State<RoutingRulesView> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(height: 8),
+                    const SizedBox(height: 12),
                     const Text(
                       'Smart Routing Rules',
                       style: TextStyle(
@@ -216,6 +224,15 @@ class _RoutingRulesViewState extends State<RoutingRulesView> {
                         color: Color(0xFF0F172A),
                       ),
                     ),
+                    const SizedBox(height: 8),
+                    // const Text(
+                    //   'Let ArabPay choose the best way to receive\nyour money.',
+                    //   style: TextStyle(
+                    //     fontSize: 16,
+                    //     color: Color(0xFF64748B),
+                    //     height: 1.4,
+                    //   ),
+                    // ),
                     const SizedBox(height: 24),
 
                     // Dynamically build rules

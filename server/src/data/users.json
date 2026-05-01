@@ -254,9 +254,9 @@
     "linkedAccounts": []
   },
   {
-    "uuid": "usr_157d9746",
-    "alias": "ali7@arabpay",
-    "displayName": "Ali7",
+    "uuid": "usr_96967ac7",
+    "alias": "adwerd@arabpay",
+    "displayName": "Adwerd",
     "country": "Unknown",
     "verified": true,
     "routingRules": {
@@ -267,9 +267,9 @@
     "linkedAccounts": []
   },
   {
-    "uuid": "usr_fe21906b",
-    "alias": "whatever@arabpay",
-    "displayName": "Whatever",
+    "uuid": "usr_78c1b2e6",
+    "alias": "aziz@arabpay",
+    "displayName": "Aziz",
     "country": "Unknown",
     "verified": true,
     "routingRules": {
@@ -280,9 +280,9 @@
     "linkedAccounts": []
   },
   {
-    "uuid": "usr_6eba777f",
-    "alias": "whatever2@arabpay",
-    "displayName": "Whatever2",
+    "uuid": "usr_2d823292",
+    "alias": "qasim@arabpay",
+    "displayName": "Qasim",
     "country": "Unknown",
     "verified": true,
     "routingRules": {
@@ -293,9 +293,9 @@
     "linkedAccounts": []
   },
   {
-    "uuid": "usr_a8315010",
-    "alias": "s@arabpay",
-    "displayName": "S",
+    "uuid": "usr_204dbe4c",
+    "alias": "walid@arabpay",
+    "displayName": "Walid",
     "country": "Unknown",
     "verified": true,
     "routingRules": {
@@ -319,9 +319,9 @@
     "linkedAccounts": []
   },
   {
-    "uuid": "usr_9850c662",
-    "alias": "d@arabpay",
-    "displayName": "D",
+    "uuid": "usr_842d0b09",
+    "alias": "ramez@arabpay",
+    "displayName": "Ramez",
     "country": "Unknown",
     "verified": true,
     "routingRules": {
@@ -332,9 +332,9 @@
     "linkedAccounts": []
   },
   {
-    "uuid": "usr_abbe738a",
-    "alias": "w@arabpay",
-    "displayName": "W",
+    "uuid": "usr_15e92099",
+    "alias": "suad@arabpay",
+    "displayName": "Suad",
     "country": "Unknown",
     "verified": true,
     "routingRules": {
@@ -345,16 +345,3 @@
     "linkedAccounts": []
   },
   {
-    "uuid": "usr_4f4777e8",
-    "alias": "dwaawddwa  wd@arabpay",
-    "displayName": "Dwaawddwa  wd",
-    "country": "Unknown",
-    "verified": true,
-    "routingRules": {
-      "localTransfers": {
-        "enabled": true
-      }
-    },
-    "linkedAccounts": []
-  }
-]

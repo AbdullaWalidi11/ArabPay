@@ -15,6 +15,7 @@ import '../views/confirm_payment_view.dart';
 import '../views/money_delivered_view.dart';
 import '../views/track_transfer_view.dart';
 import '../views/profile_view.dart';
+import '../views/support_faq_view.dart';
 
 class AppRouter {
   static final router = GoRouter(
@@ -79,6 +80,10 @@ class AppRouter {
       GoRoute(
         path: '/profile',
         builder: (context, state) => const ProfileView(),
+      ),
+      GoRoute(
+        path: '/support-faq',
+        builder: (context, state) => const SupportFaqView(),
       ),
     ],
   );
