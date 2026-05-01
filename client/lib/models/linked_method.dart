@@ -21,13 +21,18 @@ class LinkedMethod {
 
   factory LinkedMethod.fromJson(Map<String, dynamic> json) {
     return LinkedMethod(
-      id: json['id'],
-      type: json['type'],
-      provider: json['provider'],
-      accountEnding: json['account_ending'],
-      country: json['country'],
-      currency: json['currency'],
-      isActive: json['is_active'],
+      id: json['id'] ?? '',
+      type: json['type'] ?? 'bank',
+      provider: json['provider'] ?? 'Unknown',
+      accountEnding: json['account_ending'] ??
+          (((json['id']?.toString().length ?? 0) > 4)
+              ? json['id']
+                  .toString()
+                  .substring(json['id'].toString().length - 4)
+              : '0000'),
+      country: json['country'] ?? 'Unknown',
+      currency: json['currency'] ?? 'SAR',
+      isActive: json['is_active'] ?? json['isActive'] ?? true,
       balance: (json['balance'] ?? 5000.0).toDouble(),
     );
   }

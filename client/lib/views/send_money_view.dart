@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:go_router/go_router.dart';
@@ -24,6 +25,7 @@ class _SendMoneyViewState extends State<SendMoneyView> {
   bool _isVerifying = false;
   String? _receiverName;
   String? _receiverStatus;
+  Timer? _debounce;
 
   // Step 2 State
   RoutingResult? _selectedRoute;
@@ -38,10 +40,17 @@ class _SendMoneyViewState extends State<SendMoneyView> {
     _idController.dispose();
     _nameToSaveController.dispose();
     _amountController.dispose();
+    _debounce?.cancel();
     super.dispose();
   }
 
-  void _nextStep() {
+  void _nextStep() async {
+    if (_currentStep == 0) {
+      final provider = context.read<AppProvider>();
+      // Evaluate backend routes using the identity verified in Step 1
+      provider.evaluateTransfer(_idController.text);
+    }
+
     if (_currentStep < 3) {
       setState(() => _currentStep++);
       _pageController.animateToPage(
@@ -244,7 +253,10 @@ class _SendMoneyViewState extends State<SendMoneyView> {
                 TextField(
                   controller: _idController,
                   onChanged: (val) {
-                    if (val.length >= 3) _verifyReceiver();
+                    if (_debounce?.isActive ?? false) _debounce!.cancel();
+                    _debounce = Timer(const Duration(seconds: 2), () {
+                      if (val.length >= 3) _verifyReceiver();
+                    });
                   },
                   decoration: InputDecoration(
                     hintText: 'Enter @arabpay_id or Name',
@@ -354,9 +366,14 @@ class _SendMoneyViewState extends State<SendMoneyView> {
   // --- STEP 2: SUGGESTED ACCOUNTS & WALLETS ---
   Widget _buildStep2() {
     final provider = context.watch<AppProvider>();
-    // Pre-calculate routes for suggestion
-    final walletRoute = provider.getRouteResult(500); 
-    final bankRoute = provider.getRouteResult(5000); 
+    
+    if (provider.isLoading) {
+      return const Center(child: CircularProgressIndicator());
+    }
+
+    if (provider.evaluatedRoutes.isEmpty) {
+      return const Center(child: Text("No compatible routes found."));
+    }
 
     return SingleChildScrollView(
       padding: const EdgeInsets.all(24),
@@ -369,24 +386,22 @@ class _SendMoneyViewState extends State<SendMoneyView> {
           ),
           const SizedBox(height: 8),
           const Text(
-            'We have analyzed the accounts and found the most optimal ways to transfer money.',
+            'We have analyzed the accounts and found the most optimal ways to transfer money based on currency and balances.',
             style: TextStyle(color: Color(0xFF64748B), fontSize: 14),
           ),
           const SizedBox(height: 32),
           
-          if (walletRoute != null)
-            _buildRouteOption(
-              result: walletRoute,
-              isOptimal: true,
-            ),
-          const SizedBox(height: 16),
-          if (bankRoute != null)
-            _buildRouteOption(
-              result: bankRoute,
-              isOptimal: false,
-            ),
+          ...provider.evaluatedRoutes.map((route) {
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 16.0),
+              child: _buildRouteOption(
+                result: route,
+                isOptimal: route.isOptimal,
+              ),
+            );
+          }),
             
-          const SizedBox(height: 32),
+          const SizedBox(height: 16),
           _buildNextButton(enabled: _selectedRoute != null),
         ],
       ),
@@ -566,7 +581,7 @@ class _SendMoneyViewState extends State<SendMoneyView> {
             child: Column(
               children: [
                 Text(
-                  'Available Balance: ${user?.balance.toStringAsFixed(2) ?? "0.00"} SAR',
+                  'Available Balance: ${_selectedRoute?.method.balance.toStringAsFixed(2) ?? "0.00"} SAR',
                   style: const TextStyle(color: Color(0xFF64748B), fontWeight: FontWeight.w500, fontSize: 14),
                 ),
                 if (_amount > 0) ...[
@@ -574,15 +589,15 @@ class _SendMoneyViewState extends State<SendMoneyView> {
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                     decoration: BoxDecoration(
-                      color: ((user?.balance ?? 0.0) - _amount - (_selectedRoute?.fee ?? 0)) < 0 
+                      color: ((_selectedRoute?.method.balance ?? 0.0) - _amount - (_selectedRoute?.fee ?? 0)) < 0 
                         ? const Color(0xFFFEF2F2) 
                         : const Color(0xFFF0FDF4),
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Text(
-                      'Remaining after transfer: ${((user?.balance ?? 0.0) - _amount - (_selectedRoute?.fee ?? 0)).toStringAsFixed(2)} SAR',
+                      'Remaining after transfer: ${((_selectedRoute?.method.balance ?? 0.0) - _amount - (_selectedRoute?.fee ?? 0)).toStringAsFixed(2)} SAR',
                       style: TextStyle(
-                        color: ((user?.balance ?? 0.0) - _amount - (_selectedRoute?.fee ?? 0)) < 0 
+                        color: ((_selectedRoute?.method.balance ?? 0.0) - _amount - (_selectedRoute?.fee ?? 0)) < 0 
                           ? const Color(0xFFEF4444) 
                           : const Color(0xFF166534),
                         fontWeight: FontWeight.bold,
@@ -633,7 +648,7 @@ class _SendMoneyViewState extends State<SendMoneyView> {
               ),
             ),
           const SizedBox(height: 32),
-          _buildNextButton(enabled: _amount > 0 && (_amount + (_selectedRoute?.fee ?? 0)) <= (user?.balance ?? 0)),
+          _buildNextButton(enabled: _amount > 0 && (_amount + (_selectedRoute?.fee ?? 0)) <= (_selectedRoute?.method.balance ?? 0)),
         ],
       ),
     );

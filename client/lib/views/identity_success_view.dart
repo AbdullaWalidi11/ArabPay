@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 import '../providers/app_provider.dart';
-import '../theme/app_colors.dart';
 
 class IdentitySuccessView extends StatefulWidget {
   const IdentitySuccessView({super.key});

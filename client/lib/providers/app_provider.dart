@@ -46,8 +46,46 @@ class AppProvider with ChangeNotifier {
     }
   }
 
-  RoutingResult? getRouteResult(double amount) {
-    return routingEngine?.determineBestRoute(amount);
+  List<RoutingResult> evaluatedRoutes = [];
+  Map<String, dynamic>? currentReceiverTarget;
+
+  Future<void> evaluateTransfer(String receiverAlias) async {
+    isLoading = true;
+    error = null;
+    notifyListeners();
+
+    if (currentUser == null) return;
+
+    final result = await _backendService.evaluateTransfer(currentUser!.id, receiverAlias);
+    if (result != null && result['evaluation'] != null && result['evaluation']['success'] == true) {
+      currentReceiverTarget = result['evaluation']['receiverTarget'];
+      final List options = result['evaluation']['senderOptions'];
+      
+      evaluatedRoutes = options.map((opt) {
+        return RoutingResult(
+          method: LinkedMethod(
+            id: opt['id'],
+            type: opt['type'],
+            provider: opt['provider'],
+            currency: opt['currency'],
+            country: opt['country'] ?? 'Unknown',
+            accountEnding: opt['id'].toString().length > 4 ? opt['id'].toString().substring(opt['id'].toString().length - 4) : '0000',
+            isActive: true,
+            balance: (opt['balance'] ?? 0).toDouble(),
+          ),
+          fee: (opt['isRecommended'] ?? false) ? 0.0 : 5.0,
+          estimatedTimeSeconds: 2.0,
+          isOptimal: opt['isRecommended'] ?? false,
+          matchReason: opt['matchReason'] ?? '',
+        );
+      }).toList();
+    } else {
+      error = "Failed to evaluate routes";
+      evaluatedRoutes = [];
+    }
+
+    isLoading = false;
+    notifyListeners();
   }
 
   Future<bool> claimIdentity(String requestedId) async {
@@ -97,9 +135,41 @@ class AppProvider with ChangeNotifier {
     }
   }
 
-  void addLinkedMethod(LinkedMethod method) {
-    linkedMethods.add(method);
+  Future<bool> linkMethod({
+    required String type,
+    required String provider,
+    required String country,
+    required String currency,
+    double? balance,
+    bool isPreferred = false,
+  }) async {
+    if (currentUser == null) return false;
+    
+    isLoading = true;
+    error = null;
     notifyListeners();
+
+    final result = await _backendService.linkAccount(
+      uuid: currentUser!.id,
+      type: type,
+      provider: provider,
+      country: country,
+      currency: currency,
+      balance: balance,
+      isPreferred: isPreferred,
+    );
+
+    isLoading = false;
+    if (result != null && result['account'] != null) {
+      final newMethod = LinkedMethod.fromJson(result['account']);
+      linkedMethods.add(newMethod);
+      notifyListeners();
+      return true;
+    } else {
+      error = "Failed to link account";
+      notifyListeners();
+      return false;
+    }
   }
 
   void saveConfiguredRoutingRules(List<Map<String, dynamic>> rules) {
@@ -168,49 +238,61 @@ class AppProvider with ChangeNotifier {
     error = null;
     notifyListeners();
     
-    // Simulate high-security processing
-    await Future.delayed(const Duration(seconds: 2));
-
-    final totalDeduction = amount + fee;
-
-    bool success = false;
-    if (sourceMethod.type == 'wallet' && currentUser != null) {
-      if (currentUser!.balance >= totalDeduction) {
-        updateBalance(currentUser!.balance - totalDeduction);
-        success = true;
-      } else {
-        error = "Insufficient Wallet Balance";
-      }
-    } else {
-      final methodIndex = linkedMethods.indexWhere((m) => m.id == sourceMethod.id);
-      if (methodIndex != -1) {
-        if (linkedMethods[methodIndex].balance >= totalDeduction) {
-          linkedMethods[methodIndex].balance -= totalDeduction;
-          success = true;
-        } else {
-          error = "Insufficient funds in ${sourceMethod.provider}";
-        }
-      }
+    if (currentUser == null || currentReceiverTarget == null) {
+      error = "Missing sender or receiver information";
+      isLoading = false;
+      notifyListeners();
+      return false;
     }
 
-    if (success) {
-      // Create a real transaction record
-      final newTx = AppTransaction(
-        id: 'TXN-${DateTime.now().millisecondsSinceEpoch.toString().substring(7)}',
-        date: DateTime.now(),
-        amount: -amount, // Negative for outgoing
-        currency: 'SAR',
-        recipientId: receiverId,
-        recipientName: receiverName,
-        status: 'Completed',
-        routeUsed: sourceMethod.provider,
+    try {
+      final result = await _backendService.executeTransfer(
+        senderUuid: currentUser!.id,
+        senderAccountId: sourceMethod.id,
+        receiverAlias: receiverId,
+        receiverAccountId: currentReceiverTarget!['accountId'],
+        amount: amount,
       );
-      
-      recentTransactions.insert(0, newTx);
-    }
 
-    isLoading = false;
-    notifyListeners();
-    return success;
+      if (result != null) {
+        // Update local balance if it was a wallet transfer (simplified sync)
+        if (sourceMethod.type == 'wallet') {
+          updateBalance(result['senderNewBalance'].toDouble());
+        } else {
+          // Update the specific linked method balance
+          final idx = linkedMethods.indexWhere((m) => m.id == sourceMethod.id);
+          if (idx != -1) {
+            linkedMethods[idx].balance = result['senderNewBalance'].toDouble();
+          }
+        }
+
+        // Add to local history for immediate UI feedback
+        final newTx = AppTransaction(
+          id: result['transactionId'] ?? 'TXN-${DateTime.now().millisecondsSinceEpoch}',
+          date: DateTime.now(),
+          amount: -amount,
+          currency: sourceMethod.currency,
+          recipientId: receiverId,
+          recipientName: receiverName,
+          status: 'Completed',
+          routeUsed: sourceMethod.provider,
+        );
+        recentTransactions.insert(0, newTx);
+
+        isLoading = false;
+        notifyListeners();
+        return true;
+      } else {
+        error = "Transfer failed. Please check your balance.";
+        isLoading = false;
+        notifyListeners();
+        return false;
+      }
+    } catch (e) {
+      error = "Connection error. Transaction aborted.";
+      isLoading = false;
+      notifyListeners();
+      return false;
+    }
   }
 }

@@ -6,7 +6,6 @@ import 'package:provider/provider.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 import '../providers/app_provider.dart';
 import '../models/linked_method.dart';
-import '../theme/app_colors.dart';
 
 class AddMethodView extends StatefulWidget {
   const AddMethodView({super.key});
@@ -130,17 +129,21 @@ class _AddMethodViewState extends State<AddMethodView> {
     if (!mounted) return;
 
     final provider = context.read<AppProvider>();
-    provider.addLinkedMethod(LinkedMethod(
-      id: 'new_${DateTime.now().millisecondsSinceEpoch}',
+    final success = await provider.linkMethod(
       type: _selectedMethod!.toLowerCase().contains('wallet') ? 'wallet' : 'bank',
       provider: _selectedInstitution!,
-      accountEnding: _accountDetailsController.text.length > 4 
-          ? _accountDetailsController.text.substring(_accountDetailsController.text.length - 4)
-          : '9988',
       country: _selectedCountry!,
       currency: _countries.firstWhere((c) => c['country_name'] == _selectedCountry)['currency_code'] ?? 'SAR',
-      isActive: true,
-    ));
+      balance: 7500.0, // Starting balance for demo!
+      isPreferred: provider.linkedMethods.isEmpty,
+    );
+
+    if (!success) {
+      setState(() {
+        _loadingStatus = 'Failed to link account. Please try again.';
+      });
+      return;
+    }
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(

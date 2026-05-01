@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/app_provider.dart';
-import '../theme/app_colors.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 
@@ -264,27 +263,19 @@ class ProfileView extends StatelessWidget {
         elevation: 20,
         onTap: (index) {
           switch (index) {
-            case 0:
-              context.go('/dashboard');
-              break;
-            case 1:
-              context.push('/send-money');
-              break;
-            case 2:
-              context.push('/receive-money');
-              break;
-            case 3:
-              context.push('/profile');
-              break;
+            case 0: context.go('/dashboard'); break;
+            case 1: context.push('/send-money'); break;
+            case 2: context.push('/receive-money'); break;
+            case 3: context.push('/routing-rules'); break;
+            case 4: context.push('/profile'); break;
           }
         },
         items: const [
           BottomNavigationBarItem(icon: Icon(LucideIcons.home), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(LucideIcons.send), label: 'Send'),
-          BottomNavigationBarItem(
-              icon: Icon(LucideIcons.qrCode), label: 'Receive'),
-          BottomNavigationBarItem(
-              icon: Icon(LucideIcons.userCircle), label: 'Profile'),
+          BottomNavigationBarItem(icon: Icon(LucideIcons.qrCode), label: 'Receive'),
+          BottomNavigationBarItem(icon: Icon(LucideIcons.gitBranch), label: 'Routing'),
+          BottomNavigationBarItem(icon: Icon(LucideIcons.userCircle), label: 'Profile'),
         ],
       ),
     );

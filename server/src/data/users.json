@@ -3,39 +3,44 @@
     "uuid": "usr_9b1deb4d",
     "alias": "ali@arabpay",
     "displayName": "Ali A.",
-    "country": "Turkey",
+    "country": "United Arab Emirates",
     "verified": true,
     "routingRules": {
-      "smallPayments": {
-        "enabled": true,
-        "threshold": 500,
-        "targetId": "acc_1"
-      },
-      "largePayments": {
-        "enabled": true,
-        "threshold": 5000,
-        "targetId": "acc_2"
-      },
       "localTransfers": {
         "enabled": true
       }
     },
+    "contacts": [],
     "linkedAccounts": [
       {
         "id": "acc_1",
         "type": "wallet",
         "provider": "STC Pay",
+        "country": "Saudi Arabia",
         "currency": "SAR",
+        "balance": 5000,
         "isPreferred": false
       },
       {
         "id": "acc_2",
         "type": "bank",
-        "provider": "Ziraat Bank",
-        "currency": "TRY",
+        "provider": "Emirates NBD",
+        "country": "United Arab Emirates",
+        "currency": "AED",
+        "balance": 15000,
         "isPreferred": true
+      },
+      {
+        "id": "acc_b1b45525",
+        "type": "bank",
+        "provider": "Alinma Bank",
+        "country": "Saudi Arabia",
+        "currency": "SAR",
+        "balance": 2000,
+        "isPreferred": false
       }
-    ]
+    ],
+    "transactions": []
   },
   {
     "uuid": "usr_1a2b3c4d",
@@ -48,15 +53,19 @@
         "enabled": true
       }
     },
+    "contacts": [],
     "linkedAccounts": [
       {
         "id": "acc_3",
         "type": "bank",
         "provider": "Al Rajhi Bank",
+        "country": "Saudi Arabia",
         "currency": "SAR",
+        "balance": 10000,
         "isPreferred": true
       }
-    ]
+    ],
+    "transactions": []
   },
   {
     "uuid": "usr_dcf1f947",
@@ -69,12 +78,85 @@
         "enabled": true
       }
     },
-    "linkedAccounts": []
+    "contacts": [],
+    "linkedAccounts": [
+      {
+        "id": "acc_3271fbb0",
+        "type": "wallet",
+        "provider": "STC Pay",
+        "country": "Saudi Arabia",
+        "currency": "SAR",
+        "balance": 1500,
+        "isPreferred": true
+      }
+    ],
+    "transactions": []
   },
   {
-    "uuid": "usr_32ad828f",
-    "alias": "osama@arabpay",
-    "displayName": "Osama",
+    "uuid": "ahmed123",
+    "alias": "ahmed@arabpay",
+    "displayName": "Ahmed Al-Farsi",
+    "country": "Saudi Arabia",
+    "verified": true,
+    "routingRules": {
+      "localTransfers": {
+        "enabled": true
+      }
+    },
+    "contacts": [],
+    "linkedAccounts": [
+      {
+        "id": "bank_1",
+        "type": "bank",
+        "provider": "Al Rajhi Bank",
+        "country": "Saudi Arabia",
+        "currency": "SAR",
+        "balance": 14500,
+        "isPreferred": true
+      },
+      {
+        "id": "wallet_1",
+        "type": "wallet",
+        "provider": "STC Pay",
+        "country": "Saudi Arabia",
+        "currency": "SAR",
+        "balance": 5000,
+        "isPreferred": false
+      },
+      {
+        "id": "bank_tr_1",
+        "type": "bank",
+        "provider": "Emirates NBD",
+        "country": "United Arab Emirates",
+        "currency": "AED",
+        "balance": 8000,
+        "isPreferred": false
+      },
+      {
+        "id": "acc_a3be9d21",
+        "type": "bank",
+        "provider": "Commercial Bank of Kuwait",
+        "country": "Kuwait",
+        "currency": "KWD",
+        "balance": 7500,
+        "isPreferred": false
+      },
+      {
+        "id": "acc_4f437fa6",
+        "type": "bank",
+        "provider": "Société Générale Maroc",
+        "country": "Morocco",
+        "currency": "MAD",
+        "balance": 7500,
+        "isPreferred": false
+      }
+    ],
+    "transactions": []
+  },
+  {
+    "uuid": "usr_5d6add7e",
+    "alias": "ihsan@arabpay",
+    "displayName": "Ihsan",
     "country": "Unknown",
     "verified": true,
     "routingRules": {
@@ -82,12 +164,83 @@
         "enabled": true
       }
     },
-    "linkedAccounts": []
+    "contacts": [],
+    "linkedAccounts": [
+      {
+        "id": "bank_ihsan_1",
+        "type": "bank",
+        "provider": "Emirates NBD",
+        "country": "United Arab Emirates",
+        "currency": "AED",
+        "balance": 25000,
+        "isPreferred": true
+      },
+      {
+        "id": "wallet_ihsan_1",
+        "type": "wallet",
+        "provider": "Emirates NBD",
+        "country": "United Arab Emirates",
+        "currency": "AED",
+        "balance": 1200,
+        "isPreferred": false
+      }
+    ],
+    "transactions": []
   },
   {
-    "uuid": "usr_4978b963",
-    "alias": "hadi@arabpay",
-    "displayName": "Hadi",
+    "uuid": "sara_999",
+    "alias": "sara@arabpay",
+    "displayName": "Sara Khalid",
+    "country": "Saudi Arabia",
+    "verified": true,
+    "routingRules": {
+      "localTransfers": {
+        "enabled": true
+      }
+    },
+    "contacts": [],
+    "linkedAccounts": [
+      {
+        "id": "sara_bank_1",
+        "type": "bank",
+        "provider": "Al Rajhi Bank",
+        "country": "Saudi Arabia",
+        "currency": "SAR",
+        "balance": 2500,
+        "isPreferred": true
+      }
+    ],
+    "transactions": []
+  },
+  {
+    "uuid": "tech_corp_uuid",
+    "alias": "company@arabpay",
+    "displayName": "Tech Corp",
+    "country": "United Arab Emirates",
+    "verified": true,
+    "routingRules": {
+      "localTransfers": {
+        "enabled": true
+      }
+    },
+    "contacts": [],
+    "linkedAccounts": [
+      {
+        "id": "tech_bank_1",
+        "type": "bank",
+        "provider": "First Abu Dhabi Bank",
+        "country": "United Arab Emirates",
+        "currency": "AED",
+        "balance": 100000,
+        "isPreferred": true
+      }
+    ],
+    "transactions": []
+  },
+  {
+    "uuid": "usr_e4c4545d",
+    "alias": "yousef@arabpay",
+    "displayName": "Yousef",
     "country": "Unknown",
     "verified": true,
     "routingRules": {
@@ -95,253 +248,120 @@
         "enabled": true
       }
     },
-    "linkedAccounts": []
+    "contacts": [],
+    "linkedAccounts": [
+      {
+        "id": "acc_65aab1dc",
+        "type": "bank",
+        "provider": "Bank of Africa Morocco",
+        "country": "Morocco",
+        "currency": "MAD",
+        "balance": 7500,
+        "isPreferred": true
+      }
+    ],
+    "transactions": []
   },
   {
-    "uuid": "usr_f56a32c3",
-    "alias": "alo@arabpay",
-    "displayName": "Alo",
-    "country": "Unknown",
+    "uuid": "usr_5e934632",
+    "alias": "rashed@arabpay",
+    "displayName": "Rashed",
+    "country": "Saudi Arabia",
     "verified": true,
     "routingRules": {
       "localTransfers": {
         "enabled": true
       }
     },
-    "linkedAccounts": []
+    "contacts": [],
+    "linkedAccounts": [
+      {
+        "id": "acc_bank_4632",
+        "type": "bank",
+        "provider": "Al Rajhi Bank",
+        "country": "Saudi Arabia",
+        "currency": "SAR",
+        "balance": 15000,
+        "isPreferred": true
+      },
+      {
+        "id": "acc_wallet_4632",
+        "type": "wallet",
+        "provider": "stc pay",
+        "country": "Saudi Arabia",
+        "currency": "SAR",
+        "balance": 4500,
+        "isPreferred": false
+      }
+    ],
+    "transactions": []
   },
   {
-    "uuid": "usr_c83005ed",
-    "alias": "ayman@arabpay",
-    "displayName": "Ayman",
-    "country": "Unknown",
+    "uuid": "usr_08aa5d8f",
+    "alias": "soso@arabpay",
+    "displayName": "Soso",
+    "country": "Saudi Arabia",
     "verified": true,
     "routingRules": {
       "localTransfers": {
         "enabled": true
       }
     },
-    "linkedAccounts": []
+    "contacts": [],
+    "linkedAccounts": [
+      {
+        "id": "acc_bank_5d8f",
+        "type": "bank",
+        "provider": "Al Rajhi Bank",
+        "country": "Saudi Arabia",
+        "currency": "SAR",
+        "balance": 15000,
+        "isPreferred": true
+      },
+      {
+        "id": "acc_wallet_5d8f",
+        "type": "wallet",
+        "provider": "stc pay",
+        "country": "Saudi Arabia",
+        "currency": "SAR",
+        "balance": 4500,
+        "isPreferred": false
+      }
+    ],
+    "transactions": []
   },
   {
-    "uuid": "usr_6639b9fd",
-    "alias": "anas@arabpay",
-    "displayName": "Anas",
-    "country": "Unknown",
+    "uuid": "usr_fcaa2085",
+    "alias": "koko@arabpay",
+    "displayName": "Koko",
+    "country": "Saudi Arabia",
     "verified": true,
     "routingRules": {
       "localTransfers": {
         "enabled": true
       }
     },
-    "linkedAccounts": []
-  },
-  {
-    "uuid": "usr_bd376295",
-    "alias": "azzam@arabpay",
-    "displayName": "Azzam",
-    "country": "Unknown",
-    "verified": true,
-    "routingRules": {
-      "localTransfers": {
-        "enabled": true
+    "contacts": [],
+    "linkedAccounts": [
+      {
+        "id": "acc_bank_2085",
+        "type": "bank",
+        "provider": "Al Rajhi Bank",
+        "country": "Saudi Arabia",
+        "currency": "SAR",
+        "balance": 15000,
+        "isPreferred": true
+      },
+      {
+        "id": "acc_wallet_2085",
+        "type": "wallet",
+        "provider": "stc pay",
+        "country": "Saudi Arabia",
+        "currency": "SAR",
+        "balance": 4500,
+        "isPreferred": false
       }
-    },
-    "linkedAccounts": []
-  },
-  {
-    "uuid": "usr_500303f2",
-    "alias": "alex@arabpay",
-    "displayName": "Alex",
-    "country": "Unknown",
-    "verified": true,
-    "routingRules": {
-      "localTransfers": {
-        "enabled": true
-      }
-    },
-    "linkedAccounts": []
-  },
-  {
-    "uuid": "usr_dd8376ab",
-    "alias": "suzan@arabpay",
-    "displayName": "Suzan",
-    "country": "Unknown",
-    "verified": true,
-    "routingRules": {
-      "localTransfers": {
-        "enabled": true
-      }
-    },
-    "linkedAccounts": []
-  },
-  {
-    "uuid": "usr_9c1a5690",
-    "alias": "amjed@arabpay",
-    "displayName": "Amjed",
-    "country": "Unknown",
-    "verified": true,
-    "routingRules": {
-      "localTransfers": {
-        "enabled": true
-      }
-    },
-    "linkedAccounts": []
-  },
-  {
-    "uuid": "usr_316477da",
-    "alias": "muna@arabpay",
-    "displayName": "Muna",
-    "country": "Unknown",
-    "verified": true,
-    "routingRules": {
-      "localTransfers": {
-        "enabled": true
-      }
-    },
-    "linkedAccounts": []
-  },
-  {
-    "uuid": "usr_181aec32",
-    "alias": "jorge@arabpay",
-    "displayName": "Jorge",
-    "country": "Unknown",
-    "verified": true,
-    "routingRules": {
-      "localTransfers": {
-        "enabled": true
-      }
-    },
-    "linkedAccounts": []
-  },
-  {
-    "uuid": "usr_da33ba38",
-    "alias": "amani@arabpay",
-    "displayName": "Amani",
-    "country": "Unknown",
-    "verified": true,
-    "routingRules": {
-      "localTransfers": {
-        "enabled": true
-      }
-    },
-    "linkedAccounts": []
-  },
-  {
-    "uuid": "usr_9cd5a7c6",
-    "alias": "anad@arabpay",
-    "displayName": "Anad",
-    "country": "Unknown",
-    "verified": true,
-    "routingRules": {
-      "localTransfers": {
-        "enabled": true
-      }
-    },
-    "linkedAccounts": []
-  },
-  {
-    "uuid": "usr_a6a14958",
-    "alias": "hanan@arabpay",
-    "displayName": "Hanan",
-    "country": "Unknown",
-    "verified": true,
-    "routingRules": {
-      "localTransfers": {
-        "enabled": true
-      }
-    },
-    "linkedAccounts": []
-  },
-  {
-    "uuid": "usr_96967ac7",
-    "alias": "adwerd@arabpay",
-    "displayName": "Adwerd",
-    "country": "Unknown",
-    "verified": true,
-    "routingRules": {
-      "localTransfers": {
-        "enabled": true
-      }
-    },
-    "linkedAccounts": []
-  },
-  {
-    "uuid": "usr_78c1b2e6",
-    "alias": "aziz@arabpay",
-    "displayName": "Aziz",
-    "country": "Unknown",
-    "verified": true,
-    "routingRules": {
-      "localTransfers": {
-        "enabled": true
-      }
-    },
-    "linkedAccounts": []
-  },
-  {
-    "uuid": "usr_2d823292",
-    "alias": "qasim@arabpay",
-    "displayName": "Qasim",
-    "country": "Unknown",
-    "verified": true,
-    "routingRules": {
-      "localTransfers": {
-        "enabled": true
-      }
-    },
-    "linkedAccounts": []
-  },
-  {
-    "uuid": "usr_204dbe4c",
-    "alias": "walid@arabpay",
-    "displayName": "Walid",
-    "country": "Unknown",
-    "verified": true,
-    "routingRules": {
-      "localTransfers": {
-        "enabled": true
-      }
-    },
-    "linkedAccounts": []
-  },
-  {
-    "uuid": "usr_4fc73005",
-    "alias": "a@arabpay",
-    "displayName": "A",
-    "country": "Unknown",
-    "verified": true,
-    "routingRules": {
-      "localTransfers": {
-        "enabled": true
-      }
-    },
-    "linkedAccounts": []
-  },
-  {
-    "uuid": "usr_842d0b09",
-    "alias": "ramez@arabpay",
-    "displayName": "Ramez",
-    "country": "Unknown",
-    "verified": true,
-    "routingRules": {
-      "localTransfers": {
-        "enabled": true
-      }
-    },
-    "linkedAccounts": []
-  },
-  {
-    "uuid": "usr_15e92099",
-    "alias": "suad@arabpay",
-    "displayName": "Suad",
-    "country": "Unknown",
-    "verified": true,
-    "routingRules": {
-      "localTransfers": {
-        "enabled": true
-      }
-    },
-    "linkedAccounts": []
-  },
-  {
+    ],
+    "transactions": []
+  }
+]

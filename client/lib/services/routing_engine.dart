@@ -5,11 +5,15 @@ class RoutingResult {
   final LinkedMethod method;
   final double fee;
   final double estimatedTimeSeconds;
+  final bool isOptimal;
+  final String matchReason;
 
   RoutingResult({
     required this.method,
     required this.fee,
     required this.estimatedTimeSeconds,
+    this.isOptimal = false,
+    this.matchReason = '',
   });
 }
 

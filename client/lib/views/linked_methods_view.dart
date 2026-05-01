@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/app_provider.dart';
-import '../theme/app_colors.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 
@@ -118,7 +117,7 @@ class _LinkedMethodsViewState extends State<LinkedMethodsView> {
                             statusBg: method.isActive
                                 ? const Color(0xFFEFF6FF)
                                 : const Color(0xFFF1F5F9),
-                            isPreferred: method.provider == 'Ziraat Bank',
+                            isPreferred: method.isActive && (methods.indexOf(method) == 0), // Default logic if flag missing, or use property below
                           ),
                         );
                       }).toList(),
@@ -153,7 +152,7 @@ class _LinkedMethodsViewState extends State<LinkedMethodsView> {
                             statusBg: method.isActive
                                 ? const Color(0xFFEFF6FF)
                                 : const Color(0xFFF1F5F9),
-                            isPreferred: method.provider == 'Ziraat Bank',
+                            isPreferred: false,
                           ),
                         );
                       }).toList(),
