@@ -22,10 +22,12 @@ const saveUsers = (usersArray) => fs.writeFileSync(dbPath, JSON.stringify(usersA
 // ==========================================
 export const createAlias = (req, res) => {
     // Flutter will send this in the body
+    console.log('Incoming headers:', req.headers);
+    console.log('Incoming body:', req.body);
     const { requestedAlias, displayName, country } = req.body;
 
     if (!requestedAlias) {
-        return res.status(400).json({ error: 'Alias is required' });
+        return res.status(400).json({ error: `Alias is required. Received body: ${JSON.stringify(req.body)}` });
     }
 
     let users = getUsers();

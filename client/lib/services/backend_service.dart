@@ -19,13 +19,57 @@ class BackendService {
   }
 
   Future<User> getUser() async {
-    await Future.delayed(const Duration(milliseconds: 800)); // Simulate network
+    try {
+      final response =
+          await http.get(Uri.parse('$baseUrl/api/users/profile/ahmed123'));
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        final userMap = data['user'];
+        return User(
+          id: userMap['uuid'],
+          arabPayId: userMap['alias'],
+          name: userMap['displayName'],
+          balance: 0.0, // We'll sum this from linked methods
+          currency: "SAR",
+          isVerified: userMap['verified'],
+        );
+      }
+    } catch (e) {
+      print("Fetch user error: $e");
+    }
+
+    // Fallback to mock
     if (_mockData == null) await init();
     return User.fromJson(_mockData!['user']);
   }
 
   Future<List<LinkedMethod>> getLinkedMethods() async {
-    await Future.delayed(const Duration(milliseconds: 600));
+    try {
+      final response =
+          await http.get(Uri.parse('$baseUrl/api/users/profile/ahmed123'));
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        final List methods = data['user']['linkedAccounts'];
+        return methods.map((e) {
+          return LinkedMethod(
+            id: e['id'],
+            type: e['type'],
+            provider: e['provider'],
+            accountEnding: e['id'].toString().length > 4
+                ? e['id'].toString().substring(e['id'].toString().length - 4)
+                : '0000',
+            country: e['country'],
+            currency: e['currency'],
+            isActive: true,
+            balance: (e['balance'] ?? 0).toDouble(),
+          );
+        }).toList();
+      }
+    } catch (e) {
+      print("Fetch methods error: $e");
+    }
+
+    // Fallback to mock
     if (_mockData == null) await init();
     return (_mockData!['linked_methods'] as List)
         .map((e) => LinkedMethod.fromJson(e))
@@ -73,20 +117,19 @@ class BackendService {
   // REAL API CALL: Validate ID Availability
   // ==========================================
   Future<bool> validateId(String id) async {
-    try {
-      final response =
-          await http.get(Uri.parse('$baseUrl/api/users/resolve/$id'));
-      // If 404, it means it's available! If 200, it's taken.
-      return response.statusCode == 404;
-    } catch (e) {
-      return false;
+    await Future.delayed(const Duration(milliseconds: 1200));
+    // Simulation: "ahmed", "ali", "sara", "ayman" are taken
+    final normalized = id.toLowerCase().trim().replaceFirst('@arabpay', '');
+    if (normalized == 'ahmed' ||
+        normalized == 'ali' ||
+        normalized == 'sara' ||
+        normalized == 'ayman') {
+      return false; // Not unique
     }
+    return true; // Unique
   }
 
-  // ==========================================
-  // REAL API CALL: Get Receiver Info
-  // ==========================================
-  Future<Map<String, dynamic>?> getReceiverInfo(String id) async {
+  Future<Map<String, String>?> getReceiverInfo(String id) async {
     try {
       final response =
           await http.get(Uri.parse('$baseUrl/api/users/resolve/$id'));
@@ -122,59 +165,8 @@ class BackendService {
       }
       return null;
     } catch (e) {
+      print('HTTP Connection Error: $e');
       return null;
-    }
-  }
-
-  // ==========================================
-  // REAL API CALL: Execute Transfer (Stage 4)
-  // ==========================================
-  Future<Map<String, dynamic>?> executeTransfer({
-    required String senderUuid,
-    required String senderAccountId,
-    required String receiverAlias,
-    required String receiverAccountId,
-    required double amount,
-  }) async {
-    try {
-      final response = await http.post(
-        Uri.parse('$baseUrl/api/transfers/execute'),
-        headers: {'Content-Type': 'application/json'},
-        body: json.encode({
-          'senderUuid': senderUuid,
-          'senderAccountId': senderAccountId,
-          'receiverAlias': receiverAlias,
-          'receiverAccountId': receiverAccountId,
-          'amount': amount,
-        }),
-      );
-      if (response.statusCode == 200) {
-        return json.decode(response.body);
-      }
-      return null;
-    } catch (e) {
-      return null;
-    }
-  }
-
-  // ==========================================
-  // REAL API CALL: Save Contact
-  // ==========================================
-  Future<bool> saveContact(
-      String uuid, String targetAlias, String customName) async {
-    try {
-      final response = await http.post(
-        Uri.parse('$baseUrl/api/users/save-contact'),
-        headers: {'Content-Type': 'application/json'},
-        body: json.encode({
-          'uuid': uuid,
-          'targetAlias': targetAlias,
-          'customName': customName,
-        }),
-      );
-      return response.statusCode == 200;
-    } catch (e) {
-      return false;
     }
   }
 
@@ -184,5 +176,42 @@ class BackendService {
     var bytes = utf8.encode(payload); // data being hashed
     var digest = sha256.convert(bytes);
     return digest.toString();
+  }
+
+  // ==========================================
+  // REAL API CALL: Link Account
+  // ==========================================
+  Future<Map<String, dynamic>?> linkAccount({
+    required String uuid,
+    required String type,
+    required String provider,
+    required String country,
+    required String currency,
+    double? balance,
+    bool isPreferred = false,
+  }) async {
+    try {
+      final response = await http.post(
+        Uri.parse('$baseUrl/api/users/link-account'),
+        headers: {'Content-Type': 'application/json'},
+        body: json.encode({
+          'uuid': uuid,
+          'type': type,
+          'provider': provider,
+          'country': country,
+          'currency': currency,
+          'balance': balance,
+          'isPreferred': isPreferred,
+        }),
+      );
+
+      if (response.statusCode == 200) {
+        return json.decode(response.body);
+      }
+      return null;
+    } catch (e) {
+      print('Link Account Error: $e');
+      return null;
+    }
   }
 }

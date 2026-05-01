@@ -15,8 +15,11 @@ class AppProvider with ChangeNotifier {
   List<LinkedMethod> linkedMethods = [];
   List<AppTransaction> recentTransactions = [];
   RoutingRules? routingRules;
+  List<Map<String, dynamic>>? configuredRoutingRules;
 
   bool isLoading = false;
+  bool isCheckingAvailability = false;
+  bool? isAliasAvailable;
   String? error;
 
   Future<void> loadInitialData() async {
@@ -43,8 +46,46 @@ class AppProvider with ChangeNotifier {
     }
   }
 
-  RoutingResult? getRouteResult(double amount) {
-    return routingEngine?.determineBestRoute(amount);
+  List<RoutingResult> evaluatedRoutes = [];
+  Map<String, dynamic>? currentReceiverTarget;
+
+  Future<void> evaluateTransfer(String receiverAlias) async {
+    isLoading = true;
+    error = null;
+    notifyListeners();
+
+    if (currentUser == null) return;
+
+    final result = await _backendService.evaluateTransfer(currentUser!.id, receiverAlias);
+    if (result != null && result['evaluation'] != null && result['evaluation']['success'] == true) {
+      currentReceiverTarget = result['evaluation']['receiverTarget'];
+      final List options = result['evaluation']['senderOptions'];
+      
+      evaluatedRoutes = options.map((opt) {
+        return RoutingResult(
+          method: LinkedMethod(
+            id: opt['id'],
+            type: opt['type'],
+            provider: opt['provider'],
+            currency: opt['currency'],
+            country: opt['country'] ?? 'Unknown',
+            accountEnding: opt['id'].toString().length > 4 ? opt['id'].toString().substring(opt['id'].toString().length - 4) : '0000',
+            isActive: true,
+            balance: (opt['balance'] ?? 0).toDouble(),
+          ),
+          fee: (opt['isRecommended'] ?? false) ? 0.0 : 5.0,
+          estimatedTimeSeconds: 2.0,
+          isOptimal: opt['isRecommended'] ?? false,
+          matchReason: opt['matchReason'] ?? '',
+        );
+      }).toList();
+    } else {
+      error = "Failed to evaluate routes";
+      evaluatedRoutes = [];
+    }
+
+    isLoading = false;
+    notifyListeners();
   }
 
   Future<bool> claimIdentity(String requestedId) async {
@@ -94,13 +135,152 @@ class AppProvider with ChangeNotifier {
     }
   }
 
-  void addLinkedMethod(LinkedMethod method) {
-    linkedMethods.add(method);
+  Future<bool> linkMethod({
+    required String type,
+    required String provider,
+    required String country,
+    required String currency,
+    double? balance,
+    bool isPreferred = false,
+  }) async {
+    if (currentUser == null) return false;
+    
+    isLoading = true;
+    error = null;
+    notifyListeners();
+
+    final result = await _backendService.linkAccount(
+      uuid: currentUser!.id,
+      type: type,
+      provider: provider,
+      country: country,
+      currency: currency,
+      balance: balance,
+      isPreferred: isPreferred,
+    );
+
+    isLoading = false;
+    if (result != null && result['account'] != null) {
+      final newMethod = LinkedMethod.fromJson(result['account']);
+      linkedMethods.add(newMethod);
+      notifyListeners();
+      return true;
+    } else {
+      error = "Failed to link account";
+      notifyListeners();
+      return false;
+    }
+  }
+
+  void saveConfiguredRoutingRules(List<Map<String, dynamic>> rules) {
+    configuredRoutingRules = rules.map((e) => Map<String, dynamic>.from(e)).toList();
     notifyListeners();
   }
 
   // Use BackendService for encryption simulation
-  Future<String> encryptInstruction(String payload) {
-    return _backendService.encryptInstruction(payload);
+  Future<String> encryptInstruction(String payload) async {
+    isLoading = true;
+    notifyListeners();
+    try {
+      return await _backendService.encryptInstruction(payload);
+    } finally {
+      isLoading = false;
+      notifyListeners();
+    }
+  }
+
+  Future<Map<String, String>?> verifyReceiver(String id) {
+    return _backendService.getReceiverInfo(id);
+  }
+
+  void clearError() {
+    error = null;
+    notifyListeners();
+  }
+
+  Future<void> checkAvailability(String id) async {
+    if (id.isEmpty) {
+      isAliasAvailable = null;
+      notifyListeners();
+      return;
+    }
+
+    isCheckingAvailability = true;
+    error = null;
+    notifyListeners();
+
+    // Mock real-time check
+    isAliasAvailable = await _backendService.validateId(id);
+    
+    isCheckingAvailability = false;
+    notifyListeners();
+  }
+
+  void resetAvailability() {
+    isAliasAvailable = null;
+    isCheckingAvailability = false;
+    notifyListeners();
+  }
+
+  void setAvailability(bool available) {
+    isAliasAvailable = available;
+    notifyListeners();
+  }
+
+  Future<bool> processTransaction({
+    required double amount,
+    required double fee,
+    required LinkedMethod sourceMethod,
+    required String receiverId,
+    required String receiverName,
+  }) async {
+    isLoading = true;
+    error = null;
+    notifyListeners();
+    
+    // Simulate high-security processing
+    await Future.delayed(const Duration(seconds: 2));
+
+    final totalDeduction = amount + fee;
+
+    bool success = false;
+    if (sourceMethod.type == 'wallet' && currentUser != null) {
+      if (currentUser!.balance >= totalDeduction) {
+        updateBalance(currentUser!.balance - totalDeduction);
+        success = true;
+      } else {
+        error = "Insufficient Wallet Balance";
+      }
+    } else {
+      final methodIndex = linkedMethods.indexWhere((m) => m.id == sourceMethod.id);
+      if (methodIndex != -1) {
+        if (linkedMethods[methodIndex].balance >= totalDeduction) {
+          linkedMethods[methodIndex].balance -= totalDeduction;
+          success = true;
+        } else {
+          error = "Insufficient funds in ${sourceMethod.provider}";
+        }
+      }
+    }
+
+    if (success) {
+      // Create a real transaction record
+      final newTx = AppTransaction(
+        id: 'TXN-${DateTime.now().millisecondsSinceEpoch.toString().substring(7)}',
+        date: DateTime.now(),
+        amount: -amount, // Negative for outgoing
+        currency: 'SAR',
+        recipientId: receiverId,
+        recipientName: receiverName,
+        status: 'Completed',
+        routeUsed: sourceMethod.provider,
+      );
+      
+      recentTransactions.insert(0, newTx);
+    }
+
+    isLoading = false;
+    notifyListeners();
+    return success;
   }
 }

@@ -61,6 +61,7 @@ class ProfileView extends StatelessWidget {
                         border: Border.all(color: const Color(0xFFE2E8F0)),
                       ),
                       child: Stack(
+                        alignment: Alignment.center,
                         children: [
                           // Star Pattern Background (Simulated)
                           Positioned.fill(
@@ -106,58 +107,9 @@ class ProfileView extends StatelessWidget {
                                     ],
                                   ),
                                 ),
-                                const SizedBox(height: 32),
-                                Row(
-                                  children: [
-                                    _buildStatTile('Total Balance', '\$12,850.00'),
-                                    const SizedBox(width: 16),
-                                    _buildStatTile('Status', 'Verified', isStatus: true),
-                                  ],
-                                ),
                               ],
                             ),
                           ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 24),
-
-                    // Verified ID Status Bar
-                    Container(
-                      padding: const EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(20),
-                        border: Border.all(color: const Color(0xFFE2E8F0)),
-                      ),
-                      child: Row(
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.all(12),
-                            decoration: BoxDecoration(
-                              color: const Color(0xFF0F172A),
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            child: const Icon(LucideIcons.shieldCheck, color: Colors.white, size: 24),
-                          ),
-                          const SizedBox(width: 16),
-                          const Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Verified ID Status',
-                                  style: TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF0F172A), fontSize: 15),
-                                ),
-                                SizedBox(height: 2),
-                                Text(
-                                  'Your account is fully secured',
-                                  style: TextStyle(color: Color(0xFF64748B), fontSize: 12),
-                                ),
-                              ],
-                            ),
-                          ),
-                          const Icon(LucideIcons.checkCircle2, color: Color(0xFF10B981), size: 24),
                         ],
                       ),
                     ),
@@ -172,9 +124,6 @@ class ProfileView extends StatelessWidget {
                     // Settings List
                     _buildSettingItem(LucideIcons.landmark, 'My Linked Accounts', () => context.push('/linked-methods')),
                     _buildSettingItem(LucideIcons.gitBranch, 'Routing Preferences', () => context.push('/routing-rules')),
-                    _buildSettingItem(LucideIcons.lock, 'Security & Privacy', () {}),
-                    _buildSettingItem(LucideIcons.bell, 'Notification Settings', () {}),
-                    _buildSettingItem(LucideIcons.helpCircle, 'Support & FAQ', () {}),
 
                     const SizedBox(height: 32),
                     // Logout Button
@@ -217,7 +166,7 @@ class ProfileView extends StatelessWidget {
         type: BottomNavigationBarType.fixed,
         selectedItemColor: const Color(0xFF0B132B),
         unselectedItemColor: const Color(0xFF94A3B8),
-        currentIndex: 3, // Profile selected
+        currentIndex: 4,
         backgroundColor: Colors.white,
         elevation: 20,
         onTap: (index) {
@@ -225,13 +174,15 @@ class ProfileView extends StatelessWidget {
             case 0: context.go('/dashboard'); break;
             case 1: context.push('/send-money'); break;
             case 2: context.push('/receive-money'); break;
-            case 3: context.push('/profile'); break;
+            case 3: context.push('/routing-rules'); break;
+            case 4: context.push('/profile'); break;
           }
         },
         items: const [
           BottomNavigationBarItem(icon: Icon(LucideIcons.home), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(LucideIcons.send), label: 'Send'),
           BottomNavigationBarItem(icon: Icon(LucideIcons.qrCode), label: 'Receive'),
+          BottomNavigationBarItem(icon: Icon(LucideIcons.gitBranch), label: 'Routing'),
           BottomNavigationBarItem(icon: Icon(LucideIcons.userCircle), label: 'Profile'),
         ],
       ),

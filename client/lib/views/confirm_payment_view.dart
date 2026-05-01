@@ -16,7 +16,7 @@ class ConfirmPaymentView extends StatelessWidget {
     final provider = context.watch<AppProvider>();
     final String recipientId = data['id'] ?? 'unknown@arabpay';
     final double amount = data['amount'] ?? 0.0;
-    final routeResult = provider.getRouteResult(amount);
+    final routeResult = provider.evaluatedRoutes.isNotEmpty ? provider.evaluatedRoutes.first : null;
 
     return Scaffold(
       appBar: AppBar(title: const Text('Confirm Payment')),

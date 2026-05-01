@@ -13,6 +13,21 @@ app.use(cors());
 
 // Automatically parse incoming JSON payloads in the request body
 app.use(express.json()); 
+app.use(express.urlencoded({ extended: true }));
+// If flutter web sends it as text/plain
+app.use(express.text({ type: 'text/plain' }));
+
+// Middleware to manually parse JSON if it comes as text
+app.use((req, res, next) => {
+    if (typeof req.body === 'string' && req.body.startsWith('{')) {
+        try {
+            req.body = JSON.parse(req.body);
+        } catch (e) {
+            // ignore
+        }
+    }
+    next();
+}); 
 
 
 // ==========================================

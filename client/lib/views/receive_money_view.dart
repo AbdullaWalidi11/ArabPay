@@ -247,7 +247,7 @@ class ReceiveMoneyView extends StatelessWidget {
         type: BottomNavigationBarType.fixed,
         selectedItemColor: const Color(0xFF0B132B),
         unselectedItemColor: const Color(0xFF94A3B8),
-        currentIndex: 2, // Receive selected
+        currentIndex: 2,
         backgroundColor: Colors.white,
         elevation: 20,
         onTap: (index) {
@@ -255,13 +255,15 @@ class ReceiveMoneyView extends StatelessWidget {
             case 0: context.go('/dashboard'); break;
             case 1: context.push('/send-money'); break;
             case 2: context.push('/receive-money'); break;
-            case 3: context.push('/profile'); break;
+            case 3: context.push('/routing-rules'); break;
+            case 4: context.push('/profile'); break;
           }
         },
         items: const [
           BottomNavigationBarItem(icon: Icon(LucideIcons.home), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(LucideIcons.send), label: 'Send'),
           BottomNavigationBarItem(icon: Icon(LucideIcons.qrCode), label: 'Receive'),
+          BottomNavigationBarItem(icon: Icon(LucideIcons.gitBranch), label: 'Routing'),
           BottomNavigationBarItem(icon: Icon(LucideIcons.userCircle), label: 'Profile'),
         ],
       ),
