@@ -51,21 +51,39 @@ export const createAlias = (req, res) => {
     // 3. Generate Institutional Grade Security ID (UUID)
     const newUuid = `usr_${crypto.randomUUID().replace(/-/g, '').substring(0, 8)}`;
 
-    // 4. Build the new user profile
-    const newUser = {
-        uuid: newUuid,
-        alias: formattedAlias,
-        // Uses the provided name, OR falls back to our newly generated autoDisplayName
-        displayName: displayName || autoDisplayName, 
-        country: country || "Unknown",
-        verified: true, // Auto-verified for the hackathon sandbox
-        routingRules: {
-            localTransfers: { enabled: true } // Default rule
-        },
-        contacts: [], // Saved recipients
-        linkedAccounts: [], // Starts empty!
-        transactions: [] // Empty transaction history
-    };
+        // 4. Build the new user profile
+        const newUser = {
+            uuid: newUuid,
+            alias: formattedAlias,
+            displayName: displayName || autoDisplayName, 
+            country: country || "Saudi Arabia",
+            verified: true, 
+            routingRules: {
+                localTransfers: { enabled: true } 
+            },
+            contacts: [],
+            linkedAccounts: [
+                {
+                    id: `acc_bank_${newUuid.slice(-4)}`,
+                    type: "bank",
+                    provider: "Al Rajhi Bank",
+                    country: "Saudi Arabia",
+                    currency: "SAR",
+                    balance: 15000,
+                    isPreferred: true
+                },
+                {
+                    id: `acc_wallet_${newUuid.slice(-4)}`,
+                    type: "wallet",
+                    provider: "stc pay",
+                    country: "Saudi Arabia",
+                    currency: "SAR",
+                    balance: 4500,
+                    isPreferred: false
+                }
+            ], 
+            transactions: [] 
+        };
 
     // 5. Save them to the "Database"
     users.push(newUser);
@@ -125,11 +143,27 @@ export const resolveAlias = (req, res) => {
 };
 
 // ==========================================
+// ENDPOINT: GET /api/users/profile/:uuid
+// Purpose: Gets the full profile for the logged in user (including private accounts)
+// ==========================================
+export const getProfile = (req, res) => {
+    const { uuid } = req.params;
+    if (!uuid) return res.status(400).json({ error: 'UUID is required' });
+
+    let users = getUsers();
+    const user = users.find(u => u.uuid === uuid);
+    
+    if (!user) return res.status(404).json({ error: 'User not found' });
+    
+    return res.status(200).json({ user });
+};
+
+// ==========================================
 // ENDPOINT: POST /api/users/link-account
 // Purpose: Adds a new bank or wallet to the user's profile
 // ==========================================
 export const linkAccount = (req, res) => {
-    const { uuid, type, provider, country, currency, isPreferred } = req.body;
+    const { uuid, type, provider, country, currency, balance, isPreferred } = req.body;
 
     if (!uuid || !type || !provider || !currency || !country) {
         return res.status(400).json({ error: 'Missing required fields (uuid, type, provider, country, currency)' });
@@ -142,17 +176,17 @@ export const linkAccount = (req, res) => {
         return res.status(404).json({ error: 'User not found (Invalid UUID)' });
     }
 
-    // Generate a simple account ID
+    // Generate a unique account ID
     const newAccountId = `acc_${crypto.randomUUID().split('-')[0]}`;
 
     const newAccount = {
         id: newAccountId,
-        type, // 'bank' or 'wallet'
-        provider, // e.g., 'STC Pay', 'Al Rajhi'
+        type, 
+        provider,
         country,
         currency,
-        balance: 10000, // Give them some mock money to test with!
-        isPreferred: isPreferred || false
+        balance: balance !== undefined ? Number(balance) : 10000, 
+        isPreferred: isPreferred === true || isPreferred === 'true'
     };
 
     // If this is preferred, we should un-prefer others

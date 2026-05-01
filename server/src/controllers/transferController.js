@@ -22,7 +22,13 @@ export const evaluateTransfer = (req, res) => {
 
     const users = getUsers();
     const sender = users.find(u => u.uuid === senderUuid);
-    const receiver = users.find(u => u.alias === receiverAlias);
+    
+    // Format the alias internally (e.g., 'ihsan' -> 'ihsan@arabpay')
+    const searchAlias = receiverAlias.includes('@arabpay') 
+        ? receiverAlias.toLowerCase() 
+        : `${receiverAlias.toLowerCase()}@arabpay`;
+
+    const receiver = users.find(u => u.alias === searchAlias);
 
     if (!sender) return res.status(404).json({ error: 'Sender not found' });
     if (!receiver) return res.status(404).json({ error: 'Receiver not found' });
@@ -53,7 +59,13 @@ export const executeTransfer = (req, res) => {
 
     let users = getUsers();
     const senderIndex = users.findIndex(u => u.uuid === senderUuid);
-    const receiverIndex = users.findIndex(u => u.alias === receiverAlias);
+    
+    // Format the alias internally
+    const searchAlias = receiverAlias.includes('@arabpay') 
+        ? receiverAlias.toLowerCase() 
+        : `${receiverAlias.toLowerCase()}@arabpay`;
+
+    const receiverIndex = users.findIndex(u => u.alias === searchAlias);
 
     if (senderIndex === -1 || receiverIndex === -1) {
         return res.status(404).json({ error: 'Sender or Receiver not found' });

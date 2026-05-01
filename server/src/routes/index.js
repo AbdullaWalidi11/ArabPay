@@ -1,8 +1,12 @@
 import express from 'express';
-import { createAlias, resolveAlias, linkAccount, saveContact } from '../controllers/userController.js';
+import { createAlias, resolveAlias, linkAccount, saveContact, getProfile } from '../controllers/userController.js';
 import { evaluateTransfer, executeTransfer } from '../controllers/transferController.js';
 
 const router = express.Router();
+
+// Route: GET /api/users/profile/:uuid
+// Purpose: Gets the full profile for the logged in user
+router.get('/users/profile/:uuid', getProfile);
 
 // Route: POST /api/users/create
 // Purpose: Claims a new ArabPay alias and generates a UUID
