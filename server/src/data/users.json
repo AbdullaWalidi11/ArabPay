@@ -408,5 +408,70 @@
       }
     },
     "linkedAccounts": []
+  },
+  {
+    "uuid": "usr_086911fa",
+    "alias": "salman@arabpay",
+    "displayName": "Salman",
+    "country": "Unknown",
+    "verified": true,
+    "routingRules": {
+      "localTransfers": {
+        "enabled": true
+      }
+    },
+    "linkedAccounts": []
+  },
+  {
+    "uuid": "usr_a324b8fa",
+    "alias": "kazim@arabpay",
+    "displayName": "Kazim",
+    "country": "Unknown",
+    "verified": true,
+    "routingRules": {
+      "localTransfers": {
+        "enabled": true
+      }
+    },
+    "linkedAccounts": []
+  },
+  {
+    "uuid": "usr_cb57ba44",
+    "alias": "samar@arabpay",
+    "displayName": "Samar",
+    "country": "Unknown",
+    "verified": true,
+    "routingRules": {
+      "localTransfers": {
+        "enabled": true
+      }
+    },
+    "linkedAccounts": []
+  },
+  {
+    "uuid": "usr_190dc669",
+    "alias": "musa@arabpay",
+    "displayName": "Musa",
+    "country": "Unknown",
+    "verified": true,
+    "routingRules": {
+      "localTransfers": {
+        "enabled": true
+      }
+    },
+    "linkedAccounts": []
+  },
+  {
+    "uuid": "usr_af271ef7",
+    "alias": "zezo@arabpay",
+    "displayName": "Zezo",
+    "country": "Unknown",
+    "verified": true,
+    "routingRules": {
+      "localTransfers": {
+        "enabled": true
+      }
+    },
+    "linkedAccounts": []
   }
 ]

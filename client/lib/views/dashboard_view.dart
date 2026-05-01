@@ -17,6 +17,18 @@ class DashboardView extends StatefulWidget {
 
 class _DashboardViewState extends State<DashboardView> {
   bool _isCopied = false;
+  bool _showAllActivity = false;
+
+  String _formatDate(DateTime date) {
+    const months = [
+      'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+    ];
+    final month = months[date.month - 1];
+    final hour = date.hour > 12 ? date.hour - 12 : (date.hour == 0 ? 12 : date.hour);
+    final ampm = date.hour >= 12 ? 'PM' : 'AM';
+    return '$month ${date.day}, $hour:${date.minute.toString().padLeft(2, '0')} $ampm';
+  }
 
   void _copyId(String id) {
     Clipboard.setData(ClipboardData(text: id));
@@ -271,10 +283,14 @@ class _DashboardViewState extends State<DashboardView> {
                           ),
                         ),
                         TextButton(
-                          onPressed: () {},
-                          child: const Text(
-                            'View All',
-                            style: TextStyle(
+                          onPressed: () {
+                            setState(() {
+                              _showAllActivity = !_showAllActivity;
+                            });
+                          },
+                          child: Text(
+                            _showAllActivity ? 'Show Less' : 'View All',
+                            style: const TextStyle(
                                 color: Color(0xFF10B981),
                                 fontWeight: FontWeight.bold),
                           ),
@@ -282,10 +298,25 @@ class _DashboardViewState extends State<DashboardView> {
                       ],
                     ),
                     const SizedBox(height: 8),
-                    ListView.separated(
+                    if (provider.recentTransactions.isEmpty)
+                      const Padding(
+                        padding: EdgeInsets.symmetric(vertical: 24.0),
+                        child: Center(
+                          child: Text(
+                            'No recent transactions.',
+                            style: TextStyle(color: Color(0xFF94A3B8)),
+                          ),
+                        ),
+                      )
+                    else
+                      ListView.separated(
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
-                      itemCount: provider.recentTransactions.length,
+                      itemCount: _showAllActivity
+                          ? provider.recentTransactions.length
+                          : (provider.recentTransactions.length > 2
+                              ? 2
+                              : provider.recentTransactions.length),
                       separatorBuilder: (_, __) => const SizedBox(height: 12),
                       itemBuilder: (context, index) {
                         final tx = provider.recentTransactions[index];
@@ -339,7 +370,7 @@ class _DashboardViewState extends State<DashboardView> {
                                     ),
                                     const SizedBox(height: 4),
                                     Text(
-                                      'Today, 10:45 AM', // Mock time
+                                      _formatDate(tx.date),
                                       style: const TextStyle(
                                           color: Color(0xFF94A3B8),
                                           fontSize: 12),
@@ -351,7 +382,7 @@ class _DashboardViewState extends State<DashboardView> {
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Text(
-                                    '${tx.amount > 0 ? '+' : ''}${tx.amount.toStringAsFixed(2)} AED',
+                                    '${tx.amount > 0 ? '+' : ''}${tx.amount.toStringAsFixed(2)} ${tx.currency}',
                                     style: TextStyle(
                                       fontWeight: FontWeight.w800,
                                       color: tx.amount > 0
