@@ -62,26 +62,7 @@ export const createAlias = (req, res) => {
                 localTransfers: { enabled: true } 
             },
             contacts: [],
-            linkedAccounts: [
-                {
-                    id: `acc_bank_${newUuid.slice(-4)}`,
-                    type: "bank",
-                    provider: "Al Rajhi Bank",
-                    country: "Saudi Arabia",
-                    currency: "SAR",
-                    balance: 15000,
-                    isPreferred: true
-                },
-                {
-                    id: `acc_wallet_${newUuid.slice(-4)}`,
-                    type: "wallet",
-                    provider: "stc pay",
-                    country: "Saudi Arabia",
-                    currency: "SAR",
-                    balance: 4500,
-                    isPreferred: false
-                }
-            ], 
+            linkedAccounts: [], 
             transactions: [] 
         };
 
@@ -148,10 +129,16 @@ export const resolveAlias = (req, res) => {
 // ==========================================
 export const getProfile = (req, res) => {
     const { uuid } = req.params;
-    if (!uuid) return res.status(400).json({ error: 'UUID is required' });
+    if (!uuid) return res.status(400).json({ error: 'UUID or alias is required' });
 
     let users = getUsers();
-    const user = users.find(u => u.uuid === uuid);
+
+    // Try to find by alias first (e.g. 'ahmed123' or 'ahmed123@arabpay')
+    const searchAlias = uuid.includes('@arabpay') ? uuid.toLowerCase() : `${uuid.toLowerCase()}@arabpay`;
+    let user = users.find(u => u.alias === searchAlias);
+
+    // Fallback: try matching by UUID
+    if (!user) user = users.find(u => u.uuid === uuid);
     
     if (!user) return res.status(404).json({ error: 'User not found' });
     

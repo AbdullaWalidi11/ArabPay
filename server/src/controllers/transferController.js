@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import crypto from 'crypto';
 import { fileURLToPath } from 'url';
 import { evaluateRoute } from '../services/routingEngine.js';
 
@@ -8,6 +9,7 @@ const __dirname = path.dirname(__filename);
 const dataPath = path.join(__dirname, '../data/users.json');
 
 const getUsers = () => JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
+const saveUsers = (data) => fs.writeFileSync(dataPath, JSON.stringify(data, null, 2), 'utf-8');
 
 // ==========================================
 // ENDPOINT: POST /api/transfers/evaluate

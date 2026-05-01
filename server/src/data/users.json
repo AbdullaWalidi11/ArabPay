@@ -27,7 +27,7 @@
         "provider": "Emirates NBD",
         "country": "United Arab Emirates",
         "currency": "AED",
-        "balance": 15000,
+        "balance": 15155,
         "isPreferred": true
       },
       {
@@ -40,7 +40,24 @@
         "isPreferred": false
       }
     ],
-    "transactions": []
+    "transactions": [
+      {
+        "id": "tx_43b1d091",
+        "type": "RECEIVE",
+        "amount": 55,
+        "currency": "AED",
+        "from": "ahmed@arabpay",
+        "date": "2026-05-01T17:45:42.134Z"
+      },
+      {
+        "id": "tx_3041a755",
+        "type": "RECEIVE",
+        "amount": 100,
+        "currency": "AED",
+        "from": "tariq@arabpay",
+        "date": "2026-05-01T19:51:28.937Z"
+      }
+    ]
   },
   {
     "uuid": "usr_1a2b3c4d",
@@ -111,7 +128,7 @@
         "provider": "Al Rajhi Bank",
         "country": "Saudi Arabia",
         "currency": "SAR",
-        "balance": 14500,
+        "balance": 14445,
         "isPreferred": true
       },
       {
@@ -151,7 +168,16 @@
         "isPreferred": false
       }
     ],
-    "transactions": []
+    "transactions": [
+      {
+        "id": "tx_43b1d091",
+        "type": "SEND",
+        "amount": 55,
+        "currency": "SAR",
+        "to": "ali",
+        "date": "2026-05-01T17:45:42.134Z"
+      }
+    ]
   },
   {
     "uuid": "usr_5d6add7e",
@@ -360,6 +386,389 @@
         "currency": "SAR",
         "balance": 4500,
         "isPreferred": false
+      }
+    ],
+    "transactions": []
+  },
+  {
+    "uuid": "usr_8623f74e",
+    "alias": "w2@arabpay",
+    "displayName": "W2",
+    "country": "Saudi Arabia",
+    "verified": true,
+    "routingRules": {
+      "localTransfers": {
+        "enabled": true
+      }
+    },
+    "contacts": [],
+    "linkedAccounts": [
+      {
+        "id": "acc_bank_f74e",
+        "type": "bank",
+        "provider": "Al Rajhi Bank",
+        "country": "Saudi Arabia",
+        "currency": "SAR",
+        "balance": 15000,
+        "isPreferred": true
+      },
+      {
+        "id": "acc_wallet_f74e",
+        "type": "wallet",
+        "provider": "stc pay",
+        "country": "Saudi Arabia",
+        "currency": "SAR",
+        "balance": 4500,
+        "isPreferred": false
+      }
+    ],
+    "transactions": []
+  },
+  {
+    "uuid": "usr_332bb375",
+    "alias": "what@arabpay",
+    "displayName": "What",
+    "country": "Saudi Arabia",
+    "verified": true,
+    "routingRules": {
+      "localTransfers": {
+        "enabled": true
+      }
+    },
+    "contacts": [],
+    "linkedAccounts": [
+      {
+        "id": "acc_bank_b375",
+        "type": "bank",
+        "provider": "Al Rajhi Bank",
+        "country": "Saudi Arabia",
+        "currency": "SAR",
+        "balance": 15000,
+        "isPreferred": true
+      },
+      {
+        "id": "acc_wallet_b375",
+        "type": "wallet",
+        "provider": "stc pay",
+        "country": "Saudi Arabia",
+        "currency": "SAR",
+        "balance": 4500,
+        "isPreferred": false
+      }
+    ],
+    "transactions": []
+  },
+  {
+    "uuid": "usr_b1a29d9f",
+    "alias": "abdullah@arabpay",
+    "displayName": "Abdullah",
+    "country": "Saudi Arabia",
+    "verified": true,
+    "routingRules": {
+      "localTransfers": {
+        "enabled": true
+      }
+    },
+    "contacts": [],
+    "linkedAccounts": [
+      {
+        "id": "acc_bank_9d9f",
+        "type": "bank",
+        "provider": "Al Rajhi Bank",
+        "country": "Saudi Arabia",
+        "currency": "SAR",
+        "balance": 15000,
+        "isPreferred": true
+      },
+      {
+        "id": "acc_wallet_9d9f",
+        "type": "wallet",
+        "provider": "stc pay",
+        "country": "Saudi Arabia",
+        "currency": "SAR",
+        "balance": 4500,
+        "isPreferred": false
+      }
+    ],
+    "transactions": []
+  },
+  {
+    "uuid": "usr_9c6d7c0b",
+    "alias": "a@arabpay",
+    "displayName": "A",
+    "country": "Saudi Arabia",
+    "verified": true,
+    "routingRules": {
+      "localTransfers": {
+        "enabled": true
+      }
+    },
+    "contacts": [],
+    "linkedAccounts": [
+      {
+        "id": "acc_bank_7c0b",
+        "type": "bank",
+        "provider": "Al Rajhi Bank",
+        "country": "Saudi Arabia",
+        "currency": "SAR",
+        "balance": 15000,
+        "isPreferred": true
+      },
+      {
+        "id": "acc_wallet_7c0b",
+        "type": "wallet",
+        "provider": "stc pay",
+        "country": "Saudi Arabia",
+        "currency": "SAR",
+        "balance": 4500,
+        "isPreferred": false
+      }
+    ],
+    "transactions": []
+  },
+  {
+    "uuid": "usr_dcd0288c",
+    "alias": "spiderman@arabpay",
+    "displayName": "Spiderman",
+    "country": "Saudi Arabia",
+    "verified": true,
+    "routingRules": {
+      "localTransfers": {
+        "enabled": true
+      }
+    },
+    "contacts": [],
+    "linkedAccounts": [
+      {
+        "id": "acc_bank_288c",
+        "type": "bank",
+        "provider": "Al Rajhi Bank",
+        "country": "Saudi Arabia",
+        "currency": "SAR",
+        "balance": 15000,
+        "isPreferred": true
+      },
+      {
+        "id": "acc_wallet_288c",
+        "type": "wallet",
+        "provider": "stc pay",
+        "country": "Saudi Arabia",
+        "currency": "SAR",
+        "balance": 4500,
+        "isPreferred": false
+      }
+    ],
+    "transactions": []
+  },
+  {
+    "uuid": "usr_5e012d32",
+    "alias": "alial@arabpay",
+    "displayName": "Alial",
+    "country": "Saudi Arabia",
+    "verified": true,
+    "routingRules": {
+      "localTransfers": {
+        "enabled": true
+      }
+    },
+    "contacts": [],
+    "linkedAccounts": [
+      {
+        "id": "acc_bank_2d32",
+        "type": "bank",
+        "provider": "Al Rajhi Bank",
+        "country": "Saudi Arabia",
+        "currency": "SAR",
+        "balance": 15000,
+        "isPreferred": true
+      },
+      {
+        "id": "acc_wallet_2d32",
+        "type": "wallet",
+        "provider": "stc pay",
+        "country": "Saudi Arabia",
+        "currency": "SAR",
+        "balance": 4500,
+        "isPreferred": false
+      }
+    ],
+    "transactions": []
+  },
+  {
+    "uuid": "usr_d1db2af8",
+    "alias": "a2@arabpay",
+    "displayName": "A2",
+    "country": "Saudi Arabia",
+    "verified": true,
+    "routingRules": {
+      "localTransfers": {
+        "enabled": true
+      }
+    },
+    "contacts": [],
+    "linkedAccounts": [
+      {
+        "id": "acc_bank_2af8",
+        "type": "bank",
+        "provider": "Al Rajhi Bank",
+        "country": "Saudi Arabia",
+        "currency": "SAR",
+        "balance": 15000,
+        "isPreferred": true
+      },
+      {
+        "id": "acc_wallet_2af8",
+        "type": "wallet",
+        "provider": "stc pay",
+        "country": "Saudi Arabia",
+        "currency": "SAR",
+        "balance": 4500,
+        "isPreferred": false
+      }
+    ],
+    "transactions": []
+  },
+  {
+    "uuid": "usr_7a66a26a",
+    "alias": "a5@arabpay",
+    "displayName": "A5",
+    "country": "Saudi Arabia",
+    "verified": true,
+    "routingRules": {
+      "localTransfers": {
+        "enabled": true
+      }
+    },
+    "contacts": [],
+    "linkedAccounts": [
+      {
+        "id": "acc_bank_a26a",
+        "type": "bank",
+        "provider": "Al Rajhi Bank",
+        "country": "Saudi Arabia",
+        "currency": "SAR",
+        "balance": 15000,
+        "isPreferred": true
+      },
+      {
+        "id": "acc_wallet_a26a",
+        "type": "wallet",
+        "provider": "stc pay",
+        "country": "Saudi Arabia",
+        "currency": "SAR",
+        "balance": 4500,
+        "isPreferred": false
+      },
+      {
+        "id": "acc_bc1f43b4",
+        "type": "bank",
+        "provider": "Banque Populaire",
+        "country": "Morocco",
+        "currency": "MAD",
+        "balance": 7500,
+        "isPreferred": false
+      }
+    ],
+    "transactions": []
+  },
+  {
+    "uuid": "usr_0824c7ab",
+    "alias": "a6@arabpay",
+    "displayName": "A6",
+    "country": "Saudi Arabia",
+    "verified": true,
+    "routingRules": {
+      "localTransfers": {
+        "enabled": true
+      }
+    },
+    "contacts": [],
+    "linkedAccounts": [
+      {
+        "id": "acc_bank_c7ab",
+        "type": "bank",
+        "provider": "Al Rajhi Bank",
+        "country": "Saudi Arabia",
+        "currency": "SAR",
+        "balance": 15000,
+        "isPreferred": true
+      },
+      {
+        "id": "acc_wallet_c7ab",
+        "type": "wallet",
+        "provider": "stc pay",
+        "country": "Saudi Arabia",
+        "currency": "SAR",
+        "balance": 4500,
+        "isPreferred": false
+      }
+    ],
+    "transactions": []
+  },
+  {
+    "uuid": "usr_5b73e58e",
+    "alias": "tariq@arabpay",
+    "displayName": "Tariq",
+    "country": "Saudi Arabia",
+    "verified": true,
+    "routingRules": {
+      "localTransfers": {
+        "enabled": true
+      }
+    },
+    "contacts": [],
+    "linkedAccounts": [
+      {
+        "id": "acc_bank_e58e",
+        "type": "bank",
+        "provider": "Al Rajhi Bank",
+        "country": "Saudi Arabia",
+        "currency": "SAR",
+        "balance": 14900,
+        "isPreferred": true
+      },
+      {
+        "id": "acc_wallet_e58e",
+        "type": "wallet",
+        "provider": "stc pay",
+        "country": "Saudi Arabia",
+        "currency": "SAR",
+        "balance": 4500,
+        "isPreferred": false
+      }
+    ],
+    "transactions": [
+      {
+        "id": "tx_3041a755",
+        "type": "SEND",
+        "amount": 100,
+        "currency": "SAR",
+        "to": "ali@arabpay",
+        "date": "2026-05-01T19:51:28.937Z"
+      }
+    ]
+  },
+  {
+    "uuid": "usr_44793318",
+    "alias": "tariq2@arabpay",
+    "displayName": "Tariq2",
+    "country": "Saudi Arabia",
+    "verified": true,
+    "routingRules": {
+      "localTransfers": {
+        "enabled": true
+      }
+    },
+    "contacts": [],
+    "linkedAccounts": [
+      {
+        "id": "acc_cf6a8643",
+        "type": "bank",
+        "provider": "Banque Saudi Fransi",
+        "country": "Saudi Arabia",
+        "currency": "SAR",
+        "balance": 7500,
+        "isPreferred": true
       }
     ],
     "transactions": []
