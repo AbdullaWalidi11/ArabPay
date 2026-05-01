@@ -288,7 +288,7 @@ class _ReceiveMoneyViewState extends State<ReceiveMoneyView> {
         type: BottomNavigationBarType.fixed,
         selectedItemColor: const Color(0xFF0B132B),
         unselectedItemColor: const Color(0xFF94A3B8),
-        currentIndex: 2, // Receive selected
+        currentIndex: 2,
         backgroundColor: Colors.white,
         elevation: 20,
         onTap: (index) {

@@ -295,10 +295,21 @@ class _ClaimIdentityViewState extends State<ClaimIdentityView> {
                           height: 64,
                           child: ElevatedButton(
                             onPressed: () async {
+                              final alias = _controller.text.trim();
+                              if (alias.isEmpty) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(content: Text('Please enter an alias')),
+                                );
+                                return;
+                              }
                               final success = await provider
-                                  .claimIdentity(_controller.text);
+                                  .claimIdentity(alias);
                               if (success && mounted) {
                                 context.go('/identity-success');
+                              } else if (mounted) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(content: Text(provider.error ?? 'Failed to claim identity')),
+                                );
                               }
                             },
                             style: ElevatedButton.styleFrom(

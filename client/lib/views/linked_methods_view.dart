@@ -1,3 +1,5 @@
+import 'dart:convert';
+import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/app_provider.dart';
@@ -5,13 +7,46 @@ import '../theme/app_colors.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 
-class LinkedMethodsView extends StatelessWidget {
+class LinkedMethodsView extends StatefulWidget {
   const LinkedMethodsView({super.key});
+
+  @override
+  State<LinkedMethodsView> createState() => _LinkedMethodsViewState();
+}
+
+class _LinkedMethodsViewState extends State<LinkedMethodsView> {
+  Map<String, Map<String, dynamic>> _institutionData = {};
+
+  @override
+  void initState() {
+    super.initState();
+    _loadInstitutionData();
+  }
+
+  Future<void> _loadInstitutionData() async {
+    final String response =
+        await rootBundle.loadString('assets/data/institutions.json');
+    final data = json.decode(response);
+    final List<dynamic> countriesJson = data['countries'];
+    
+    Map<String, Map<String, dynamic>> instData = {};
+    for (var country in countriesJson) {
+      for (var inst in country['institutions']) {
+        instData[inst['name']] = inst;
+      }
+    }
+    
+    setState(() {
+      _institutionData = instData;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     final provider = context.watch<AppProvider>();
     final methods = provider.linkedMethods;
+    final bankMethods = methods.where((m) => m.type == 'bank').toList();
+    final walletMethods = methods.where((m) => m.type == 'wallet').toList();
 
     return Scaffold(
       backgroundColor: const Color(0xFFF8FAFF),
@@ -55,30 +90,74 @@ class LinkedMethodsView extends StatelessWidget {
                   children: [
                     const SizedBox(height: 24),
 
-                    // Dynamic Methods List from Provider
-                    ...methods
-                        .map((method) => Padding(
-                              padding: const EdgeInsets.only(bottom: 16),
-                              child: _buildAccountCard(
-                                icon: method.type == 'wallet'
-                                    ? LucideIcons.wallet
-                                    : LucideIcons.landmark,
-                                name: method.provider,
-                                country: method.country,
-                                currency: method.currency,
-                                date: 'Apr 2024', // Simplified for demo
-                                status: method.isActive ? 'Active' : 'Pending',
-                                statusColor: method.isActive
-                                    ? const Color(0xFF1D4ED8)
-                                    : const Color(0xFF94A3B8),
-                                statusBg: method.isActive
-                                    ? const Color(0xFFEFF6FF)
-                                    : const Color(0xFFF1F5F9),
-                                isPreferred: method.provider ==
-                                    'Ziraat Bank', // Keep one as preferred for demo
-                              ),
-                            ))
-                        .toList(),
+                    if (bankMethods.isNotEmpty) ...[
+                      const Text(
+                        'Bank Accounts',
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF0F172A)),
+                      ),
+                      const SizedBox(height: 16),
+                      ...bankMethods.map((method) {
+                        final inst = _institutionData[method.provider];
+                        return Padding(
+                          padding: const EdgeInsets.only(bottom: 16),
+                          child: _buildAccountCard(
+                            logoUrl: inst?['logo_url'],
+                            fallbackLogoUrl: inst?['fallback_logo_url'],
+                            fallbackIcon: LucideIcons.landmark,
+                            name: method.provider,
+                            country: method.country,
+                            currency: method.currency,
+                            date: 'Apr 2024',
+                            status: method.isActive ? 'Active' : 'Pending',
+                            statusColor: method.isActive
+                                ? const Color(0xFF1D4ED8)
+                                : const Color(0xFF94A3B8),
+                            statusBg: method.isActive
+                                ? const Color(0xFFEFF6FF)
+                                : const Color(0xFFF1F5F9),
+                            isPreferred: method.provider == 'Ziraat Bank',
+                          ),
+                        );
+                      }).toList(),
+                      const SizedBox(height: 24),
+                    ],
+
+                    if (walletMethods.isNotEmpty) ...[
+                      const Text(
+                        'Mobile Wallets',
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF0F172A)),
+                      ),
+                      const SizedBox(height: 16),
+                      ...walletMethods.map((method) {
+                        final inst = _institutionData[method.provider];
+                        return Padding(
+                          padding: const EdgeInsets.only(bottom: 16),
+                          child: _buildAccountCard(
+                            logoUrl: inst?['logo_url'],
+                            fallbackLogoUrl: inst?['fallback_logo_url'],
+                            fallbackIcon: LucideIcons.wallet,
+                            name: method.provider,
+                            country: method.country,
+                            currency: method.currency,
+                            date: 'Apr 2024',
+                            status: method.isActive ? 'Active' : 'Pending',
+                            statusColor: method.isActive
+                                ? const Color(0xFF1D4ED8)
+                                : const Color(0xFF94A3B8),
+                            statusBg: method.isActive
+                                ? const Color(0xFFEFF6FF)
+                                : const Color(0xFFF1F5F9),
+                            isPreferred: method.provider == 'Ziraat Bank',
+                          ),
+                        );
+                      }).toList(),
+                    ],
                     const SizedBox(height: 100), // Space for FAB
                   ],
                 ),
@@ -97,39 +176,33 @@ class LinkedMethodsView extends StatelessWidget {
         type: BottomNavigationBarType.fixed,
         selectedItemColor: const Color(0xFF0B132B),
         unselectedItemColor: const Color(0xFF94A3B8),
-        currentIndex: 3, // Profile context
+        currentIndex: 4,
         backgroundColor: Colors.white,
         elevation: 20,
         onTap: (index) {
           switch (index) {
-            case 0:
-              context.go('/dashboard');
-              break;
-            case 1:
-              context.push('/send-money');
-              break;
-            case 2:
-              context.push('/receive-money');
-              break;
-            case 3:
-              context.push('/profile');
-              break;
+            case 0: context.go('/dashboard'); break;
+            case 1: context.push('/send-money'); break;
+            case 2: context.push('/receive-money'); break;
+            case 3: context.push('/routing-rules'); break;
+            case 4: context.push('/profile'); break;
           }
         },
         items: const [
           BottomNavigationBarItem(icon: Icon(LucideIcons.home), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(LucideIcons.send), label: 'Send'),
-          BottomNavigationBarItem(
-              icon: Icon(LucideIcons.qrCode), label: 'Receive'),
-          BottomNavigationBarItem(
-              icon: Icon(LucideIcons.userCircle), label: 'Profile'),
+          BottomNavigationBarItem(icon: Icon(LucideIcons.qrCode), label: 'Receive'),
+          BottomNavigationBarItem(icon: Icon(LucideIcons.gitBranch), label: 'Routing'),
+          BottomNavigationBarItem(icon: Icon(LucideIcons.userCircle), label: 'Profile'),
         ],
       ),
     );
   }
 
   Widget _buildAccountCard({
-    required IconData icon,
+    String? logoUrl,
+    String? fallbackLogoUrl,
+    required IconData fallbackIcon,
     required String name,
     required String country,
     required String currency,
@@ -158,15 +231,36 @@ class LinkedMethodsView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      padding: const EdgeInsets.all(12),
+                      width: 48,
+                      height: 48,
+                      padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
                         color: const Color(0xFFF8FAFF),
                         borderRadius: BorderRadius.circular(12),
                         border: Border.all(color: const Color(0xFFF1F5F9)),
                       ),
-                      child: Icon(icon,
-                          color: const Color(0xFFEF4444),
-                          size: 24), // Branded red icon
+                      child: logoUrl != null
+                          ? ClipRRect(
+                              borderRadius: BorderRadius.circular(8),
+                              child: Image.network(
+                                logoUrl,
+                                fit: BoxFit.contain,
+                                errorBuilder: (context, error, stackTrace) {
+                                  if (fallbackLogoUrl != null) {
+                                    return Image.network(
+                                      fallbackLogoUrl,
+                                      fit: BoxFit.contain,
+                                    );
+                                  }
+                                  return Icon(fallbackIcon,
+                                      color: const Color(0xFF1D4ED8),
+                                      size: 24);
+                                },
+                              ),
+                            )
+                          : Icon(fallbackIcon,
+                              color: const Color(0xFF1D4ED8),
+                              size: 24),
                     ),
                     Container(
                       padding: const EdgeInsets.symmetric(

@@ -63,6 +63,7 @@ class ProfileView extends StatelessWidget {
                         border: Border.all(color: const Color(0xFFE2E8F0)),
                       ),
                       child: Stack(
+                        alignment: Alignment.center,
                         children: [
                           // Star Pattern Background (Simulated)
                           Positioned.fill(
@@ -258,7 +259,7 @@ class ProfileView extends StatelessWidget {
         type: BottomNavigationBarType.fixed,
         selectedItemColor: const Color(0xFF0B132B),
         unselectedItemColor: const Color(0xFF94A3B8),
-        currentIndex: 3, // Profile selected
+        currentIndex: 4,
         backgroundColor: Colors.white,
         elevation: 20,
         onTap: (index) {
